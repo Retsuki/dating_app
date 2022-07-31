@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=FLAVOR=development",
+        "--dart-define=DEBUG_MODE=true"
+      ]
+    },
+    {
+      "name": "Development",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=FLAVOR=development"]
+    },
+    {
+      "name": "Staging",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=FLAVOR=staging"]
+    },
+    {
+      "name": "Production",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--dart-define=FLAVOR=production"]
+    }
+  ]
+}
