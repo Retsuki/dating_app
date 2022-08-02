@@ -8,7 +8,7 @@ ThemeData lightTheme() {
     colorScheme: const ColorScheme.light(
       primary: primary,
       secondary: secondary,
-      error: Color(0x00da1414),
+      error: Color(0xFFda1414),
     ),
   ).copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
