@@ -77,6 +77,7 @@ class GhostButton extends StatelessWidget {
   }
 }
 
+// TextButtonにしてね
 class BorderlessButton extends StatelessWidget {
   const BorderlessButton({
     super.key,
@@ -97,16 +98,12 @@ class BorderlessButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).elevatedButtonTheme;
+    final theme = Theme.of(context).textButtonTheme;
     final style = theme.style!;
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
+    return TextButton(
+      style: TextButton.styleFrom(
         primary: primary,
         minimumSize: minimumSize,
-        onPrimary: onPrimary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
-        ),
       ).merge(style),
       onPressed: onPressed,
       child: Text(text),

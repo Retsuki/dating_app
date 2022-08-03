@@ -38,6 +38,16 @@ ThemeData lightTheme() {
         side: const BorderSide(color: primary),
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        primary: primary,
+        minimumSize: const Size(double.infinity, 55),
+        textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
     dialogTheme: DialogTheme(
       backgroundColor: surface,
       shape: RoundedRectangleBorder(
@@ -90,6 +100,9 @@ ThemeData lightTheme() {
       labelSmall: TextStyle(
         fontSize: 10,
       ),
+    ).apply(
+      bodyColor: Colors.black,
+      displayColor: Colors.black,
     ),
   );
 }
