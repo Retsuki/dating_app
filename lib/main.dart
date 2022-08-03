@@ -1,12 +1,15 @@
 import 'package:dating_app/router.dart';
 import 'package:dating_app/theme.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(
-    const ProviderScope(
-      child: App(),
+    DevicePreview(
+      builder: (context) => const ProviderScope(
+        child: App(),
+      ),
     ),
   );
 }
@@ -21,6 +24,9 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Dating App',
       theme: lightTheme(),
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
