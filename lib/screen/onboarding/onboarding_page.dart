@@ -43,73 +43,65 @@ class OnboardingPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          CarouselSlider.builder(
-            itemCount: onboardingImages.length,
-            itemBuilder: (context, index, realIndex) {
-              return Container(
-                width: 280,
-                height: 380,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(28),
-                ),
-                child: onboardingImages[index],
-              );
-            },
-            options: CarouselOptions(
-              height: 380,
-              viewportFraction: 0.75,
-              enlargeCenterPage: true,
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 2),
-              onPageChanged: (index, reason) {
-                onboardingIndexNotifier.update((state) => index);
+      body: SafeArea(
+        child: Column(
+          children: [
+            CarouselSlider.builder(
+              itemCount: onboardingImages.length,
+              itemBuilder: (context, index, realIndex) {
+                return Container(
+                  width: 265,
+                  height: 360,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                  child: onboardingImages[index],
+                );
               },
+              options: CarouselOptions(
+                height: 360,
+                viewportFraction: 0.75,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 2),
+                onPageChanged: (index, reason) {
+                  onboardingIndexNotifier.update((state) => index);
+                },
+              ),
             ),
-          ),
-          const Gap(92),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                Text(
-                  onboadingTextList[onboardingIndexState],
-                  style: textTheme.displayLarge!.copyWith(
-                    height: 1.5,
-                  ),
-                  textAlign: TextAlign.center,
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                onboadingTextList[onboardingIndexState],
+                style: textTheme.displayMedium!.copyWith(
+                  height: 1.3,
                 ),
-                const Gap(36),
-                AnimatedSmoothIndicator(
-                  activeIndex: onboardingIndexState,
-                  count: onboardingImages.length,
-                  effect: ColorTransitionEffect(
-                    dotWidth: 8,
-                    dotHeight: 8,
-                    activeDotColor: colorScheme.primary,
-                  ),
-                ),
-                const Gap(36),
-                Column(
-                  children: [
-                    BorderlessButton(
-                      text: 'スキップ',
-                      type: Type.round,
-                      onPressed: () {},
-                    ),
-                    const Gap(12),
-                    FilledButton(
-                      text: '次へ',
-                      type: Type.round,
-                      onPressed: () {},
-                    ),
-                  ],
-                )
-              ],
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-        ],
+            const Gap(18),
+            AnimatedSmoothIndicator(
+              activeIndex: onboardingIndexState,
+              count: onboardingImages.length,
+              effect: ColorTransitionEffect(
+                dotWidth: 6,
+                dotHeight: 6,
+                activeDotColor: colorScheme.primary,
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: FilledButton(
+                text: '次へ',
+                type: Type.round,
+                onPressed: () {},
+              ),
+            ),
+            const Gap(20),
+          ],
+        ),
       ),
     );
   }
