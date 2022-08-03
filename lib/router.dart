@@ -4,10 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import 'components/stylebook/book_button.dart';
 import 'components/stylebook/book_text_form_field.dart';
+import 'screen/onboarding/onboarding_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${BookTextFormField.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -19,6 +20,11 @@ final routerProvider = Provider((ref) {
         path: '/${BookTextFormField.routeName}',
         name: '/${BookTextFormField.routeName}',
         builder: (context, _) => const BookTextFormField(),
+      ),
+      GoRoute(
+        path: '/${OnboardingPage.routeName}',
+        name: '/${OnboardingPage.routeName}',
+        builder: (context, _) => const OnboardingPage(),
       ),
     ],
   );
