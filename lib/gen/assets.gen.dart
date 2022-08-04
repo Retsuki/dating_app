@@ -12,8 +12,25 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
+}
+
+class $AssetsImagesLogoGen {
+  const $AssetsImagesLogoGen();
+
+  /// File path: assets/images/logo/apple.png
+  AssetGenImage get apple =>
+      const AssetGenImage('assets/images/logo/apple.png');
+
+  /// File path: assets/images/logo/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/logo/facebook.png');
+
+  /// File path: assets/images/logo/google.png
+  AssetGenImage get google =>
+      const AssetGenImage('assets/images/logo/google.png');
 }
 
 class $AssetsImagesOnboardingGen {
