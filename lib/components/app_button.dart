@@ -50,6 +50,7 @@ class GhostButton extends StatelessWidget {
     this.primary,
     this.onPrimary,
     this.type,
+    this.icon,
   });
 
   final String text;
@@ -58,21 +59,33 @@ class GhostButton extends StatelessWidget {
   final Color? primary;
   final Color? onPrimary;
   final Type? type;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).outlinedButtonTheme;
     final style = theme.style!;
+    final outlinedButtonStyleFrom = OutlinedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: type == Type.round
+            ? BorderRadius.circular(32)
+            : BorderRadius.circular(10),
+      ),
+    );
     return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: type == Type.round
-              ? BorderRadius.circular(32)
-              : BorderRadius.circular(10),
-        ),
-      ).merge(style),
+      style: outlinedButtonStyleFrom.merge(style),
       onPressed: onPressed,
-      child: Text(text),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (icon != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: icon,
+            ),
+          Text(text),
+        ],
+      ),
     );
   }
 }
