@@ -95,7 +95,7 @@ ThemeData lightTheme() {
         fontSize: 16,
       ),
       bodySmall: TextStyle(
-        fontSize: 16,
+        fontSize: 14,
       ),
       labelSmall: TextStyle(
         fontSize: 10,
