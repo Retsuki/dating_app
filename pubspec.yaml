@@ -12,6 +12,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
   cupertino_icons: ^1.0.2
   go_router: ^4.2.2
   flutter_riverpod: ^2.0.0-dev.9
@@ -38,3 +41,4 @@ flutter:
   assets:
     - assets/images/
     - assets/images/onboarding/
+    - assets/images/logo/

@@ -1,3 +1,4 @@
+import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/router.dart';
 import 'package:dating_app/theme.dart';
 import 'package:device_preview/device_preview.dart';
@@ -24,9 +25,23 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Dating App',
       theme: lightTheme(),
+      // 多言語
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (locale != null) {
+          final targetLocale = Locale(locale.languageCode);
+          if (supportedLocales.contains(targetLocale)) {
+            return locale;
+          }
+        }
+        return supportedLocales.first;
+      },
+      // デバイスプレビュー
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
+      // GoRouter
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
