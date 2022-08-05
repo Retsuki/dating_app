@@ -86,3 +86,35 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     );
   }
 }
+
+class BirthdayTextInputFormatter extends TextInputFormatter {
+  BirthdayTextInputFormatter({this.separator = '/'});
+
+  final String separator;
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    final noSeparatorNewText = newValue.text.replaceAll(separator, '');
+    final lenNoSeparatorNewText = noSeparatorNewText.length;
+
+    var offset = 0;
+    final buffer = StringBuffer();
+    for (var i = 1; i <= lenNoSeparatorNewText; i++) {
+      buffer.write(noSeparatorNewText.substring(offset, i));
+
+      if ((i == 4 || i == 6) && i != lenNoSeparatorNewText) {
+        buffer.write(separator);
+      }
+
+      offset = i;
+    }
+
+    return newValue.copyWith(
+      text: buffer.toString(),
+      selection: TextSelection.collapsed(offset: buffer.length),
+    );
+  }
+}
