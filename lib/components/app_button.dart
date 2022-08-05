@@ -49,8 +49,10 @@ class GhostButton extends StatelessWidget {
     this.minimumSize,
     this.primary,
     this.onPrimary,
+    this.borderColor,
     this.type,
     this.icon,
+    this.textStyle,
   });
 
   final String text;
@@ -58,8 +60,10 @@ class GhostButton extends StatelessWidget {
   final Size? minimumSize;
   final Color? primary;
   final Color? onPrimary;
+  final Color? borderColor;
   final Type? type;
   final Widget? icon;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +75,7 @@ class GhostButton extends StatelessWidget {
             ? BorderRadius.circular(32)
             : BorderRadius.circular(10),
       ),
+      side: borderColor != null ? BorderSide(color: borderColor!) : null,
     );
     return OutlinedButton(
       style: outlinedButtonStyleFrom.merge(style),
@@ -83,14 +88,13 @@ class GhostButton extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16),
               child: icon,
             ),
-          Text(text),
+          Text(text, style: textStyle),
         ],
       ),
     );
   }
 }
 
-// TextButtonにしてね
 class BorderlessButton extends StatelessWidget {
   const BorderlessButton({
     super.key,
