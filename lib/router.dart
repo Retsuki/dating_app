@@ -6,6 +6,7 @@ import 'components/stylebook/book_back_button.dart';
 import 'components/stylebook/book_button.dart';
 import 'components/stylebook/book_text_form_field.dart';
 import 'screen/onboarding/onboarding_page.dart';
+import 'screen/setup/setup_birthday/setup_birthday_page.dart';
 import 'screen/setup/setup_name/setup_name_page.dart';
 import 'screen/sign_in/sign_in_page.dart';
 import 'screen/sign_in/sign_in_with_password/sign_in_with_password_page.dart';
@@ -13,7 +14,7 @@ import 'screen/sign_up/sign_up_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${SetupNamePage.routeName}',
+    initialLocation: '/${SetupBirthdayPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -55,6 +56,11 @@ final routerProvider = Provider((ref) {
         path: '/${SetupNamePage.routeName}',
         name: '/${SetupNamePage.routeName}',
         builder: (context, _) => const SetupNamePage(),
+      ),
+      GoRoute(
+        path: '/${SetupBirthdayPage.routeName}',
+        name: '/${SetupBirthdayPage.routeName}',
+        builder: (context, _) => const SetupBirthdayPage(),
       )
     ],
   );

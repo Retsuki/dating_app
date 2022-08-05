@@ -22,5 +22,6 @@
   "birthday": "生年月日",
   "gender": "性別",
   "address": "住所",
-  "goNext": "次へ進む"
+  "goNext": "次へ進む",
+  "yyyyMMdd": "年年年年/月月/日日"
 }
