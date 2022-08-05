@@ -15,5 +15,12 @@
   "password": "パスワード",
   "alreadyHaveAnAccount": "既にアカウントをお持ちですか？",
   "letsSignYouIn": "ログインしましょう",
-  "forgotThePassword": "パスワードをお忘れですか？"
+  "forgotThePassword": "パスワードをお忘れですか？",
+  "name": "名前",
+  "sei": "姓",
+  "mei": "名",
+  "birthday": "生年月日",
+  "gender": "性別",
+  "address": "住所",
+  "goNext": "次へ進む"
 }
