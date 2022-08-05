@@ -15,6 +15,7 @@ class $AssetsImagesGen {
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
+  $AssetsImagesSignUpGen get signUp => const $AssetsImagesSignUpGen();
 }
 
 class $AssetsImagesLogoGen {
@@ -47,6 +48,14 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/image3.png
   AssetGenImage get image3 =>
       const AssetGenImage('assets/images/onboarding/image3.png');
+}
+
+class $AssetsImagesSignUpGen {
+  const $AssetsImagesSignUpGen();
+
+  /// File path: assets/images/sign_up/sign_up.png
+  AssetGenImage get signUp =>
+      const AssetGenImage('assets/images/sign_up/sign_up.png');
 }
 
 class Assets {
