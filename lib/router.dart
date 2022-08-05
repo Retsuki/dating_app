@@ -7,10 +7,11 @@ import 'components/stylebook/book_button.dart';
 import 'components/stylebook/book_text_form_field.dart';
 import 'screen/onboarding/onboarding_page.dart';
 import 'screen/sign_in/sign_in_page.dart';
+import 'screen/sign_up/sign_up_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${SignInPage.routeName}',
+    initialLocation: '/${SignUpPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -38,6 +39,11 @@ final routerProvider = Provider((ref) {
         name: '/${SignInPage.routeName}',
         builder: (context, _) => const SignInPage(),
       ),
+      GoRoute(
+        path: '/${SignUpPage.routeName}',
+        name: '/${SignUpPage.routeName}',
+        builder: (context, _) => const SignUpPage(),
+      )
     ],
   );
 });
