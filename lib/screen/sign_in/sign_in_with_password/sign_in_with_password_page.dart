@@ -6,10 +6,10 @@ import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignInWithPasswordPage extends StatelessWidget {
+  const SignInWithPasswordPage({super.key});
 
-  static const routeName = 'sign-up';
+  static const routeName = 'sign-in-with-password';
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class SignUpPage extends StatelessWidget {
                 Assets.images.signUp.signUp.image(scale: 4),
                 const Gap(40),
                 Text(
-                  l10n.createAnAccount,
+                  l10n.letsSignYouIn,
                   style: textTheme.displayLarge,
                 ),
                 const Gap(40),
@@ -58,12 +58,12 @@ class AppForm extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     return Column(
       children: [
-        AppSignUpWithPassword(l10n: l10n),
+        const AppSignInWithPassword(),
         const Gap(32),
-        AppSignUpWIthSns(l10n: l10n),
+        const AppSignInWithSns(),
         const Gap(32),
         Text(
-          l10n.alreadyHaveAnAccount,
+          l10n.dontHaveAnAccount,
           style: textTheme.bodySmall!.copyWith(color: colorScheme.primary),
         )
       ],
@@ -71,16 +71,17 @@ class AppForm extends StatelessWidget {
   }
 }
 
-class AppSignUpWithPassword extends StatelessWidget {
-  const AppSignUpWithPassword({
+class AppSignInWithPassword extends StatelessWidget {
+  const AppSignInWithPassword({
     super.key,
-    required this.l10n,
   });
-
-  final L10n l10n;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
     return Column(
       children: [
         AppTextFormField(labelText: l10n.email),
@@ -91,25 +92,28 @@ class AppSignUpWithPassword extends StatelessWidget {
         ),
         const Gap(24),
         FilledButton(
-          text: l10n.createAnAccount,
+          text: l10n.signIn,
           type: Type.round,
           onPressed: () {},
+        ),
+        const Gap(24),
+        Text(
+          l10n.forgotThePassword,
+          style: textTheme.bodySmall!.copyWith(color: colorScheme.primary),
         ),
       ],
     );
   }
 }
 
-class AppSignUpWIthSns extends StatelessWidget {
-  const AppSignUpWIthSns({
+class AppSignInWithSns extends StatelessWidget {
+  const AppSignInWithSns({
     super.key,
-    required this.l10n,
   });
-
-  final L10n l10n;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
     return Column(
       children: [
         Row(
