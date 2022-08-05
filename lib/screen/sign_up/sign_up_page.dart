@@ -20,22 +20,24 @@ class SignUpPage extends StatelessWidget {
       appBar: AppBar(
         leading: const AppBackButton(),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
-          child: Column(
-            children: [
-              Assets.images.signUp.signUp.image(scale: 4),
-              const Gap(40),
-              Text(
-                l10n.createAnAccount,
-                style: textTheme.displayLarge,
-              ),
-              const Gap(40),
-              const AppSignUpForm()
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
+            child: Column(
+              children: [
+                Assets.images.signUp.signUp.image(scale: 4),
+                const Gap(40),
+                Text(
+                  l10n.createAnAccount,
+                  style: textTheme.displayLarge,
+                ),
+                const Gap(40),
+                const AppForm()
+              ],
+            ),
           ),
         ),
       ),
@@ -43,8 +45,8 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-class AppSignUpForm extends StatelessWidget {
-  const AppSignUpForm({
+class AppForm extends StatelessWidget {
+  const AppForm({
     super.key,
   });
 
@@ -54,6 +56,31 @@ class AppSignUpForm extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
+    return Column(
+      children: [
+        AppSignUpWithPassword(l10n: l10n),
+        const Gap(32),
+        AppSignUpWIthSns(l10n: l10n),
+        const Gap(32),
+        Text(
+          l10n.alreadyHaveAnAccount,
+          style: textTheme.bodySmall!.copyWith(color: colorScheme.primary),
+        )
+      ],
+    );
+  }
+}
+
+class AppSignUpWithPassword extends StatelessWidget {
+  const AppSignUpWithPassword({
+    super.key,
+    required this.l10n,
+  });
+
+  final L10n l10n;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         AppTextFormField(labelText: l10n.email),
@@ -68,38 +95,45 @@ class AppSignUpForm extends StatelessWidget {
           type: Type.round,
           onPressed: () {},
         ),
-        const Gap(32),
-        Column(
+      ],
+    );
+  }
+}
+
+class AppSignUpWIthSns extends StatelessWidget {
+  const AppSignUpWIthSns({
+    super.key,
+    required this.l10n,
+  });
+
+  final L10n l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: GhostButton(
-                    text: l10n.facebook,
-                    icon: Assets.images.logo.facebook.image(scale: 5),
-                    borderColor: Colors.black12,
-                    textStyle: const TextStyle(color: Colors.black),
-                    onPressed: () {},
-                  ),
-                ),
-                const Gap(24),
-                Expanded(
-                  child: GhostButton(
-                    text: l10n.google,
-                    icon: Assets.images.logo.google.image(scale: 5),
-                    borderColor: Colors.black12,
-                    textStyle: const TextStyle(color: Colors.black),
-                    onPressed: () {},
-                  ),
-                ),
-              ],
-            )
+            Expanded(
+              child: GhostButton(
+                text: l10n.facebook,
+                icon: Assets.images.logo.facebook.image(scale: 5),
+                borderColor: Colors.black12,
+                textStyle: const TextStyle(color: Colors.black),
+                onPressed: () {},
+              ),
+            ),
+            const Gap(24),
+            Expanded(
+              child: GhostButton(
+                text: l10n.google,
+                icon: Assets.images.logo.google.image(scale: 5),
+                borderColor: Colors.black12,
+                textStyle: const TextStyle(color: Colors.black),
+                onPressed: () {},
+              ),
+            ),
           ],
-        ),
-        const Gap(32),
-        Text(
-          l10n.alreadyHaveAnAccount,
-          style: textTheme.bodySmall!.copyWith(color: colorScheme.primary),
         )
       ],
     );
