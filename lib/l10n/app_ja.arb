@@ -13,5 +13,7 @@
   "createAnAccount": "アカウントを作成",
   "email": "Email",
   "password": "パスワード",
-  "alreadyHaveAnAccount": "既にアカウントをお持ちですか？"
+  "alreadyHaveAnAccount": "既にアカウントをお持ちですか？",
+  "letsSignYouIn": "ログインしましょう",
+  "forgotThePassword": "パスワードをお忘れですか？"
 }
