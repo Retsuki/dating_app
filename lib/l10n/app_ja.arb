@@ -23,5 +23,9 @@
   "gender": "性別",
   "address": "住所",
   "goNext": "次へ進む",
-  "yyyyMMdd": "年年年年/月月/日日"
+  "yyyyMMdd": "年年年年/月月/日日",
+  "prefecture": "都道府県",
+  "city": "市区町村",
+  "address1": "番地・丁目",
+  "address2": "建物・アパート名"
 }
