@@ -27,5 +27,8 @@
   "prefecture": "都道府県",
   "city": "市区町村",
   "address1": "番地・丁目",
-  "address2": "建物・アパート名"
+  "address2": "建物・アパート名",
+  "male": "男",
+  "female": "女",
+  "other": "その他"
 }
