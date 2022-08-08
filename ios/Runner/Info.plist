@@ -50,5 +50,11 @@
 		<string>en</string>
 		<string>ja</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>プロフィール画像の設定に使用します</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>プロフィール画像の設定に使用します</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string></string>
 </dict>
 </plist>
