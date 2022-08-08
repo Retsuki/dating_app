@@ -32,5 +32,10 @@
   "female": "女",
   "other": "その他",
   "addPhotos": "写真を追加",
-  "addPhotosMessage": "最高の写真を追加して、毎日のマッチを増やしましょう"
+  "addPhotosMessage": "最高の写真を追加して、毎日のマッチを増やしましょう",
+  "captureFromCamera": "カメラで撮影",
+  "uploadPhoto": "ライブラリ",
+  "cameraPermissionMessage": "カメラへのアクセスが許可されていません。設定からカメラへのアクセスを許可してください。",
+  "photoPermissionMessage": "写真へのアクセスが許可されていません。設定から写真へのアクセスを許可してください。",
+  "moveToSettings": "設定画面へ移動"
 }
