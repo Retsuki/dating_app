@@ -10,13 +10,14 @@ import 'screen/setup/setup_address/setup_address_page.dart';
 import 'screen/setup/setup_birthday/setup_birthday_page.dart';
 import 'screen/setup/setup_gender/setup_gender_page.dart';
 import 'screen/setup/setup_name/setup_name_page.dart';
+import 'screen/setup/setup_photo/setup_photo_page.dart';
 import 'screen/sign_in/sign_in_page.dart';
 import 'screen/sign_in/sign_in_with_password/sign_in_with_password_page.dart';
 import 'screen/sign_up/sign_up_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${SetupGenderPage.routeName}',
+    initialLocation: '/${SetupPhotoPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -73,6 +74,11 @@ final routerProvider = Provider((ref) {
         path: '/${SetupGenderPage.routeName}',
         name: '/${SetupGenderPage.routeName}',
         builder: (context, _) => const SetupGenderPage(),
+      ),
+      GoRoute(
+        path: '/${SetupPhotoPage.routeName}',
+        name: '/${SetupPhotoPage.routeName}',
+        builder: (context, _) => const SetupPhotoPage(),
       )
     ],
   );
