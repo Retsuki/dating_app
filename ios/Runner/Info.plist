@@ -51,9 +51,9 @@
 		<string>ja</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>プロフィール画像の設定に使用します</string>
+	<string>カメラへのアクセスを求めています</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>プロフィール画像の設定に使用します</string>
+	<string>フォトライブラリへのアクセスを求めています</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string></string>
 </dict>
