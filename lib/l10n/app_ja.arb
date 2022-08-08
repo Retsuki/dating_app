@@ -30,5 +30,7 @@
   "address2": "建物・アパート名",
   "male": "男",
   "female": "女",
-  "other": "その他"
+  "other": "その他",
+  "addPhotos": "写真を追加",
+  "addPhotosMessage": "最高の写真を追加して、毎日のマッチを増やしましょう"
 }
