@@ -8,6 +8,7 @@ import 'components/stylebook/book_text_form_field.dart';
 import 'screen/onboarding/onboarding_page.dart';
 import 'screen/setup/setup_address/setup_address_page.dart';
 import 'screen/setup/setup_birthday/setup_birthday_page.dart';
+import 'screen/setup/setup_complete/setup_complete_page.dart';
 import 'screen/setup/setup_gender/setup_gender_page.dart';
 import 'screen/setup/setup_name/setup_name_page.dart';
 import 'screen/setup/setup_photo/setup_photo_page.dart';
@@ -17,7 +18,7 @@ import 'screen/sign_up/sign_up_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${SetupPhotoPage.routeName}',
+    initialLocation: '/${SetupCompletePage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -79,7 +80,12 @@ final routerProvider = Provider((ref) {
         path: '/${SetupPhotoPage.routeName}',
         name: '/${SetupPhotoPage.routeName}',
         builder: (context, _) => const SetupPhotoPage(),
-      )
+      ),
+      GoRoute(
+        path: '/${SetupCompletePage.routeName}',
+        name: '/${SetupCompletePage.routeName}',
+        builder: (context, _) => const SetupCompletePage(),
+      ),
     ],
   );
 });

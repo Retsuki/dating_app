@@ -54,6 +54,8 @@ class $AssetsImagesOnboardingGen {
 class $AssetsImagesSetupGen {
   const $AssetsImagesSetupGen();
 
+  $AssetsImagesSetupSetupCompleteGen get setupComplete =>
+      const $AssetsImagesSetupSetupCompleteGen();
   $AssetsImagesSetupSetupPhotoGen get setupPhoto =>
       const $AssetsImagesSetupSetupPhotoGen();
 }
@@ -64,6 +66,14 @@ class $AssetsImagesSignUpGen {
   /// File path: assets/images/sign_up/sign_up.png
   AssetGenImage get signUp =>
       const AssetGenImage('assets/images/sign_up/sign_up.png');
+}
+
+class $AssetsImagesSetupSetupCompleteGen {
+  const $AssetsImagesSetupSetupCompleteGen();
+
+  /// File path: assets/images/setup/setup_complete/complete.png
+  AssetGenImage get complete =>
+      const AssetGenImage('assets/images/setup/setup_complete/complete.png');
 }
 
 class $AssetsImagesSetupSetupPhotoGen {
