@@ -15,12 +15,16 @@ class $AssetsImagesGen {
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
+  $AssetsImagesProfileGen get profile => const $AssetsImagesProfileGen();
   $AssetsImagesSetupGen get setup => const $AssetsImagesSetupGen();
   $AssetsImagesSignUpGen get signUp => const $AssetsImagesSignUpGen();
 }
 
 class $AssetsImagesLogoGen {
   const $AssetsImagesLogoGen();
+
+  /// File path: assets/images/logo/app.png
+  AssetGenImage get app => const AssetGenImage('assets/images/logo/app.png');
 
   /// File path: assets/images/logo/apple.png
   AssetGenImage get apple =>
@@ -49,6 +53,14 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/image3.png
   AssetGenImage get image3 =>
       const AssetGenImage('assets/images/onboarding/image3.png');
+}
+
+class $AssetsImagesProfileGen {
+  const $AssetsImagesProfileGen();
+
+  /// File path: assets/images/profile/profile.png
+  AssetGenImage get profile =>
+      const AssetGenImage('assets/images/profile/profile.png');
 }
 
 class $AssetsImagesSetupGen {
