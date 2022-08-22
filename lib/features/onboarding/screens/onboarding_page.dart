@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/features/onboarding/providers/onboarding_provider.dart';
 import 'package:dating_app/gen/assets.gen.dart';
+import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -14,6 +15,7 @@ class OnboardingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
@@ -93,10 +95,22 @@ class OnboardingPage extends ConsumerWidget {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: FilledButton(
-                text: '次へ',
-                type: Type.round,
-                onPressed: () {},
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GhostButton(
+                      text: l10n.signIn,
+                      onPressed: () {},
+                    ),
+                  ),
+                  const Gap(12),
+                  Expanded(
+                    child: FilledButton(
+                      text: l10n.signUp,
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
               ),
             ),
             const Gap(20),
