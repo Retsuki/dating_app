@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating_app/components/app_button.dart';
+import 'package:dating_app/features/onboarding/providers/onboarding_provider.dart';
 import 'package:dating_app/gen/assets.gen.dart';
-import 'package:dating_app/screen/onboarding/onboarding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
