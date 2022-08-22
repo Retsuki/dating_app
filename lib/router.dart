@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'components/stylebook/book_back_button.dart';
 import 'components/stylebook/book_button.dart';
 import 'components/stylebook/book_text_form_field.dart';
-import 'screen/onboarding/onboarding_page.dart';
+import 'features/onboarding/screens/onboarding_page.dart';
 import 'screen/profile/profile_page.dart';
 import 'screen/setup/setup_address/setup_address_page.dart';
 import 'screen/setup/setup_birthday/setup_birthday_page.dart';
@@ -19,7 +19,7 @@ import 'screen/sign_up/sign_up_page.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: '/${ProfilePage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
