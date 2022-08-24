@@ -7,16 +7,16 @@ class AppBottomSheet extends StatelessWidget {
   });
 
   final Widget child;
+  static const bottomSheetBottom = 36.0;
 
   @override
   Widget build(BuildContext context) {
-    const bottom = 42.0;
     const horizontal = 16.0;
     return Padding(
       padding: const EdgeInsets.only(
         left: horizontal,
         right: horizontal,
-        bottom: bottom,
+        bottom: bottomSheetBottom,
       ),
       child: child,
     );
