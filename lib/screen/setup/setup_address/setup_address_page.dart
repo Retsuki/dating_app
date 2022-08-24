@@ -31,7 +31,9 @@ class SetupAddressPage extends StatelessWidget {
               AppTextFormField(labelText: l10n.address2),
               const Spacer(),
               FilledButton(
-                  text: l10n.goNext, type: Type.round, onPressed: () {})
+                text: l10n.goNext,
+                onPressed: () {},
+              )
             ],
           ),
         ),

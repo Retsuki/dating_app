@@ -19,7 +19,6 @@ class BookButton extends StatelessWidget {
             const Gap(10),
             FilledButton(
               text: 'filledRoundButton',
-              type: Type.round,
               onPressed: () {},
             ),
             const Gap(10),
@@ -28,7 +27,6 @@ class BookButton extends StatelessWidget {
             GhostButton(
               text: 'ghostRoundButton',
               onPressed: () {},
-              type: Type.round,
             ),
           ],
         ),

@@ -51,7 +51,6 @@ class SetupPhotoPage extends StatelessWidget {
               ),
               FilledButton(
                 text: l10n.goNext,
-                type: Type.round,
                 onPressed: () {},
               )
             ],
@@ -67,7 +66,6 @@ class _PhotoCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return Flexible(

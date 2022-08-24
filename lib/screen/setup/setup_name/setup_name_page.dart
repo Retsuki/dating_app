@@ -28,7 +28,6 @@ class SetupNamePage extends StatelessWidget {
               const Spacer(),
               FilledButton(
                 text: l10n.goNext,
-                type: Type.round,
                 onPressed: () {},
               )
             ],
