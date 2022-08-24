@@ -24,7 +24,7 @@ class Phone {
     if (containsHyphen(value)) {
       return PhoneValidation.containsHyphen;
     }
-    if (value!.length != 12) {
+    if (value!.length != 11) {
       return PhoneValidation.invalidLength;
     }
     return PhoneValidation.valid;
