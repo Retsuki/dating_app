@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dating_app/components/app_bottom_sheet.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/features/authentication/screens/phone_page.dart';
 import 'package:dating_app/features/onboarding/providers/onboarding_provider.dart';
@@ -49,12 +50,7 @@ class OnboardingPage extends ConsumerWidget {
     const horizontal = 16.0;
 
     return Scaffold(
-      bottomSheet: Padding(
-        padding: const EdgeInsets.only(
-          left: horizontal,
-          right: horizontal,
-          bottom: vertical,
-        ),
+      bottomSheet: AppBottomSheet(
         child: Row(
           children: [
             Expanded(
