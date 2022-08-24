@@ -16,35 +16,45 @@ class PhonePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
+      appBar: AppBackButton(title: l10n.phone),
+      body: UnfocusOnTap(
+        child: Form(
+          key: formKey,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+              child: Column(
+                children: [
+                  AppTextFormField(
+                    labelText: l10n.withoutHyphens,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(12),
+                    ],
+                    validator: (phoneNumber) => phoneValidator(
+                      l10n: l10n,
+                      phoneNumber: phoneNumber,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
       bottomSheet: AppBottomSheet(
         child: FilledButton(
           text: l10n.goNext,
-          onPressed: () {},
-        ),
-      ),
-      appBar: AppBackButton(title: l10n.phone),
-      body: UnfocusOnTap(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-            child: Column(
-              children: [
-                AppTextFormField(
-                  labelText: l10n.withoutHyphens,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
-                    LengthLimitingTextInputFormatter(12),
-                  ],
-                  validator: (phoneNumber) => phoneValidator(
-                    l10n: l10n,
-                    phoneNumber: phoneNumber,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          onPressed: () {
+            if (formKey.currentState!.validate()) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Processing Data')),
+              );
+            }
+          },
         ),
       ),
     );
