@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA0Jd-3vZeSOF-bmaynn4wivnPgWcL7QTk',
-    appId: '1:626244571546:android:031aaf2675dfc73c03ea23',
+    appId: '1:626244571546:android:3d2ea97a0423986103ea23',
     messagingSenderId: '626244571546',
     projectId: 'dating-app-develop',
     storageBucket: 'dating-app-develop.appspot.com',
@@ -59,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB07QkNN9El0O8iFJSUMtEkvXrfKMLCRy8',
-    appId: '1:626244571546:ios:1972355dfc69f1e303ea23',
+    appId: '1:626244571546:ios:02f6f054611e559203ea23',
     messagingSenderId: '626244571546',
     projectId: 'dating-app-develop',
     storageBucket: 'dating-app-develop.appspot.com',
-    iosClientId: '626244571546-bmc5677tjfr08lerrira38lss8pvhpko.apps.googleusercontent.com',
-    iosBundleId: 'com.example.datingApp',
+    iosClientId: '626244571546-3udjdc2t7spdhhbr1chjq4l3085h0gfr.apps.googleusercontent.com',
+    iosBundleId: 'com.toipptakosan11.datingApp',
   );
 }
