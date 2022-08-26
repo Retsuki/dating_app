@@ -17,6 +17,12 @@ class Phone {
     return phoneNumber.replaceFirst(RegExp(r'0'), '+81');
   }
 
+  static String maskPhoneNumber(String phoneNumber) {
+    final firstThreeCharacters = phoneNumber.substring(0, 3);
+    final lastTwoCharacters = phoneNumber.substring(phoneNumber.length - 2);
+    return '$firstThreeCharacters **** **$lastTwoCharacters';
+  }
+
   static PhoneValidation validate(String? value) {
     if (value.isNullOrEmpty) {
       return PhoneValidation.empty;
