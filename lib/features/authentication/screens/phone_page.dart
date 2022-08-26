@@ -53,7 +53,8 @@ class PhonePage extends ConsumerWidget {
       bottomSheet: AppBottomSheet(
         child: FilledButton(
           text: l10n.goNext,
-          onPressed: phoneAuthNotifier.verifyPhoneNumber,
+          onPressed: () =>
+              phoneAuthNotifier.verifyPhoneNumber(context: context),
         ),
       ),
     );
