@@ -11,7 +11,7 @@
   "signIn": "ログイン",
   "letsYouIn": "入りましょう",
   "createAnAccount": "アカウントを作成",
-  "email": "Email",
+  "email": "メールアドレス",
   "password": "パスワード",
   "alreadyHaveAnAccount": "既にアカウントをお持ちですか？",
   "letsSignYouIn": "ログインしましょう",
@@ -45,5 +45,25 @@
   "notification": "通知",
   "security": "セキュリティ",
   "inviteFriends": "友達を招待",
-  "logout": "ログアウト"
+  "logout": "ログアウト",
+  "phone": "電話番号",
+  "somethingIsRequired": "{label}は必須です",
+  "@somethingIsRequired": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "withoutHyphens": "ハイフンなし",
+  "phoneIs12Digits": "電話番号は12桁のハイフンなしです",
+  "authenticationCode": "認証コード",
+  "authenticationCodeSend": "{phoneNumber}にコードを送信しました",
+  "@authenticationCodeSend": {
+    "placeholders": {
+      "phoneNumber": {
+        "type": "String"
+      }
+    }
+  }
 }
