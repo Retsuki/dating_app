@@ -1,3 +1,5 @@
+import 'package:dating_app/features/authentication/screens/email_page.dart';
+import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'components/stylebook/book_back_button.dart';
 import 'components/stylebook/book_button.dart';
 import 'components/stylebook/book_text_form_field.dart';
+import 'features/authentication/screens/phone_page.dart';
 import 'features/onboarding/screens/onboarding_page.dart';
 import 'screen/profile/profile_page.dart';
 import 'screen/setup/setup_address/setup_address_page.dart';
@@ -20,6 +23,10 @@ import 'screen/sign_up/sign_up_page.dart';
 final routerProvider = Provider((ref) {
   return GoRouter(
     initialLocation: '/${OnboardingPage.routeName}',
+    // initialLocation:
+    // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}',
+    // initialLocation:
+    //     '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}/${EmailPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -40,7 +47,28 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${OnboardingPage.routeName}',
         name: '/${OnboardingPage.routeName}',
-        builder: (context, _) => const OnboardingPage(),
+        builder: (_, __) => const OnboardingPage(),
+        routes: [
+          GoRoute(
+            path: PhonePage.routeName,
+            name: PhonePage.routeName,
+            builder: (_, __) => const PhonePage(),
+            routes: [
+              GoRoute(
+                path: SmsCodePage.routeName,
+                name: SmsCodePage.routeName,
+                builder: (_, __) => const SmsCodePage(),
+                routes: [
+                  GoRoute(
+                    path: EmailPage.routeName,
+                    name: EmailPage.routeName,
+                    builder: (_, __) => const EmailPage(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: '/${SignInPage.routeName}',
