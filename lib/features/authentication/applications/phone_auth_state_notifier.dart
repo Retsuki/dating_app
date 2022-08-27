@@ -1,10 +1,14 @@
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/authentication/models/phone/phone.dart';
 import 'package:dating_app/features/authentication/models/phone/phone_auth.dart';
+import 'package:dating_app/features/authentication/screens/email_page.dart';
+import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
+import 'package:dating_app/utils/extensions/string.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 final phoneAuthStateNotifierProvider =
     StateNotifierProvider<PhoneAuthStateNotifier, PhoneAuth>((ref) {
@@ -18,7 +22,9 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
   final phonePageFormKey = GlobalKey<FormState>();
   final smsCodePageFormKey = GlobalKey<FormState>();
 
-  Future<void> verifyPhoneNumber() async {
+  Future<void> verifyPhoneNumber({
+    required BuildContext context,
+  }) async {
     if (!phonePageFormKey.currentState!.validate()) {
       return;
     }
@@ -32,8 +38,30 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
           .authWithPhoneNumber(internatinalPhoneNumber);
 
       logger.fine('user sent phone number');
-      // context.goNamed(SmsCodePage.routeName);
+      context.goNamed(SmsCodePage.routeName);
+    } on FirebaseAuthException catch (e) {
+      logger.shout(e);
+    }
+  }
 
+  Future<void> authWithPhoneNumberAndSmsCode({
+    required BuildContext context,
+    required String value,
+  }) async {
+    updateSmsCode(value);
+
+    if (state.smsCode.isNullOrEmpty || state.smsCode!.length < 6) {
+      return;
+    }
+
+    try {
+      await _read(authenticatorProvider).authWithCredential(
+        verificationId: state.verificationId!,
+        smsCode: state.smsCode!,
+      );
+
+      logger.fine('user created account');
+      context.goNamed(EmailPage.routeName);
     } on FirebaseAuthException catch (e) {
       logger.shout(e);
     }
