@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '626244571546',
     projectId: 'dating-app-develop',
     storageBucket: 'dating-app-develop.appspot.com',
+    androidClientId: '626244571546-il6sk0hefa96dgmqjvv8e49hpigee4m1.apps.googleusercontent.com',
     iosClientId: '626244571546-3udjdc2t7spdhhbr1chjq4l3085h0gfr.apps.googleusercontent.com',
     iosBundleId: 'com.toipptakosan11.datingApp',
   );
