@@ -55,6 +55,7 @@ class Authenticator {
     try {
       await _auth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
+      logger.shout(e);
       if (e.code == 'invalid-verification-code') {
         // ダイアログ表示
       }
