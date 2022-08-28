@@ -10,7 +10,7 @@ class FilledButton extends StatelessWidget {
     this.minimumSize,
     this.primary,
     this.onPrimary,
-    this.type,
+    this.type = Type.round,
   });
 
   final String text;
@@ -50,7 +50,7 @@ class GhostButton extends StatelessWidget {
     this.primary,
     this.onPrimary,
     this.borderColor,
-    this.type,
+    this.type = Type.round,
     this.icon,
     this.textStyle,
   });
@@ -103,7 +103,7 @@ class BorderlessButton extends StatelessWidget {
     this.minimumSize,
     this.primary,
     this.onPrimary,
-    this.type,
+    this.type = Type.round,
   });
 
   final String text;

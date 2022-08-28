@@ -1,11 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dating_app/components/app_bottom_sheet.dart';
 import 'package:dating_app/components/app_button.dart';
+import 'package:dating_app/features/authentication/screens/phone_page.dart';
 import 'package:dating_app/features/onboarding/providers/onboarding_provider.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends ConsumerWidget {
@@ -43,78 +46,82 @@ class OnboardingPage extends ConsumerWidget {
     final onboardingIndexState = ref.watch(onboardingIndexProvider);
     final onboardingIndexNotifier = ref.watch(onboardingIndexProvider.notifier);
 
+    const vertical = 20.0;
+    const horizontal = 16.0;
+
     return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: Column(
+      bottomSheet: AppBottomSheet(
+        child: Row(
           children: [
-            CarouselSlider.builder(
-              itemCount: onboardingImages.length,
-              itemBuilder: (context, index, realIndex) {
-                return Container(
-                  width: 265,
-                  height: 360,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  child: onboardingImages[index],
-                );
-              },
-              options: CarouselOptions(
-                height: 360,
-                viewportFraction: 0.75,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 2),
-                onPageChanged: (index, reason) {
-                  onboardingIndexNotifier.update((state) => index);
+            Expanded(
+              child: GhostButton(
+                text: l10n.signIn,
+                onPressed: () {},
+              ),
+            ),
+            const Gap(12),
+            Expanded(
+              child: FilledButton(
+                text: l10n.signUp,
+                onPressed: () {
+                  context.goNamed(PhonePage.routeName);
                 },
               ),
             ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                onboadingTextList[onboardingIndexState],
-                style: textTheme.displayMedium!.copyWith(
-                  height: 1.3,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const Gap(18),
-            AnimatedSmoothIndicator(
-              activeIndex: onboardingIndexState,
-              count: onboardingImages.length,
-              effect: ColorTransitionEffect(
-                dotWidth: 6,
-                dotHeight: 6,
-                activeDotColor: colorScheme.primary,
-              ),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: GhostButton(
-                      text: l10n.signIn,
-                      onPressed: () {},
-                    ),
-                  ),
-                  const Gap(12),
-                  Expanded(
-                    child: FilledButton(
-                      text: l10n.signUp,
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Gap(20),
           ],
+        ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: vertical),
+          child: Column(
+            children: [
+              CarouselSlider.builder(
+                itemCount: onboardingImages.length,
+                itemBuilder: (context, index, realIndex) {
+                  return Container(
+                    width: 265,
+                    height: 360,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(28),
+                    ),
+                    child: onboardingImages[index],
+                  );
+                },
+                options: CarouselOptions(
+                  height: 360,
+                  viewportFraction: 0.75,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 2),
+                  onPageChanged: (index, reason) {
+                    onboardingIndexNotifier.update((state) => index);
+                  },
+                ),
+              ),
+              const Gap(48),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: horizontal),
+                child: Text(
+                  onboadingTextList[onboardingIndexState],
+                  style: textTheme.displayMedium!.copyWith(
+                    height: 1.3,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const Gap(18),
+              AnimatedSmoothIndicator(
+                activeIndex: onboardingIndexState,
+                count: onboardingImages.length,
+                effect: ColorTransitionEffect(
+                  dotWidth: 6,
+                  dotHeight: 6,
+                  activeDotColor: colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

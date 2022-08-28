@@ -1,15 +1,34 @@
+import 'package:dating_app/features/platform/data/app_package_info_provider.dart';
+import 'package:dating_app/firebase_options.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/router.dart';
 import 'package:dating_app/theme.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final packageInfo = await PackageInfo.fromPlatform();
+
   runApp(
     DevicePreview(
-      builder: (context) => const ProviderScope(
-        child: App(),
+      enabled: false,
+      builder: (context) => ProviderScope(
+        overrides: [
+          appPackageInfoProvider.overrideWithValue(AppPackageInfo(packageInfo)),
+        ],
+        child: Consumer(
+          builder: (context, ref, child) {
+            return const App();
+          },
+        ),
       ),
     ),
   );

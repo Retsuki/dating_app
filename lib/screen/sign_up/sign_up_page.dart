@@ -92,7 +92,6 @@ class AppSignUpWithPassword extends StatelessWidget {
         const Gap(24),
         FilledButton(
           text: l10n.createAnAccount,
-          type: Type.round,
           onPressed: () {},
         ),
       ],

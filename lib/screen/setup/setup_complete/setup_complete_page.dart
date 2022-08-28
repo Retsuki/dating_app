@@ -36,7 +36,6 @@ class SetupCompletePage extends StatelessWidget {
               const Gap(24),
               FilledButton(
                 text: l10n.goToHome,
-                type: Type.round,
                 onPressed: () {},
               )
             ],

@@ -57,7 +57,6 @@ class SignInPage extends StatelessWidget {
               ),
               FilledButton(
                 text: l10n.signInWithPassword,
-                type: Type.round,
                 onPressed: () {},
               ),
               const Spacer(),
