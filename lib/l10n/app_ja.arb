@@ -65,5 +65,6 @@
         "type": "String"
       }
     }
-  }
+  },
+  "emailConfirmationMessage": "アカウントへのアクセスを失わないように、メールを確認してください"
 }

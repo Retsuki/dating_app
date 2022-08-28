@@ -1,4 +1,5 @@
 import 'package:dating_app/features/authentication/applications/phone_auth_state_notifier.dart';
+import 'package:dating_app/features/platform/data/app_package_info_provider.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -67,6 +68,26 @@ class Authenticator {
   }
 
   // メールをリンクする
+  Future<void> sendSignInLinkToEmail({
+    required String email,
+  }) async {
+    final appPackageInfo = _read(appPackageInfoProvider).appPackageInfo;
+    final acs = ActionCodeSettings(
+      url: '',
+      handleCodeInApp: true,
+      iOSBundleId: appPackageInfo.packageName,
+      androidPackageName: appPackageInfo.packageName,
+      androidInstallApp: true,
+      androidMinimumVersion: '12',
+    );
+
+    try {
+      // NOTE: 認証されていなくても通過させてOK
+      await _auth.sendSignInLinkToEmail(email: email, actionCodeSettings: acs);
+    } on FirebaseAuthException catch (e) {
+      logger.shout(e);
+    }
+  }
 
   // プロバイダをリンクする(Facebook, Google, Apple)
 
