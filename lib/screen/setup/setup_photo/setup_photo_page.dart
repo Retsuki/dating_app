@@ -1,14 +1,18 @@
-import 'package:dating_app/components/app_back_button_with_text.dart';
+import 'package:dating_app/components/app_back_button.dart';
+import 'package:dating_app/components/app_bottom_sheet.dart';
 import 'package:dating_app/components/app_button.dart';
+import 'package:dating_app/components/un_focus_on_tap.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/provider/permission/permission_provider.dart';
+import 'package:dating_app/screen/setup/setup_complete/setup_complete_page.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:dating_app/utils/picker_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -21,40 +25,44 @@ class SetupPhotoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: AppBackButtonWithText(text: l10n.addPhotos),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: Column(
-            children: [
-              Text(l10n.addPhotosMessage),
-              const Gap(24),
-              Row(
-                children: const [
-                  _PhotoCard(),
-                  SizedBox(width: 16),
-                  _PhotoCard(),
-                ],
-              ),
-              const Gap(16),
-              Row(
-                children: const [
-                  _PhotoCard(),
-                  SizedBox(width: 16),
-                  _PhotoCard(),
-                ],
-              ),
-              const Spacer(
-                flex: 24,
-              ),
-              FilledButton(
-                text: l10n.goNext,
-                onPressed: () {},
-              )
-            ],
+      appBar: AppBackButton(title: l10n.addPhotos),
+      body: UnfocusOnTap(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            child: Column(
+              children: [
+                Text(l10n.addPhotosMessage),
+                const Gap(24),
+                Row(
+                  children: const [
+                    _PhotoCard(),
+                    SizedBox(width: 16),
+                    _PhotoCard(),
+                  ],
+                ),
+                const Gap(16),
+                Row(
+                  children: const [
+                    _PhotoCard(),
+                    SizedBox(width: 16),
+                    _PhotoCard(),
+                  ],
+                ),
+                const Spacer(
+                  flex: 24,
+                ),
+              ],
+            ),
           ),
+        ),
+      ),
+      bottomSheet: AppBottomSheet(
+        child: FilledButton(
+          text: l10n.goNext,
+          onPressed: () {
+            context.goNamed(SetupCompletePage.routeName);
+          },
         ),
       ),
     );

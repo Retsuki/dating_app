@@ -4,34 +4,32 @@ import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/components/app_text_form_field.dart';
 import 'package:dating_app/components/un_focus_on_tap.dart';
 import 'package:dating_app/l10n/l10n.dart';
-import 'package:dating_app/screen/setup/setup_gender/setup_gender_page.dart';
+import 'package:dating_app/screen/setup/setup_birthday/setup_birthday_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class SetupAddressPage extends StatelessWidget {
-  const SetupAddressPage({super.key});
+class SetupNamePage extends StatelessWidget {
+  const SetupNamePage({super.key});
 
-  static const routeName = 'setup-address';
+  static const routeName = 'setup-name';
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     return Scaffold(
-      appBar: AppBackButton(title: l10n.address),
+      appBar: AppBackButton(title: l10n.name),
       body: UnfocusOnTap(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                AppTextFormField(labelText: l10n.prefecture),
+                AppTextFormField(labelText: l10n.sei),
                 const Gap(24),
-                AppTextFormField(labelText: l10n.city),
+                AppTextFormField(labelText: l10n.mei),
                 const Gap(24),
-                AppTextFormField(labelText: l10n.address1),
-                const Gap(24),
-                AppTextFormField(labelText: l10n.address2),
+                AppTextFormField(labelText: l10n.nickname),
               ],
             ),
           ),
@@ -41,7 +39,7 @@ class SetupAddressPage extends StatelessWidget {
         child: FilledButton(
           text: l10n.goNext,
           onPressed: () {
-            context.goNamed(SetupGenderPage.routeName);
+            context.goNamed(SetupBirthdayPage.routeName);
           },
         ),
       ),

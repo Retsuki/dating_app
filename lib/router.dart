@@ -76,7 +76,8 @@ final routerProvider = Provider((ref) {
   );
 
   return GoRouter(
-    initialLocation: '/${OnboardingPage.routeName}',
+    // initialLocation: '/${OnboardingPage.routeName}',
+    initialLocation: '/${SetupNamePage.routeName}',
     // initialLocation:
     // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}',
     // initialLocation:
