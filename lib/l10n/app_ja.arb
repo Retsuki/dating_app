@@ -66,5 +66,6 @@
       }
     }
   },
-  "emailConfirmationMessage": "アカウントへのアクセスを失わないように、メールを確認してください"
+  "emailConfirmationMessage": "アカウントへのアクセスを失わないように、メールを確認してください",
+  "nickname": "ニックネーム"
 }
