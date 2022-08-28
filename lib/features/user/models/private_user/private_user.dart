@@ -1,3 +1,4 @@
+import 'package:dating_app/constants/constant_json.dart';
 import 'package:dating_app/utils/json_converters/date_time_timestamp_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,6 +18,5 @@ class PrivateUser with _$PrivateUser {
     required String building,
   }) = _PrivateUser;
 
-  factory PrivateUser.fromJson(Map<String, dynamic> json) =>
-      _$PrivateUserFromJson(json);
+  factory PrivateUser.fromJson(JsonMap json) => _$PrivateUserFromJson(json);
 }

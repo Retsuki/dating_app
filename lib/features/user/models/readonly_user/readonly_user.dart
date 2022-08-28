@@ -1,3 +1,4 @@
+import 'package:dating_app/constants/constant_json.dart';
 import 'package:dating_app/utils/json_converters/date_time_timestamp_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,8 +17,7 @@ class ReadonlyUser with _$ReadonlyUser {
     @Default(StatusAccount.noStatus) required StatusAccount statusAccount,
   }) = _ReadonlyUser;
 
-  factory ReadonlyUser.fromJson(Map<String, dynamic> json) =>
-      _$ReadonlyUserFromJson(json);
+  factory ReadonlyUser.fromJson(JsonMap json) => _$ReadonlyUserFromJson(json);
 }
 
 enum StatusSubscription {

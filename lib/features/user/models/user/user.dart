@@ -1,3 +1,4 @@
+import 'package:dating_app/constants/constant_json.dart';
 import 'package:dating_app/utils/json_converters/date_time_timestamp_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,7 +22,7 @@ class User with _$User {
     String? subImage3,
   }) = _User;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory User.fromJson(JsonMap json) => _$UserFromJson(json);
 }
 
 enum UserGender {
