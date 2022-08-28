@@ -73,7 +73,7 @@ class Authenticator {
   }) async {
     final appPackageInfo = _read(appPackageInfoProvider).appPackageInfo;
     final acs = ActionCodeSettings(
-      url: '',
+      url: 'https://toipptakosan11.page.link',
       handleCodeInApp: true,
       iOSBundleId: appPackageInfo.packageName,
       androidPackageName: appPackageInfo.packageName,
@@ -84,6 +84,7 @@ class Authenticator {
     try {
       // NOTE: 認証されていなくても通過させてOK
       await _auth.sendSignInLinkToEmail(email: email, actionCodeSettings: acs);
+      logger.fine('user sent link email');
     } on FirebaseAuthException catch (e) {
       logger.shout(e);
     }
