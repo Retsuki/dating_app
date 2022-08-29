@@ -7,14 +7,14 @@ part 'readonly_user.g.dart';
 
 @freezed
 class ReadonlyUser with _$ReadonlyUser {
-  const factory ReadonlyUser({
+  factory ReadonlyUser({
     @DateTimeTimestampConverter() required DateTime createdAt,
     @DateTimeTimestampConverter() required DateTime updatedAt,
     @Default(StatusSubscription.noStatus)
-        required StatusSubscription statusSubscription,
+        StatusSubscription? statusSubscription,
     @Default(StatusIdentification.noStatus)
-        required StatusIdentification statusIdentification,
-    @Default(StatusAccount.noStatus) required StatusAccount statusAccount,
+        StatusIdentification? statusIdentification,
+    @Default(StatusAccount.noStatus) StatusAccount? statusAccount,
   }) = _ReadonlyUser;
 
   factory ReadonlyUser.fromJson(JsonMap json) => _$ReadonlyUserFromJson(json);

@@ -21,16 +21,16 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   @DateTimeTimestampConverter()
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @DateTimeTimestampConverter()
-  DateTime get updatedAt => throw _privateConstructorUsedError;
-  @DateTimeTimestampConverter()
-  DateTime get birthday => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @StringTimestampConverter()
+  String get birthday => throw _privateConstructorUsedError;
   String get nickName => throw _privateConstructorUsedError;
-  UserGender get gender => throw _privateConstructorUsedError;
   String get prefecture => throw _privateConstructorUsedError;
-  List<String> get interest => throw _privateConstructorUsedError;
   bool get isOnline => throw _privateConstructorUsedError;
+  UserGender get gender => throw _privateConstructorUsedError;
+  List<String>? get interest => throw _privateConstructorUsedError;
   String? get mainImage => throw _privateConstructorUsedError;
   String? get subImage1 => throw _privateConstructorUsedError;
   String? get subImage2 => throw _privateConstructorUsedError;
@@ -46,14 +46,14 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
-      @DateTimeTimestampConverter() DateTime birthday,
+      {@DateTimeTimestampConverter() DateTime? createdAt,
+      @DateTimeTimestampConverter() DateTime? updatedAt,
+      @StringTimestampConverter() String birthday,
       String nickName,
-      UserGender gender,
       String prefecture,
-      List<String> interest,
       bool isOnline,
+      UserGender gender,
+      List<String>? interest,
       String? mainImage,
       String? subImage1,
       String? subImage2,
@@ -74,10 +74,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? updatedAt = freezed,
     Object? birthday = freezed,
     Object? nickName = freezed,
-    Object? gender = freezed,
     Object? prefecture = freezed,
-    Object? interest = freezed,
     Object? isOnline = freezed,
+    Object? gender = freezed,
+    Object? interest = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
@@ -87,35 +87,35 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       birthday: birthday == freezed
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       nickName: nickName == freezed
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as UserGender,
       prefecture: prefecture == freezed
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      interest: interest == freezed
-          ? _value.interest
-          : interest // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       isOnline: isOnline == freezed
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as UserGender,
+      interest: interest == freezed
+          ? _value.interest
+          : interest // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       mainImage: mainImage == freezed
           ? _value.mainImage
           : mainImage // ignore: cast_nullable_to_non_nullable
@@ -142,14 +142,14 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
-      @DateTimeTimestampConverter() DateTime birthday,
+      {@DateTimeTimestampConverter() DateTime? createdAt,
+      @DateTimeTimestampConverter() DateTime? updatedAt,
+      @StringTimestampConverter() String birthday,
       String nickName,
-      UserGender gender,
       String prefecture,
-      List<String> interest,
       bool isOnline,
+      UserGender gender,
+      List<String>? interest,
       String? mainImage,
       String? subImage1,
       String? subImage2,
@@ -171,10 +171,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? birthday = freezed,
     Object? nickName = freezed,
-    Object? gender = freezed,
     Object? prefecture = freezed,
-    Object? interest = freezed,
     Object? isOnline = freezed,
+    Object? gender = freezed,
+    Object? interest = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
@@ -184,35 +184,35 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       birthday: birthday == freezed
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       nickName: nickName == freezed
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as UserGender,
       prefecture: prefecture == freezed
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      interest: interest == freezed
-          ? _value._interest
-          : interest // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       isOnline: isOnline == freezed
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as UserGender,
+      interest: interest == freezed
+          ? _value._interest
+          : interest // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       mainImage: mainImage == freezed
           ? _value.mainImage
           : mainImage // ignore: cast_nullable_to_non_nullable
@@ -237,14 +237,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {@DateTimeTimestampConverter() required this.createdAt,
-      @DateTimeTimestampConverter() required this.updatedAt,
-      @DateTimeTimestampConverter() required this.birthday,
-      required this.nickName,
-      required this.gender,
-      required this.prefecture,
-      required final List<String> interest,
-      required this.isOnline,
+      {@DateTimeTimestampConverter() this.createdAt,
+      @DateTimeTimestampConverter() this.updatedAt,
+      @StringTimestampConverter() this.birthday = '2000/01/01',
+      this.nickName = '',
+      this.prefecture = '',
+      this.isOnline = true,
+      this.gender = UserGender.other,
+      final List<String>? interest,
       this.mainImage,
       this.subImage1,
       this.subImage2,
@@ -255,28 +255,35 @@ class _$_User implements _User {
 
   @override
   @DateTimeTimestampConverter()
-  final DateTime createdAt;
+  final DateTime? createdAt;
   @override
   @DateTimeTimestampConverter()
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
   @override
-  @DateTimeTimestampConverter()
-  final DateTime birthday;
+  @JsonKey()
+  @StringTimestampConverter()
+  final String birthday;
   @override
+  @JsonKey()
   final String nickName;
   @override
-  final UserGender gender;
-  @override
+  @JsonKey()
   final String prefecture;
-  final List<String> _interest;
   @override
-  List<String> get interest {
+  @JsonKey()
+  final bool isOnline;
+  @override
+  @JsonKey()
+  final UserGender gender;
+  final List<String>? _interest;
+  @override
+  List<String>? get interest {
+    final value = _interest;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_interest);
+    return EqualUnmodifiableListView(value);
   }
 
-  @override
-  final bool isOnline;
   @override
   final String? mainImage;
   @override
@@ -288,7 +295,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, gender: $gender, prefecture: $prefecture, interest: $interest, isOnline: $isOnline, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3)';
+    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, prefecture: $prefecture, isOnline: $isOnline, gender: $gender, interest: $interest, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3)';
   }
 
   @override
@@ -300,11 +307,11 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.birthday, birthday) &&
             const DeepCollectionEquality().equals(other.nickName, nickName) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
             const DeepCollectionEquality()
                 .equals(other.prefecture, prefecture) &&
-            const DeepCollectionEquality().equals(other._interest, _interest) &&
             const DeepCollectionEquality().equals(other.isOnline, isOnline) &&
+            const DeepCollectionEquality().equals(other.gender, gender) &&
+            const DeepCollectionEquality().equals(other._interest, _interest) &&
             const DeepCollectionEquality().equals(other.mainImage, mainImage) &&
             const DeepCollectionEquality().equals(other.subImage1, subImage1) &&
             const DeepCollectionEquality().equals(other.subImage2, subImage2) &&
@@ -319,10 +326,10 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(birthday),
       const DeepCollectionEquality().hash(nickName),
-      const DeepCollectionEquality().hash(gender),
       const DeepCollectionEquality().hash(prefecture),
-      const DeepCollectionEquality().hash(_interest),
       const DeepCollectionEquality().hash(isOnline),
+      const DeepCollectionEquality().hash(gender),
+      const DeepCollectionEquality().hash(_interest),
       const DeepCollectionEquality().hash(mainImage),
       const DeepCollectionEquality().hash(subImage1),
       const DeepCollectionEquality().hash(subImage2),
@@ -343,14 +350,14 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {@DateTimeTimestampConverter() required final DateTime createdAt,
-      @DateTimeTimestampConverter() required final DateTime updatedAt,
-      @DateTimeTimestampConverter() required final DateTime birthday,
-      required final String nickName,
-      required final UserGender gender,
-      required final String prefecture,
-      required final List<String> interest,
-      required final bool isOnline,
+      {@DateTimeTimestampConverter() final DateTime? createdAt,
+      @DateTimeTimestampConverter() final DateTime? updatedAt,
+      @StringTimestampConverter() final String birthday,
+      final String nickName,
+      final String prefecture,
+      final bool isOnline,
+      final UserGender gender,
+      final List<String>? interest,
       final String? mainImage,
       final String? subImage1,
       final String? subImage2,
@@ -360,23 +367,23 @@ abstract class _User implements User {
 
   @override
   @DateTimeTimestampConverter()
-  DateTime get createdAt;
+  DateTime? get createdAt;
   @override
   @DateTimeTimestampConverter()
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
   @override
-  @DateTimeTimestampConverter()
-  DateTime get birthday;
+  @StringTimestampConverter()
+  String get birthday;
   @override
   String get nickName;
   @override
-  UserGender get gender;
-  @override
   String get prefecture;
   @override
-  List<String> get interest;
-  @override
   bool get isOnline;
+  @override
+  UserGender get gender;
+  @override
+  List<String>? get interest;
   @override
   String? get mainImage;
   @override
