@@ -3,7 +3,7 @@ import 'package:dating_app/features/authentication/models/phone/phone.dart';
 import 'package:dating_app/features/authentication/models/phone/phone_auth.dart';
 import 'package:dating_app/features/authentication/screens/email_page.dart';
 import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
-import 'package:dating_app/utils/extensions/string.dart';
+import 'package:dating_app/utils/extensions/extension_string.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
