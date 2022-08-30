@@ -1,3 +1,4 @@
+import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/platform/data/app_package_info_provider.dart';
 import 'package:dating_app/firebase_options.dart';
 import 'package:dating_app/l10n/l10n.dart';
@@ -26,6 +27,9 @@ void main() async {
         ],
         child: Consumer(
           builder: (context, ref, child) {
+            // NOTE: 適切な初回フロー確率までAuth/Userをここで読み込む
+            ref.watch(authUserProvider);
+
             return const App();
           },
         ),
