@@ -12,6 +12,7 @@ class PrivateUser with _$PrivateUser {
     @DateTimeTimestampConverter() DateTime? updatedAt,
     @Default('') String sei,
     @Default('') String mei,
+    @Default('') String zipcode,
     @Default('') String prefecture,
     @Default('') String city,
     @Default('') String street,
