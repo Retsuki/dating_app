@@ -1,18 +1,17 @@
 import 'package:dating_app/features/authentication/screens/email_page.dart';
+import 'package:dating_app/features/authentication/screens/phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
-import 'package:dating_app/features/user/screens/setup/name/setup_name_page.dart';
+import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/screen/profile/profile_page.dart';
+import 'package:dating_app/screen/setup/setup_photo/setup_photo_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
-import 'features/authentication/screens/phone_page.dart';
-import 'features/onboarding/screens/onboarding_page.dart';
-import 'screen/profile/profile_page.dart';
-import 'screen/setup/setup_address/setup_address_page.dart';
-import 'screen/setup/setup_birthday/setup_birthday_page.dart';
-import 'screen/setup/setup_complete/setup_complete_page.dart';
-import 'screen/setup/setup_gender/setup_gender_page.dart';
-import 'screen/setup/setup_photo/setup_photo_page.dart';
 
 final routerProvider = Provider((ref) {
   final signUpRoute = GoRoute(
@@ -77,7 +76,9 @@ final routerProvider = Provider((ref) {
 
   return GoRouter(
     // initialLocation: '/${OnboardingPage.routeName}',
-    initialLocation: '/${SetupNamePage.routeName}',
+    // initialLocation: '/${SetupNamePage.routeName}',
+    initialLocation:
+        '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}',
     // initialLocation:
     // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}',
     // initialLocation:
