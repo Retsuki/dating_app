@@ -21,13 +21,12 @@ class SetupNamePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
     final setupNotifier = ref.watch(setupStateNotifierProvider.notifier);
-    final formKey = setupNotifier.setupFormKeys[SetupFormType.name];
 
     return Scaffold(
       appBar: AppBackButton(title: l10n.name),
       body: UnfocusOnTap(
         child: Form(
-          key: formKey,
+          key: setupNotifier.setupFormKeys[SetupFormType.name],
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),

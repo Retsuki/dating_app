@@ -21,7 +21,7 @@ class SetupBirthdayPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
-    final setupNotifier = ref.read(setupStateNotifierProvider.notifier);
+    final setupNotifier = ref.watch(setupStateNotifierProvider.notifier);
     return Scaffold(
       appBar: AppBackButton(title: l10n.birthday),
       body: UnfocusOnTap(
@@ -42,6 +42,7 @@ class SetupBirthdayPage extends ConsumerWidget {
                       BirthdayTextInputFormatter(),
                       LengthLimitingTextInputFormatter(10),
                     ],
+                    controller: setupNotifier.birthdayTextController,
                     // TODO_R: ２０歳未満は制限かける
                     validator: (birthday) => birthdayValidator(
                       l10n: l10n,

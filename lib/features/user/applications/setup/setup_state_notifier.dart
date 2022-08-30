@@ -32,6 +32,7 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
   final meiTextController = TextEditingController();
   final nicknameTextController = TextEditingController();
   final birthdayTextController = TextEditingController();
+  final zipcodeTextController = TextEditingController();
   final prefectureTextController = TextEditingController();
   final cityTextController = TextEditingController();
   final streetTextController = TextEditingController();
@@ -73,6 +74,7 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
         (privateUserDoc?.data() ?? const PrivateUser()).copyWith(
       sei: seiTextController.text,
       mei: meiTextController.text,
+      zipcode: zipcodeTextController.text,
       prefecture: prefectureTextController.text,
       city: cityTextController.text,
       street: streetTextController.text,

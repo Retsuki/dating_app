@@ -26,6 +26,7 @@ mixin _$PrivateUser {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   String get sei => throw _privateConstructorUsedError;
   String get mei => throw _privateConstructorUsedError;
+  String get zipcode => throw _privateConstructorUsedError;
   String get prefecture => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get street => throw _privateConstructorUsedError;
@@ -47,6 +48,7 @@ abstract class $PrivateUserCopyWith<$Res> {
       @DateTimeTimestampConverter() DateTime? updatedAt,
       String sei,
       String mei,
+      String zipcode,
       String prefecture,
       String city,
       String street,
@@ -67,6 +69,7 @@ class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
     Object? updatedAt = freezed,
     Object? sei = freezed,
     Object? mei = freezed,
+    Object? zipcode = freezed,
     Object? prefecture = freezed,
     Object? city = freezed,
     Object? street = freezed,
@@ -88,6 +91,10 @@ class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
       mei: mei == freezed
           ? _value.mei
           : mei // ignore: cast_nullable_to_non_nullable
+              as String,
+      zipcode: zipcode == freezed
+          ? _value.zipcode
+          : zipcode // ignore: cast_nullable_to_non_nullable
               as String,
       prefecture: prefecture == freezed
           ? _value.prefecture
@@ -121,6 +128,7 @@ abstract class _$$_PrivateUserCopyWith<$Res>
       @DateTimeTimestampConverter() DateTime? updatedAt,
       String sei,
       String mei,
+      String zipcode,
       String prefecture,
       String city,
       String street,
@@ -143,6 +151,7 @@ class __$$_PrivateUserCopyWithImpl<$Res> extends _$PrivateUserCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? sei = freezed,
     Object? mei = freezed,
+    Object? zipcode = freezed,
     Object? prefecture = freezed,
     Object? city = freezed,
     Object? street = freezed,
@@ -164,6 +173,10 @@ class __$$_PrivateUserCopyWithImpl<$Res> extends _$PrivateUserCopyWithImpl<$Res>
       mei: mei == freezed
           ? _value.mei
           : mei // ignore: cast_nullable_to_non_nullable
+              as String,
+      zipcode: zipcode == freezed
+          ? _value.zipcode
+          : zipcode // ignore: cast_nullable_to_non_nullable
               as String,
       prefecture: prefecture == freezed
           ? _value.prefecture
@@ -193,6 +206,7 @@ class _$_PrivateUser implements _PrivateUser {
       @DateTimeTimestampConverter() this.updatedAt,
       this.sei = '',
       this.mei = '',
+      this.zipcode = '',
       this.prefecture = '',
       this.city = '',
       this.street = '',
@@ -215,6 +229,9 @@ class _$_PrivateUser implements _PrivateUser {
   final String mei;
   @override
   @JsonKey()
+  final String zipcode;
+  @override
+  @JsonKey()
   final String prefecture;
   @override
   @JsonKey()
@@ -228,7 +245,7 @@ class _$_PrivateUser implements _PrivateUser {
 
   @override
   String toString() {
-    return 'PrivateUser(createdAt: $createdAt, updatedAt: $updatedAt, sei: $sei, mei: $mei, prefecture: $prefecture, city: $city, street: $street, building: $building)';
+    return 'PrivateUser(createdAt: $createdAt, updatedAt: $updatedAt, sei: $sei, mei: $mei, zipcode: $zipcode, prefecture: $prefecture, city: $city, street: $street, building: $building)';
   }
 
   @override
@@ -240,6 +257,7 @@ class _$_PrivateUser implements _PrivateUser {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.sei, sei) &&
             const DeepCollectionEquality().equals(other.mei, mei) &&
+            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
             const DeepCollectionEquality()
                 .equals(other.prefecture, prefecture) &&
             const DeepCollectionEquality().equals(other.city, city) &&
@@ -255,6 +273,7 @@ class _$_PrivateUser implements _PrivateUser {
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(sei),
       const DeepCollectionEquality().hash(mei),
+      const DeepCollectionEquality().hash(zipcode),
       const DeepCollectionEquality().hash(prefecture),
       const DeepCollectionEquality().hash(city),
       const DeepCollectionEquality().hash(street),
@@ -279,6 +298,7 @@ abstract class _PrivateUser implements PrivateUser {
       @DateTimeTimestampConverter() final DateTime? updatedAt,
       final String sei,
       final String mei,
+      final String zipcode,
       final String prefecture,
       final String city,
       final String street,
@@ -297,6 +317,8 @@ abstract class _PrivateUser implements PrivateUser {
   String get sei;
   @override
   String get mei;
+  @override
+  String get zipcode;
   @override
   String get prefecture;
   @override
