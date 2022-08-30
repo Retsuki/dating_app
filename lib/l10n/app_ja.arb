@@ -20,6 +20,8 @@
   "sei": "姓",
   "mei": "名",
   "birthday": "生年月日",
+  "birthdayFormatPrecautions": "一桁月の生まれの方は0埋めで入力してください",
+  "invalidFormatBirthday": "生年月日は2000/01/01のように入力してください",
   "gender": "性別",
   "address": "住所",
   "goNext": "次へ進む",
