@@ -21,9 +21,9 @@ PrivateUser _$PrivateUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PrivateUser {
   @DateTimeTimestampConverter()
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   @DateTimeTimestampConverter()
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   String get sei => throw _privateConstructorUsedError;
   String get mei => throw _privateConstructorUsedError;
   String get prefecture => throw _privateConstructorUsedError;
@@ -43,8 +43,8 @@ abstract class $PrivateUserCopyWith<$Res> {
           PrivateUser value, $Res Function(PrivateUser) then) =
       _$PrivateUserCopyWithImpl<$Res>;
   $Res call(
-      {@DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
+      {@DateTimeTimestampConverter() DateTime? createdAt,
+      @DateTimeTimestampConverter() DateTime? updatedAt,
       String sei,
       String mei,
       String prefecture,
@@ -76,11 +76,11 @@ class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       sei: sei == freezed
           ? _value.sei
           : sei // ignore: cast_nullable_to_non_nullable
@@ -117,8 +117,8 @@ abstract class _$$_PrivateUserCopyWith<$Res>
       __$$_PrivateUserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@DateTimeTimestampConverter() DateTime createdAt,
-      @DateTimeTimestampConverter() DateTime updatedAt,
+      {@DateTimeTimestampConverter() DateTime? createdAt,
+      @DateTimeTimestampConverter() DateTime? updatedAt,
       String sei,
       String mei,
       String prefecture,
@@ -152,11 +152,11 @@ class __$$_PrivateUserCopyWithImpl<$Res> extends _$PrivateUserCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       sei: sei == freezed
           ? _value.sei
           : sei // ignore: cast_nullable_to_non_nullable
@@ -189,35 +189,41 @@ class __$$_PrivateUserCopyWithImpl<$Res> extends _$PrivateUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PrivateUser implements _PrivateUser {
   const _$_PrivateUser(
-      {@DateTimeTimestampConverter() required this.createdAt,
-      @DateTimeTimestampConverter() required this.updatedAt,
-      required this.sei,
-      required this.mei,
-      required this.prefecture,
-      required this.city,
-      required this.street,
-      required this.building});
+      {@DateTimeTimestampConverter() this.createdAt,
+      @DateTimeTimestampConverter() this.updatedAt,
+      this.sei = '',
+      this.mei = '',
+      this.prefecture = '',
+      this.city = '',
+      this.street = '',
+      this.building = ''});
 
   factory _$_PrivateUser.fromJson(Map<String, dynamic> json) =>
       _$$_PrivateUserFromJson(json);
 
   @override
   @DateTimeTimestampConverter()
-  final DateTime createdAt;
+  final DateTime? createdAt;
   @override
   @DateTimeTimestampConverter()
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
   @override
+  @JsonKey()
   final String sei;
   @override
+  @JsonKey()
   final String mei;
   @override
+  @JsonKey()
   final String prefecture;
   @override
+  @JsonKey()
   final String city;
   @override
+  @JsonKey()
   final String street;
   @override
+  @JsonKey()
   final String building;
 
   @override
@@ -269,24 +275,24 @@ class _$_PrivateUser implements _PrivateUser {
 
 abstract class _PrivateUser implements PrivateUser {
   const factory _PrivateUser(
-      {@DateTimeTimestampConverter() required final DateTime createdAt,
-      @DateTimeTimestampConverter() required final DateTime updatedAt,
-      required final String sei,
-      required final String mei,
-      required final String prefecture,
-      required final String city,
-      required final String street,
-      required final String building}) = _$_PrivateUser;
+      {@DateTimeTimestampConverter() final DateTime? createdAt,
+      @DateTimeTimestampConverter() final DateTime? updatedAt,
+      final String sei,
+      final String mei,
+      final String prefecture,
+      final String city,
+      final String street,
+      final String building}) = _$_PrivateUser;
 
   factory _PrivateUser.fromJson(Map<String, dynamic> json) =
       _$_PrivateUser.fromJson;
 
   @override
   @DateTimeTimestampConverter()
-  DateTime get createdAt;
+  DateTime? get createdAt;
   @override
   @DateTimeTimestampConverter()
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
   @override
   String get sei;
   @override

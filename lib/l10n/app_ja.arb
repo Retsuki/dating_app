@@ -67,5 +67,6 @@
     }
   },
   "emailConfirmationMessage": "アカウントへのアクセスを失わないように、メールを確認してください",
-  "nickname": "ニックネーム"
+  "nickname": "ニックネーム",
+  "invalidEmail": "無効なメールアドレスです"
 }

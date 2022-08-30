@@ -10,8 +10,8 @@ String? emailValidator({
     case EmailValidation.valid:
       return null;
     case EmailValidation.empty:
-      return l10n.goNext;
+      return l10n.somethingIsRequired(l10n.email);
     case EmailValidation.invalidFormat:
-      return l10n.goNext;
+      return l10n.invalidEmail;
   }
 }

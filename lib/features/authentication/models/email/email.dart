@@ -1,4 +1,4 @@
-import 'package:dating_app/utils/extensions/string.dart';
+import 'package:dating_app/utils/extensions/extension_string.dart';
 
 enum EmailValidation {
   valid,

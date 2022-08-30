@@ -24,11 +24,11 @@ mixin _$ReadonlyUser {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @DateTimeTimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  StatusSubscription get statusSubscription =>
+  StatusSubscription? get statusSubscription =>
       throw _privateConstructorUsedError;
-  StatusIdentification get statusIdentification =>
+  StatusIdentification? get statusIdentification =>
       throw _privateConstructorUsedError;
-  StatusAccount get statusAccount => throw _privateConstructorUsedError;
+  StatusAccount? get statusAccount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,9 +44,9 @@ abstract class $ReadonlyUserCopyWith<$Res> {
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
-      StatusSubscription statusSubscription,
-      StatusIdentification statusIdentification,
-      StatusAccount statusAccount});
+      StatusSubscription? statusSubscription,
+      StatusIdentification? statusIdentification,
+      StatusAccount? statusAccount});
 }
 
 /// @nodoc
@@ -77,15 +77,15 @@ class _$ReadonlyUserCopyWithImpl<$Res> implements $ReadonlyUserCopyWith<$Res> {
       statusSubscription: statusSubscription == freezed
           ? _value.statusSubscription
           : statusSubscription // ignore: cast_nullable_to_non_nullable
-              as StatusSubscription,
+              as StatusSubscription?,
       statusIdentification: statusIdentification == freezed
           ? _value.statusIdentification
           : statusIdentification // ignore: cast_nullable_to_non_nullable
-              as StatusIdentification,
+              as StatusIdentification?,
       statusAccount: statusAccount == freezed
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
-              as StatusAccount,
+              as StatusAccount?,
     ));
   }
 }
@@ -100,9 +100,9 @@ abstract class _$$_ReadonlyUserCopyWith<$Res>
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
-      StatusSubscription statusSubscription,
-      StatusIdentification statusIdentification,
-      StatusAccount statusAccount});
+      StatusSubscription? statusSubscription,
+      StatusIdentification? statusIdentification,
+      StatusAccount? statusAccount});
 }
 
 /// @nodoc
@@ -136,15 +136,15 @@ class __$$_ReadonlyUserCopyWithImpl<$Res>
       statusSubscription: statusSubscription == freezed
           ? _value.statusSubscription
           : statusSubscription // ignore: cast_nullable_to_non_nullable
-              as StatusSubscription,
+              as StatusSubscription?,
       statusIdentification: statusIdentification == freezed
           ? _value.statusIdentification
           : statusIdentification // ignore: cast_nullable_to_non_nullable
-              as StatusIdentification,
+              as StatusIdentification?,
       statusAccount: statusAccount == freezed
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
-              as StatusAccount,
+              as StatusAccount?,
     ));
   }
 }
@@ -152,12 +152,12 @@ class __$$_ReadonlyUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ReadonlyUser implements _ReadonlyUser {
-  const _$_ReadonlyUser(
+  _$_ReadonlyUser(
       {@DateTimeTimestampConverter() required this.createdAt,
       @DateTimeTimestampConverter() required this.updatedAt,
-      required this.statusSubscription = StatusSubscription.noStatus,
-      required this.statusIdentification = StatusIdentification.noStatus,
-      required this.statusAccount = StatusAccount.noStatus});
+      this.statusSubscription = StatusSubscription.noStatus,
+      this.statusIdentification = StatusIdentification.noStatus,
+      this.statusAccount = StatusAccount.noStatus});
 
   factory _$_ReadonlyUser.fromJson(Map<String, dynamic> json) =>
       _$$_ReadonlyUserFromJson(json);
@@ -170,13 +170,13 @@ class _$_ReadonlyUser implements _ReadonlyUser {
   final DateTime updatedAt;
   @override
   @JsonKey()
-  final StatusSubscription statusSubscription;
+  final StatusSubscription? statusSubscription;
   @override
   @JsonKey()
-  final StatusIdentification statusIdentification;
+  final StatusIdentification? statusIdentification;
   @override
   @JsonKey()
-  final StatusAccount statusAccount;
+  final StatusAccount? statusAccount;
 
   @override
   String toString() {
@@ -222,12 +222,12 @@ class _$_ReadonlyUser implements _ReadonlyUser {
 }
 
 abstract class _ReadonlyUser implements ReadonlyUser {
-  const factory _ReadonlyUser(
+  factory _ReadonlyUser(
       {@DateTimeTimestampConverter() required final DateTime createdAt,
       @DateTimeTimestampConverter() required final DateTime updatedAt,
-      required final StatusSubscription statusSubscription,
-      required final StatusIdentification statusIdentification,
-      required final StatusAccount statusAccount}) = _$_ReadonlyUser;
+      final StatusSubscription? statusSubscription,
+      final StatusIdentification? statusIdentification,
+      final StatusAccount? statusAccount}) = _$_ReadonlyUser;
 
   factory _ReadonlyUser.fromJson(Map<String, dynamic> json) =
       _$_ReadonlyUser.fromJson;
@@ -239,11 +239,11 @@ abstract class _ReadonlyUser implements ReadonlyUser {
   @DateTimeTimestampConverter()
   DateTime get updatedAt;
   @override
-  StatusSubscription get statusSubscription;
+  StatusSubscription? get statusSubscription;
   @override
-  StatusIdentification get statusIdentification;
+  StatusIdentification? get statusIdentification;
   @override
-  StatusAccount get statusAccount;
+  StatusAccount? get statusAccount;
   @override
   @JsonKey(ignore: true)
   _$$_ReadonlyUserCopyWith<_$_ReadonlyUser> get copyWith =>
