@@ -13,10 +13,7 @@ _$_User _$$_UserFromJson(Map json) => _$_User(
           json['created_at'], const DateTimeTimestampConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<Object, DateTime>(
           json['updated_at'], const DateTimeTimestampConverter().fromJson),
-      birthday: json['birthday'] == null
-          ? '2000/01/01'
-          : const StringTimestampConverter()
-              .fromJson(json['birthday'] as Object),
+      birthday: const StringTimestampConverter().fromJson(json['birthday']),
       nickName: json['nick_name'] as String? ?? '',
       prefecture: json['prefecture'] as String? ?? '',
       isOnline: json['is_online'] as bool? ?? true,

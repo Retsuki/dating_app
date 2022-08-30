@@ -11,7 +11,7 @@ class User with _$User {
   const factory User({
     @DateTimeTimestampConverter() DateTime? createdAt,
     @DateTimeTimestampConverter() DateTime? updatedAt,
-    @StringTimestampConverter() @Default('2000/01/01') String birthday,
+    @StringTimestampConverter() String? birthday,
     @Default('') String nickName,
     @Default('') String prefecture,
     @Default(true) bool isOnline,
