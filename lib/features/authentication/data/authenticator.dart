@@ -1,5 +1,5 @@
 import 'package:dating_app/features/authentication/applications/phone_auth_state_notifier.dart';
-import 'package:dating_app/features/platform/data/app_package_info_provider.dart';
+import 'package:dating_app/utils/app/package_info/package_info_provider.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -71,12 +71,12 @@ class Authenticator {
   Future<void> sendSignInLinkToEmail({
     required String email,
   }) async {
-    final appPackageInfo = _read(appPackageInfoProvider).appPackageInfo;
+    final packageInfo = _read(packageInfoProvider);
     final acs = ActionCodeSettings(
       url: 'https://toipptakosan11.page.link',
       handleCodeInApp: true,
-      iOSBundleId: appPackageInfo.packageName,
-      androidPackageName: appPackageInfo.packageName,
+      iOSBundleId: packageInfo.packageName,
+      androidPackageName: packageInfo.packageName,
       androidInstallApp: true,
       androidMinimumVersion: '12',
     );
