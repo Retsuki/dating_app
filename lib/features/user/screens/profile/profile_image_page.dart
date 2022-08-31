@@ -16,10 +16,10 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class SetupPhotoPage extends StatelessWidget {
-  const SetupPhotoPage({super.key});
+class ProfileImagePage extends StatelessWidget {
+  const ProfileImagePage({super.key});
 
-  static const routeName = 'setup-photo';
+  static const routeName = 'profile-image';
 
   @override
   Widget build(BuildContext context) {
