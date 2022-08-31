@@ -1,8 +1,10 @@
 import 'package:dating_app/components/app_button.dart';
+import 'package:dating_app/features/user/screens/profile/profile_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class SetupCompletePage extends StatelessWidget {
   const SetupCompletePage({super.key});
@@ -35,8 +37,10 @@ class SetupCompletePage extends StatelessWidget {
               ),
               const Gap(24),
               FilledButton(
-                text: l10n.goToHome,
-                onPressed: () {},
+                text: l10n.goToProfilePage,
+                onPressed: () {
+                  context.goNamed(ProfilePage.routeName);
+                },
               )
             ],
           ),
