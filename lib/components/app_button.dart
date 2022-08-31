@@ -26,9 +26,9 @@ class FilledButton extends StatelessWidget {
     final style = theme.style!;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: primary,
+        foregroundColor: onPrimary,
+        backgroundColor: primary,
         minimumSize: minimumSize,
-        onPrimary: onPrimary,
         shape: RoundedRectangleBorder(
           borderRadius: type == Type.round
               ? BorderRadius.circular(32)
@@ -119,7 +119,7 @@ class BorderlessButton extends StatelessWidget {
     final style = theme.style!;
     return TextButton(
       style: TextButton.styleFrom(
-        primary: primary,
+        foregroundColor: primary,
         minimumSize: minimumSize,
       ).merge(style),
       onPressed: onPressed,
