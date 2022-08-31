@@ -15,8 +15,27 @@ final setupStateNotifierProvider =
 });
 
 class SetupStateNotifier extends StateNotifier<SetupState> {
-  SetupStateNotifier(this._read) : super(SetupState());
+  SetupStateNotifier(this._read) : super(SetupState()) {
+    initUser();
+  }
   final Reader _read;
+
+  Future<void> initUser() async {
+    final userDoc = await _read(userStreamProvider.future);
+    final privateUserDoc = await _read(privateUserStreamProvider.future);
+
+    seiTextController.text = privateUserDoc?.data()?.sei ?? '';
+    meiTextController.text = privateUserDoc?.data()?.mei ?? '';
+    nicknameTextController.text = userDoc?.data()?.nickName ?? '';
+    birthdayTextController.text = userDoc?.data()?.birthday ?? '';
+    zipcodeTextController.text = privateUserDoc?.data()?.zipcode ?? '';
+    prefectureTextController.text = userDoc?.data()?.prefecture ?? '';
+    cityTextController.text = privateUserDoc?.data()?.city ?? '';
+    streetTextController.text = privateUserDoc?.data()?.street ?? '';
+    buildingTextController.text = privateUserDoc?.data()?.building ?? '';
+    genderTextController.text =
+        userDoc?.data()?.gender == null ? '' : userDoc!.data()!.gender.toStr();
+  }
 
   // Setup各ページのform key
   final setupFormKeys = Map.fromEntries(
@@ -58,7 +77,7 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
       prefecture: prefectureTextController.text,
       gender: genderTextController.text.isNullOrEmpty
           ? UserGender.other
-          : UserGender.values.byName(genderTextController.text),
+          : toUserGender(genderTextController.text),
     );
     await _read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
