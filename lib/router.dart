@@ -2,6 +2,7 @@ import 'package:dating_app/features/authentication/screens/email_page.dart';
 import 'package:dating_app/features/authentication/screens/phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
+import 'package:dating_app/features/user/screens/profile/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart';
@@ -67,29 +68,29 @@ final routerProvider = Provider((ref) {
   );
 
   return GoRouter(
-    // initialLocation: '/${OnboardingPage.routeName}',
-    // initialLocation: '/${SetupNamePage.routeName}',
-    initialLocation:
-        '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
     // initialLocation:
-    // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}',
-    // initialLocation:
-    // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}/${EmailPage.routeName}',
-    // initialLocation:
-    // '/${OnboardingPage.routeName}/${PhonePage.routeName}/${SmsCodePage.routeName}/${EmailPage.routeName}/${SetupNamePage.routeName}',
+    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
+    initialLocation: '/${ProfilePage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
         path: '/${OnboardingPage.routeName}',
-        name: '/${OnboardingPage.routeName}',
+        name: OnboardingPage.routeName,
         builder: (_, __) => const OnboardingPage(),
         routes: [signUpRoute],
       ),
       setupRoute,
       GoRoute(
         path: '/${ProfilePage.routeName}',
-        name: '/${ProfilePage.routeName}',
-        builder: (context, _) => const ProfilePage(),
+        name: ProfilePage.routeName,
+        builder: (_, __) => const ProfilePage(),
+        routes: [
+          GoRoute(
+            path: ProfileImagePage.routeName,
+            name: ProfileImagePage.routeName,
+            builder: (_, __) => const ProfileImagePage(),
+          ),
+        ],
       ),
     ],
   );

@@ -1,5 +1,7 @@
+import 'package:dating_app/features/user/screens/profile/profile_image_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
@@ -11,7 +13,9 @@ class ProfileImage extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context.goNamed(ProfileImagePage.routeName);
+      },
       borderRadius: BorderRadius.circular(50),
       child: Stack(
         clipBehavior: Clip.none,
