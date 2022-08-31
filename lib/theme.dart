@@ -13,8 +13,8 @@ ThemeData lightTheme() {
   ).copyWith(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        primary: primary,
-        onPrimary: Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: primary,
         minimumSize: const Size(double.infinity, 55),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -29,7 +29,7 @@ ThemeData lightTheme() {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        primary: primary,
+        foregroundColor: primary,
         minimumSize: const Size(double.infinity, 55),
         textStyle: const TextStyle(
           fontSize: 16,
@@ -40,7 +40,7 @@ ThemeData lightTheme() {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        primary: primary,
+        foregroundColor: primary,
         minimumSize: const Size(double.infinity, 55),
         textStyle: const TextStyle(
           fontSize: 16,
