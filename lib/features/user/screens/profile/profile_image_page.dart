@@ -36,17 +36,17 @@ class ProfileImagePage extends StatelessWidget {
                 const Gap(24),
                 Row(
                   children: const [
-                    _PhotoCard(),
+                    _ProfileImage(),
                     SizedBox(width: 16),
-                    _PhotoCard(),
+                    _ProfileImage(),
                   ],
                 ),
                 const Gap(16),
                 Row(
                   children: const [
-                    _PhotoCard(),
+                    _ProfileImage(),
                     SizedBox(width: 16),
-                    _PhotoCard(),
+                    _ProfileImage(),
                   ],
                 ),
                 const Spacer(
@@ -69,8 +69,8 @@ class ProfileImagePage extends StatelessWidget {
   }
 }
 
-class _PhotoCard extends ConsumerWidget {
-  const _PhotoCard();
+class _ProfileImage extends ConsumerWidget {
+  const _ProfileImage();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
