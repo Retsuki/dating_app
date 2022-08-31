@@ -52,9 +52,9 @@ Value? _$JsonConverterFromJson<Json, Value>(
     json == null ? null : fromJson(json as Json);
 
 const _$UserGenderEnumMap = {
-  UserGender.male: 'male',
-  UserGender.female: 'female',
-  UserGender.other: 'other',
+  UserGender.male: '男性',
+  UserGender.female: '女性',
+  UserGender.other: 'その他',
 };
 
 Json? _$JsonConverterToJson<Json, Value>(

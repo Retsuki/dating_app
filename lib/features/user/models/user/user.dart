@@ -27,7 +27,33 @@ class User with _$User {
 }
 
 enum UserGender {
+  @JsonValue('男性')
   male,
+  @JsonValue('女性')
   female,
+  @JsonValue('その他')
   other,
+  ;
+
+  String toStr() {
+    switch (this) {
+      case male:
+        return '男性';
+      case female:
+        return '女性';
+      case other:
+        return 'その他';
+    }
+  }
+}
+
+UserGender toUserGender(String value) {
+  switch (value) {
+    case '男性':
+      return UserGender.male;
+    case '女性':
+      return UserGender.female;
+    default:
+      return UserGender.other;
+  }
 }

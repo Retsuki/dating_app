@@ -58,7 +58,7 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
       prefecture: prefectureTextController.text,
       gender: genderTextController.text.isNullOrEmpty
           ? UserGender.other
-          : UserGender.values.byName(genderTextController.text),
+          : toUserGender(genderTextController.text),
     );
     await _read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
