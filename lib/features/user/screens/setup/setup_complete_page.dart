@@ -1,5 +1,5 @@
 import 'package:dating_app/components/app_button.dart';
-import 'package:dating_app/features/user/screens/profile/profile_page.dart';
+import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
