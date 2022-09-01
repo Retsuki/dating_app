@@ -2,7 +2,7 @@ import 'package:dating_app/features/authentication/screens/email_page.dart';
 import 'package:dating_app/features/authentication/screens/phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
-import 'package:dating_app/features/user/screens/profile/profile_image_page.dart';
+import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart';

@@ -1,6 +1,6 @@
 import 'package:dating_app/components/app_default_app_bar.dart';
-import 'package:dating_app/features/user/screens/profile/components/profile_image.dart';
 import 'package:dating_app/features/user/screens/profile/components/profile_item_list.dart';
+import 'package:dating_app/features/user/screens/profile/profile/components/profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

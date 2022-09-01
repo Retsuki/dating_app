@@ -1,4 +1,4 @@
-import 'package:dating_app/features/user/screens/profile/profile_image_page.dart';
+import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
