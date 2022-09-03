@@ -17,9 +17,8 @@ class ProfilePage extends ConsumerWidget {
     final textTheme = theme.textTheme;
 
     // TODO_R: profile_state_notifier的なものにまとめた方が良さそう、、、
-    final userState = ref.read(userStreamProvider).value;
+    final userState = ref.watch(userStreamProvider).value;
     final user = userState?.data();
-
     if (user == null) {
       return const SizedBox.shrink();
     }
