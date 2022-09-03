@@ -39,12 +39,12 @@ class ProfileImagePage extends ConsumerWidget {
                 Row(
                   children: [
                     _ProfileImage(
-                      index: 1,
+                      index: 0,
                       imageUrl: user.mainImage,
                     ),
                     const SizedBox(width: 16),
                     _ProfileImage(
-                      index: 2,
+                      index: 1,
                       imageUrl: user.subImage1,
                     ),
                   ],
@@ -53,12 +53,12 @@ class ProfileImagePage extends ConsumerWidget {
                 Row(
                   children: [
                     _ProfileImage(
-                      index: 3,
+                      index: 2,
                       imageUrl: user.subImage2,
                     ),
                     const SizedBox(width: 16),
                     _ProfileImage(
-                      index: 4,
+                      index: 3,
                       imageUrl: user.subImage3,
                     ),
                   ],
@@ -124,7 +124,11 @@ class _ProfileImage extends ConsumerWidget {
               child: InkWell(
                 onTap: () => ref
                     .read(profileImageStateNotifierProvider.notifier)
-                    .setPhoto(context: context, index: index),
+                    .setPhoto(
+                      context: context,
+                      index: index,
+                      isExistImage: true,
+                    ),
               ),
             ),
           );
