@@ -16,7 +16,7 @@ class User with _$User {
     @Default('') String prefecture,
     @Default(true) bool isOnline,
     @Default(UserGender.other) UserGender gender,
-    List<String>? interest,
+    List<String>? interests,
     String? mainImage,
     String? subImage1,
     String? subImage2,
@@ -24,6 +24,13 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(JsonMap json) => _$UserFromJson(json);
+}
+
+enum UserImageName {
+  mainImage,
+  subImage1,
+  subImage2,
+  subImage3,
 }
 
 enum UserGender {

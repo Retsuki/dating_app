@@ -12,17 +12,19 @@ final permissionServiceProvider = Provider((ref) {
 class PermissionService {
   PermissionService._();
 
-  Future<void> cameraOrPhotosPermissionRequest({
+  /// アクセス可能であれば何もしない
+  Future<bool> cameraOrPhotosPermissionRequest({
     required BuildContext context,
     required Permission permission,
     required ImageSource source,
   }) async {
     final permissionStatus = await permission.request();
     if (permissionStatus.isPermanentlyDenied) {
-      return showCameraOrPhotosPermissionRequestDialog(
+      await showCameraOrPhotosPermissionRequestDialog(
         context: context,
         source: source,
       );
+      return false;
     }
     if (permissionStatus.isDenied) {
       // 権限がない場合は許可を求める
@@ -30,13 +32,15 @@ class PermissionService {
 
       // 権限を拒否した場合は、許可するように促す
       if (permissionStatus.isDenied || permissionStatus.isPermanentlyDenied) {
-        return showCameraOrPhotosPermissionRequestDialog(
+        await showCameraOrPhotosPermissionRequestDialog(
           context: context,
           source: source,
         );
+        return false;
       }
     }
-    return;
+
+    return true;
   }
 
   Future<void> showCameraOrPhotosPermissionRequestDialog({

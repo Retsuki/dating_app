@@ -1,9 +1,9 @@
 import 'package:dating_app/features/authentication/data/authenticator.dart';
-import 'package:dating_app/features/platform/data/app_package_info_provider.dart';
 import 'package:dating_app/firebase_options.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/router.dart';
 import 'package:dating_app/theme.dart';
+import 'package:dating_app/utils/app/package_info/package_info_provider.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,8 @@ void main() async {
       enabled: false,
       builder: (context) => ProviderScope(
         overrides: [
-          appPackageInfoProvider.overrideWithValue(AppPackageInfo(packageInfo)),
+          packageInfoProvider
+              .overrideWithValue(AppPackageInfo(packageInfo).packageInfo),
         ],
         child: Consumer(
           builder: (context, ref, child) {
