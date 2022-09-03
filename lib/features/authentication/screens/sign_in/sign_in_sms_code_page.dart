@@ -61,7 +61,7 @@ class SignInSmsCodePage extends ConsumerWidget {
                     inactiveColor: Colors.black12,
                   ),
                   onChanged: (value) =>
-                      phoneAuthNotifier.authWithPhoneNumberAndSmsCode(
+                      phoneAuthNotifier.signInAuthWithPhoneNumberAndSmsCode(
                     context: context,
                     value: value,
                   ),

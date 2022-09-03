@@ -54,7 +54,7 @@ class SignInPhonePage extends ConsumerWidget {
         child: FilledButton(
           text: l10n.goNext,
           onPressed: () =>
-              phoneAuthNotifier.verifyPhoneNumber(context: context),
+              phoneAuthNotifier.signInVerifyPhoneNumber(context: context),
         ),
       ),
     );
