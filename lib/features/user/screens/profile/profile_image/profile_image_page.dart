@@ -97,11 +97,12 @@ class _ProfileImage extends ConsumerWidget {
             borderType: BorderType.RRect,
             radius: const Radius.circular(12),
             child: InkWell(
-              onTap: () => ref
-                  .read(profileImageStateNotifierProvider.notifier)
-                  .setPhoto(context: context, index: index),
+              onTap: () => ref.read(profileImageProvider).setPhoto(
+                    context: context,
+                    index: index,
+                  ),
               child: Container(
-                height: 230,
+                height: 236,
                 decoration: BoxDecoration(
                   color: colorScheme.primary.withOpacity(0.1),
                 ),
@@ -117,14 +118,12 @@ class _ProfileImage extends ConsumerWidget {
             borderRadius: BorderRadius.circular(12),
             child: Ink.image(
               fit: BoxFit.cover,
-              height: 240,
+              height: 242,
               image: CachedNetworkImageProvider(
                 imageUrl!,
               ),
               child: InkWell(
-                onTap: () => ref
-                    .read(profileImageStateNotifierProvider.notifier)
-                    .setPhoto(
+                onTap: () => ref.read(profileImageProvider).setPhoto(
                       context: context,
                       index: index,
                       isExistImage: true,
