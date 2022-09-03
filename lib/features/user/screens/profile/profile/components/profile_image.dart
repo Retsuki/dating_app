@@ -26,25 +26,25 @@ class ProfileImage extends ConsumerWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        if (user.mainImage == null)
-          Assets.images.profile.profile.image(scale: 4),
-        if (user.mainImage != null)
-          Material(
-            borderRadius: BorderRadius.circular(80),
-            clipBehavior: Clip.antiAlias,
-            color: Colors.transparent,
-            child: Ink.image(
-              fit: BoxFit.cover,
-              width: 120,
-              height: 120,
-              image: CachedNetworkImageProvider(
-                user.mainImage!,
-              ),
-              child: InkWell(
-                onTap: () => context.goNamed(ProfileImagePage.routeName),
-              ),
+        Assets.images.profile.profile.image(scale: 4),
+        Material(
+          borderRadius: BorderRadius.circular(80),
+          clipBehavior: Clip.antiAlias,
+          color: Colors.transparent,
+          child: Ink.image(
+            fit: BoxFit.cover,
+            width: 120,
+            height: 120,
+            image: user.mainImage == null
+                ? Assets.images.profile.profile.image(scale: 4).image
+                : CachedNetworkImageProvider(
+                    user.mainImage!,
+                  ),
+            child: InkWell(
+              onTap: () => context.goNamed(ProfileImagePage.routeName),
             ),
           ),
+        ),
         Positioned(
           right: -5,
           bottom: -5,
