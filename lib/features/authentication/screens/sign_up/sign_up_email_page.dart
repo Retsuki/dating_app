@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class EmailPage extends ConsumerWidget {
-  const EmailPage({super.key});
+class SignUpEmailPage extends ConsumerWidget {
+  const SignUpEmailPage({super.key});
 
-  static const routeName = 'email';
+  static const routeName = 'sign-up-email';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

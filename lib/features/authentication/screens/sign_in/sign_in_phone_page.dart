@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PhonePage extends ConsumerWidget {
-  const PhonePage({super.key});
+class SignInPhonePage extends ConsumerWidget {
+  const SignInPhonePage({super.key});
 
-  static const routeName = 'phone';
+  static const routeName = 'sign-in-phone';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -54,7 +54,7 @@ class PhonePage extends ConsumerWidget {
         child: FilledButton(
           text: l10n.goNext,
           onPressed: () =>
-              phoneAuthNotifier.verifyPhoneNumber(context: context),
+              phoneAuthNotifier.signInVerifyPhoneNumber(context: context),
         ),
       ),
     );

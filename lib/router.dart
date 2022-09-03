@@ -1,6 +1,8 @@
-import 'package:dating_app/features/authentication/screens/email_page.dart';
-import 'package:dating_app/features/authentication/screens/phone_page.dart';
-import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_code_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_up/sign_up_email_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_up/sign_up_phone_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_code_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
@@ -15,21 +17,33 @@ import 'package:go_router/go_router.dart';
 
 final routerProvider = Provider((ref) {
   final signUpRoute = GoRoute(
-    path: PhonePage.routeName,
-    name: PhonePage.routeName,
-    builder: (_, __) => const PhonePage(),
+    path: SignUpPhonePage.routeName,
+    name: SignUpPhonePage.routeName,
+    builder: (_, __) => const SignUpPhonePage(),
     routes: [
       GoRoute(
-        path: SmsCodePage.routeName,
-        name: SmsCodePage.routeName,
-        builder: (_, __) => const SmsCodePage(),
+        path: SignUpSmsCodePage.routeName,
+        name: SignUpSmsCodePage.routeName,
+        builder: (_, __) => const SignUpSmsCodePage(),
         routes: [
           GoRoute(
-            path: EmailPage.routeName,
-            name: EmailPage.routeName,
-            builder: (_, __) => const EmailPage(),
+            path: SignUpEmailPage.routeName,
+            name: SignUpEmailPage.routeName,
+            builder: (_, __) => const SignUpEmailPage(),
           ),
         ],
+      ),
+    ],
+  );
+  final signInRoute = GoRoute(
+    path: SignInPhonePage.routeName,
+    name: SignInPhonePage.routeName,
+    builder: (_, __) => const SignInPhonePage(),
+    routes: [
+      GoRoute(
+        path: SignInSmsCodePage.routeName,
+        name: SignInSmsCodePage.routeName,
+        builder: (_, __) => const SignInSmsCodePage(),
       ),
     ],
   );
@@ -70,14 +84,18 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    initialLocation: '/${ProfilePage.routeName}',
+    // initialLocation: '/${ProfilePage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
         path: '/${OnboardingPage.routeName}',
         name: OnboardingPage.routeName,
         builder: (_, __) => const OnboardingPage(),
-        routes: [signUpRoute],
+        routes: [
+          signUpRoute,
+          signInRoute,
+        ],
       ),
       setupRoute,
       GoRoute(

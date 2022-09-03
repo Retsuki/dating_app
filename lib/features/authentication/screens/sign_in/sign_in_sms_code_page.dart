@@ -8,10 +8,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class SmsCodePage extends ConsumerWidget {
-  const SmsCodePage({super.key});
+class SignInSmsCodePage extends ConsumerWidget {
+  const SignInSmsCodePage({super.key});
 
-  static const routeName = 'sms-code';
+  static const routeName = 'sign-in-sms-code';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -61,7 +61,7 @@ class SmsCodePage extends ConsumerWidget {
                     inactiveColor: Colors.black12,
                   ),
                   onChanged: (value) =>
-                      phoneAuthNotifier.authWithPhoneNumberAndSmsCode(
+                      phoneAuthNotifier.signInAuthWithPhoneNumberAndSmsCode(
                     context: context,
                     value: value,
                   ),

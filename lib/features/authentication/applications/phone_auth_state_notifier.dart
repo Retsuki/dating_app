@@ -1,8 +1,10 @@
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/authentication/models/phone/phone.dart';
 import 'package:dating_app/features/authentication/models/phone/phone_auth.dart';
-import 'package:dating_app/features/authentication/screens/email_page.dart';
-import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_code_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_up/sign_up_email_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_code_page.dart';
+import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/utils/extensions/extension_string.dart';
 import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +24,7 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
   final phonePageFormKey = GlobalKey<FormState>();
   final smsCodePageFormKey = GlobalKey<FormState>();
 
-  Future<void> verifyPhoneNumber({
+  Future<void> signUpVerifyPhoneNumber({
     required BuildContext context,
   }) async {
     if (!phonePageFormKey.currentState!.validate()) {
@@ -38,13 +40,13 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
           .authWithPhoneNumber(internatinalPhoneNumber);
 
       logger.fine('user sent phone number');
-      context.goNamed(SmsCodePage.routeName);
+      context.goNamed(SignUpSmsCodePage.routeName);
     } on FirebaseAuthException catch (e) {
       logger.shout(e);
     }
   }
 
-  Future<void> authWithPhoneNumberAndSmsCode({
+  Future<void> signUpAuthWithPhoneNumberAndSmsCode({
     required BuildContext context,
     required String value,
   }) async {
@@ -61,7 +63,54 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
       );
 
       logger.fine('user created account');
-      context.goNamed(EmailPage.routeName);
+      context.goNamed(SignUpEmailPage.routeName);
+    } on FirebaseAuthException catch (e) {
+      logger.shout(e);
+    }
+  }
+
+  /// ログイン用の電話番号入力処理
+  Future<void> signInVerifyPhoneNumber({
+    required BuildContext context,
+  }) async {
+    if (!phonePageFormKey.currentState!.validate()) {
+      return;
+    }
+
+    final internatinalPhoneNumber = Phone.toInternatinalPhoneNumber(
+      state.phoneNumber!,
+    );
+
+    try {
+      await _read(authenticatorProvider)
+          .authWithPhoneNumber(internatinalPhoneNumber);
+
+      logger.fine('user sent phone number');
+      context.goNamed(SignInSmsCodePage.routeName);
+    } on FirebaseAuthException catch (e) {
+      logger.shout(e);
+    }
+  }
+
+  /// ログイン用のSMS認証コード処理
+  Future<void> signInAuthWithPhoneNumberAndSmsCode({
+    required BuildContext context,
+    required String value,
+  }) async {
+    updateSmsCode(value);
+
+    if (state.smsCode.isNullOrEmpty || state.smsCode!.length < 6) {
+      return;
+    }
+
+    try {
+      await _read(authenticatorProvider).authWithCredential(
+        verificationId: state.verificationId!,
+        smsCode: state.smsCode!,
+      );
+
+      logger.fine('user signed in!!');
+      context.goNamed(ProfilePage.routeName);
     } on FirebaseAuthException catch (e) {
       logger.shout(e);
     }
