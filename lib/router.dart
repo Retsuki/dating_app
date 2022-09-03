@@ -1,5 +1,7 @@
 import 'package:dating_app/features/authentication/screens/email_page.dart';
 import 'package:dating_app/features/authentication/screens/phone_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_code_page.dart';
 import 'package:dating_app/features/authentication/screens/sms_code_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
@@ -30,6 +32,18 @@ final routerProvider = Provider((ref) {
             builder: (_, __) => const EmailPage(),
           ),
         ],
+      ),
+    ],
+  );
+  final signInRoute = GoRoute(
+    path: SignInPhonePage.routeName,
+    name: SignInPhonePage.routeName,
+    builder: (_, __) => const SignInPhonePage(),
+    routes: [
+      GoRoute(
+        path: SignInSmsCodePage.routeName,
+        name: SignInSmsCodePage.routeName,
+        builder: (_, __) => const SignInSmsCodePage(),
       ),
     ],
   );
@@ -70,14 +84,18 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    initialLocation: '/${ProfilePage.routeName}',
+    // initialLocation: '/${ProfilePage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
         path: '/${OnboardingPage.routeName}',
         name: OnboardingPage.routeName,
         builder: (_, __) => const OnboardingPage(),
-        routes: [signUpRoute],
+        routes: [
+          signUpRoute,
+          signInRoute,
+        ],
       ),
       setupRoute,
       GoRoute(

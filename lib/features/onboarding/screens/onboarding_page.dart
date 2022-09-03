@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating_app/components/app_bottom_sheet.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/features/authentication/screens/phone_page.dart';
+import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
 import 'package:dating_app/features/onboarding/providers/onboarding_provider.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
@@ -56,7 +57,9 @@ class OnboardingPage extends ConsumerWidget {
             Expanded(
               child: GhostButton(
                 text: l10n.signIn,
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed(SignInPhonePage.routeName);
+                },
               ),
             ),
             const Gap(12),
