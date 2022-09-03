@@ -19,7 +19,7 @@ _$_User _$$_UserFromJson(Map json) => _$_User(
       isOnline: json['is_online'] as bool? ?? true,
       gender: $enumDecodeNullable(_$UserGenderEnumMap, json['gender']) ??
           UserGender.other,
-      interest: (json['interest'] as List<dynamic>?)
+      interests: (json['interests'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       mainImage: json['main_image'] as String?,
@@ -38,7 +38,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'prefecture': instance.prefecture,
       'is_online': instance.isOnline,
       'gender': _$UserGenderEnumMap[instance.gender]!,
-      'interest': instance.interest,
+      'interests': instance.interests,
       'main_image': instance.mainImage,
       'sub_image1': instance.subImage1,
       'sub_image2': instance.subImage2,

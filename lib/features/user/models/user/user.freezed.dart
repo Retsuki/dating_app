@@ -30,7 +30,7 @@ mixin _$User {
   String get prefecture => throw _privateConstructorUsedError;
   bool get isOnline => throw _privateConstructorUsedError;
   UserGender get gender => throw _privateConstructorUsedError;
-  List<String>? get interest => throw _privateConstructorUsedError;
+  List<String>? get interests => throw _privateConstructorUsedError;
   String? get mainImage => throw _privateConstructorUsedError;
   String? get subImage1 => throw _privateConstructorUsedError;
   String? get subImage2 => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $UserCopyWith<$Res> {
       String prefecture,
       bool isOnline,
       UserGender gender,
-      List<String>? interest,
+      List<String>? interests,
       String? mainImage,
       String? subImage1,
       String? subImage2,
@@ -77,7 +77,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? prefecture = freezed,
     Object? isOnline = freezed,
     Object? gender = freezed,
-    Object? interest = freezed,
+    Object? interests = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
@@ -112,9 +112,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      interest: interest == freezed
-          ? _value.interest
-          : interest // ignore: cast_nullable_to_non_nullable
+      interests: interests == freezed
+          ? _value.interests
+          : interests // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       mainImage: mainImage == freezed
           ? _value.mainImage
@@ -149,7 +149,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String prefecture,
       bool isOnline,
       UserGender gender,
-      List<String>? interest,
+      List<String>? interests,
       String? mainImage,
       String? subImage1,
       String? subImage2,
@@ -174,7 +174,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? prefecture = freezed,
     Object? isOnline = freezed,
     Object? gender = freezed,
-    Object? interest = freezed,
+    Object? interests = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
@@ -209,9 +209,9 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      interest: interest == freezed
-          ? _value._interest
-          : interest // ignore: cast_nullable_to_non_nullable
+      interests: interests == freezed
+          ? _value._interests
+          : interests // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       mainImage: mainImage == freezed
           ? _value.mainImage
@@ -244,12 +244,12 @@ class _$_User implements _User {
       this.prefecture = '',
       this.isOnline = true,
       this.gender = UserGender.other,
-      final List<String>? interest,
+      final List<String>? interests,
       this.mainImage,
       this.subImage1,
       this.subImage2,
       this.subImage3})
-      : _interest = interest;
+      : _interests = interests;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -274,10 +274,10 @@ class _$_User implements _User {
   @override
   @JsonKey()
   final UserGender gender;
-  final List<String>? _interest;
+  final List<String>? _interests;
   @override
-  List<String>? get interest {
-    final value = _interest;
+  List<String>? get interests {
+    final value = _interests;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -294,7 +294,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, prefecture: $prefecture, isOnline: $isOnline, gender: $gender, interest: $interest, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3)';
+    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, prefecture: $prefecture, isOnline: $isOnline, gender: $gender, interests: $interests, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3)';
   }
 
   @override
@@ -310,7 +310,8 @@ class _$_User implements _User {
                 .equals(other.prefecture, prefecture) &&
             const DeepCollectionEquality().equals(other.isOnline, isOnline) &&
             const DeepCollectionEquality().equals(other.gender, gender) &&
-            const DeepCollectionEquality().equals(other._interest, _interest) &&
+            const DeepCollectionEquality()
+                .equals(other._interests, _interests) &&
             const DeepCollectionEquality().equals(other.mainImage, mainImage) &&
             const DeepCollectionEquality().equals(other.subImage1, subImage1) &&
             const DeepCollectionEquality().equals(other.subImage2, subImage2) &&
@@ -328,7 +329,7 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(prefecture),
       const DeepCollectionEquality().hash(isOnline),
       const DeepCollectionEquality().hash(gender),
-      const DeepCollectionEquality().hash(_interest),
+      const DeepCollectionEquality().hash(_interests),
       const DeepCollectionEquality().hash(mainImage),
       const DeepCollectionEquality().hash(subImage1),
       const DeepCollectionEquality().hash(subImage2),
@@ -356,7 +357,7 @@ abstract class _User implements User {
       final String prefecture,
       final bool isOnline,
       final UserGender gender,
-      final List<String>? interest,
+      final List<String>? interests,
       final String? mainImage,
       final String? subImage1,
       final String? subImage2,
@@ -382,7 +383,7 @@ abstract class _User implements User {
   @override
   UserGender get gender;
   @override
-  List<String>? get interest;
+  List<String>? get interests;
   @override
   String? get mainImage;
   @override
