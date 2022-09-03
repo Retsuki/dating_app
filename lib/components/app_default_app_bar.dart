@@ -14,7 +14,7 @@ class AppDefaultAppBar extends StatelessWidget with PreferredSizeWidget {
     final colorScheme = theme.colorScheme;
     return AppBar(
       leading: Assets.images.logo.app.image(scale: 4),
-      title: Text(l10n.prifile, style: const TextStyle(color: Colors.black)),
+      title: Text(l10n.profile, style: const TextStyle(color: Colors.black)),
       centerTitle: false,
       actions: [
         IconButton(
