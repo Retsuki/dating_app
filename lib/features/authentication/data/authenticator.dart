@@ -93,4 +93,11 @@ class Authenticator {
   // プロバイダをリンクする(Facebook, Google, Apple)
 
   // ログアウト
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } on FirebaseAuthException catch (e) {
+      logger.shout(e);
+    }
+  }
 }

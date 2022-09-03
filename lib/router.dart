@@ -84,8 +84,8 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    // initialLocation: '/${ProfilePage.routeName}',
-    initialLocation: '/${OnboardingPage.routeName}',
+    initialLocation: '/${ProfilePage.routeName}',
+    // initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
