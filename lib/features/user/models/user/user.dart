@@ -26,6 +26,13 @@ class User with _$User {
   factory User.fromJson(JsonMap json) => _$UserFromJson(json);
 }
 
+enum UserImageName {
+  mainImage,
+  subImage1,
+  subImage2,
+  subImage3,
+}
+
 enum UserGender {
   @JsonValue('男性')
   male,
