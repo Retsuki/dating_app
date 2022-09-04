@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_back_button.dart';
 import 'package:dating_app/components/un_focus_on_tap.dart';
-import 'package:dating_app/features/user/applications/profile/profile_image/profile_image_state_notifier.dart';
+import 'package:dating_app/features/user/applications/profile_image/profile_image_state_notifier.dart';
 import 'package:dating_app/features/user/data/user_provider.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
