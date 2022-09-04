@@ -12,36 +12,42 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
+    const chatList = [
+      _Chat(
+        imageUrl:
+            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
+        name: '白石麻衣',
+        latestMessage: 'おはようございます',
+        createdAt: '09:00',
+      ),
+      _Chat(
+        imageUrl:
+            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
+        name: '白石麻衣',
+        latestMessage: 'おはようございます',
+        createdAt: '09:00',
+      ),
+      _Chat(
+        imageUrl:
+            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
+        name: '白石麻衣',
+        latestMessage: 'おはようございます。今日は雨ですね。',
+        createdAt: '09:00',
+      ),
+    ];
+
     return Scaffold(
       appBar: AppDefaultAppBar(
         title: l10n.message,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: const [
-            _Chat(
-              imageUrl:
-                  'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-              name: '白石麻衣',
-              latestMessage: 'おはようございます',
-              createdAt: '09:00',
-            ),
-            _Chat(
-              imageUrl:
-                  'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-              name: '白石麻衣',
-              latestMessage: 'おはようございます',
-              createdAt: '09:00',
-            ),
-            _Chat(
-              imageUrl:
-                  'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-              name: '白石麻衣',
-              latestMessage: 'おはようございます。今日は雨ですね。',
-              createdAt: '09:00',
-            ),
-          ],
+        child: ListView.separated(
+          itemCount: chatList.length,
+          itemBuilder: (context, index) => chatList[index],
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 16);
+          },
         ),
       ),
     );
@@ -65,14 +71,17 @@ class _Chat extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(
-          width: 0.5,
-        ),
-      ),
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(16),
       child: ListTile(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(
+            width: 0.5,
+            color: Colors.black45,
+          ),
+        ),
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(50),
           child: CachedNetworkImage(
@@ -110,7 +119,6 @@ class _Chat extends StatelessWidget {
             ),
           ],
         ),
-        onTap: () {},
       ),
     );
   }
