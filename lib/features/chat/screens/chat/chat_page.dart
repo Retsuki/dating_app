@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
+import 'package:dating_app/features/chat/screens/message/message_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -16,21 +18,21 @@ class ChatPage extends StatelessWidget {
       _Chat(
         imageUrl:
             'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣',
+        name: '白石麻衣1',
         latestMessage: 'おはようございます',
         createdAt: '09:00',
       ),
       _Chat(
         imageUrl:
             'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣',
+        name: '白石麻衣2',
         latestMessage: 'おはようございます',
         createdAt: '09:00',
       ),
       _Chat(
         imageUrl:
             'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣',
+        name: '白石麻衣3',
         latestMessage: 'おはようございます。今日は雨ですね。',
         createdAt: '09:00',
       ),
@@ -72,7 +74,14 @@ class _Chat extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context.goNamed(
+          MessagePage.routeName,
+          params: {
+            'partnerName': name,
+          },
+        );
+      },
       borderRadius: BorderRadius.circular(16),
       child: ListTile(
         shape: RoundedRectangleBorder(
