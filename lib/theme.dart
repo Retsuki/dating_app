@@ -4,6 +4,7 @@ ThemeData lightTheme() {
   const primary = Color(0xFFFF4D67);
   const secondary = Color(0xFFffb800);
   const surface = Colors.white;
+  const appBlack = Colors.black;
   return ThemeData.from(
     colorScheme: const ColorScheme.light(
       primary: primary,
@@ -96,13 +97,14 @@ ThemeData lightTheme() {
       ),
       bodySmall: TextStyle(
         fontSize: 14,
+        color: appBlack,
       ),
       labelSmall: TextStyle(
         fontSize: 10,
       ),
     ).apply(
-      bodyColor: Colors.black,
-      displayColor: Colors.black,
+      bodyColor: appBlack,
+      displayColor: appBlack,
     ),
   );
 }
