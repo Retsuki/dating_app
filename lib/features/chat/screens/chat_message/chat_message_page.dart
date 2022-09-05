@@ -7,8 +7,8 @@ import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MessagePage extends ConsumerWidget {
-  const MessagePage({
+class ChatMessagePage extends ConsumerWidget {
+  const ChatMessagePage({
     super.key,
     required this.partnerName,
   });

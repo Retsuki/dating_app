@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/chat/applications/chat/chat_provider.dart';
-import 'package:dating_app/features/chat/screens/message/message_page.dart';
+import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class _Chat extends StatelessWidget {
     return InkWell(
       onTap: () {
         context.goNamed(
-          MessagePage.routeName,
+          ChatMessagePage.routeName,
           params: {
             'partnerName': name,
           },

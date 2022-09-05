@@ -4,7 +4,7 @@ import 'package:dating_app/features/authentication/screens/sign_up/sign_up_email
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_code_page.dart';
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
-import 'package:dating_app/features/chat/screens/message/message_page.dart';
+import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
@@ -106,10 +106,10 @@ final routerProvider = Provider((ref) {
         builder: (_, __) => const ChatPage(),
         routes: [
           GoRoute(
-            path: '${MessagePage.routeName}/:partnerName',
-            name: MessagePage.routeName,
+            path: '${ChatMessagePage.routeName}/:partnerName',
+            name: ChatMessagePage.routeName,
             builder: (context, state) {
-              return MessagePage(partnerName: state.params['partnerName']!);
+              return ChatMessagePage(partnerName: state.params['partnerName']!);
             },
           )
         ],
