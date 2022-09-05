@@ -1,42 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
+import 'package:dating_app/features/authentication/data/authenticator.dart';
+import 'package:dating_app/features/chat/applications/chat/chat_provider.dart';
 import 'package:dating_app/features/chat/screens/message/message_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
+import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends ConsumerWidget {
   const ChatPage({super.key});
 
   static const routeName = 'chat';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
 
-    const chatList = [
-      _Chat(
-        imageUrl:
-            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣1',
-        latestMessage: 'おはようございます',
-        createdAt: '09:00',
-      ),
-      _Chat(
-        imageUrl:
-            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣2',
-        latestMessage: 'おはようございます',
-        createdAt: '09:00',
-      ),
-      _Chat(
-        imageUrl:
-            'https://d35omnrtvqomev.cloudfront.net/photo/article/article_part/image_path_1/412095/f3ab7a9df9ffe2d00a4174bb0d6922.jpg',
-        name: '白石麻衣3',
-        latestMessage: 'おはようございます。今日は雨ですね。',
-        createdAt: '09:00',
-      ),
-    ];
+    final userId = ref.watch(authUserProvider).value?.uid;
+    final chatList = ref.watch(chatListProvider);
+    if (userId == null || chatList == null) {
+      return const SizedBox.shrink();
+    }
 
     return Scaffold(
       appBar: AppDefaultAppBar(
@@ -46,7 +32,16 @@ class ChatPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView.separated(
           itemCount: chatList.length,
-          itemBuilder: (context, index) => chatList[index],
+          itemBuilder: (context, index) {
+            final chat = chatList[index].entity;
+            final partnerUserInfo = chat.membersInfo[userId]!;
+            return _Chat(
+              imageUrl: partnerUserInfo.mainImage,
+              name: partnerUserInfo.name,
+              latestMessage: chat.latestMessage,
+              createdAt: dateToTimeString(chat.createdAt!),
+            );
+          },
           separatorBuilder: (context, index) {
             return const SizedBox(height: 16);
           },
