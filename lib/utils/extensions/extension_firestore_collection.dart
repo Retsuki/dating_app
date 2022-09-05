@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/constants/constant_json.dart';
+import 'package:dating_app/features/chat/models/chat/chat.dart';
 import 'package:dating_app/features/user/models/private_user/private_user.dart';
 import 'package:dating_app/features/user/models/readonly_user/readonly_user.dart';
 import 'package:dating_app/features/user/models/user/user.dart';
@@ -26,6 +27,13 @@ extension CollectionReferenceX<E> on CollectionReference<E> {
     return withConverter(
       fromFirestore: (snapshot, _) => ReadonlyUser.fromJson(snapshot.data()!),
       toFirestore: (readonlyUser, _) => readonlyUser.toJson(),
+    );
+  }
+
+  CollectionReference<Chat> withChatConverter() {
+    return withConverter(
+      fromFirestore: (snapshot, _) => Chat.fromJson(snapshot.data()!),
+      toFirestore: (chat, _) => chat.toJson(),
     );
   }
 }
