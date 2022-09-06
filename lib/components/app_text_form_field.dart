@@ -11,11 +11,14 @@ class AppTextFormField extends StatefulWidget {
     this.hintText,
     this.validator,
     this.keyboardType,
+    this.minLines = 1,
+    this.maxLines,
     this.inputFormatters,
     this.onChanged,
     this.focusNode,
     this.controller,
     this.autoFocus = true,
+    this.contentPadding,
   });
 
   final String labelText;
@@ -25,11 +28,14 @@ class AppTextFormField extends StatefulWidget {
   final Color textColor;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final int? minLines;
+  final int? maxLines;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged;
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final bool autoFocus;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -46,6 +52,8 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return TextFormField(
       obscureText: widget.obscureText && _isObscure,
       keyboardType: widget.keyboardType,
+      minLines: widget.minLines,
+      maxLines: widget.maxLines,
       inputFormatters: widget.inputFormatters,
       onChanged: widget.onChanged,
       focusNode: widget.focusNode,
@@ -68,7 +76,8 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           borderRadius: BorderRadius.circular(100),
           borderSide: BorderSide(color: colorScheme.error),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+        contentPadding:
+            widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 24),
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(

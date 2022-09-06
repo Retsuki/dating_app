@@ -174,8 +174,15 @@ class _Sending extends ConsumerWidget {
           Expanded(
             child: AppTextFormField(
               autoFocus: false,
+              keyboardType: TextInputType.multiline,
+              maxLines: 4,
               labelText: l10n.message,
               controller: chatMessageNotifier.messageTextController,
+              contentPadding: const EdgeInsets.only(
+                top: 16,
+                left: 24,
+                right: 24,
+              ),
             ),
           ),
           // IconButton(onPressed: () {}, icon: const Icon(Icons.send))
