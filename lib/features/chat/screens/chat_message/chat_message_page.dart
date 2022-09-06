@@ -1,82 +1,77 @@
 import 'package:dating_app/components/app_back_button.dart';
 import 'package:dating_app/components/app_text_form_field.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
+import 'package:dating_app/features/chat/applications/chat/chat_provider.dart';
+import 'package:dating_app/features/chat/applications/chat_message/chat_message_provider.dart';
+import 'package:dating_app/features/chat/data/chat_message/chat_message_provider.dart';
 import 'package:dating_app/features/chat/models/chat/chat_message/chat_message.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ChatMessagePage extends ConsumerWidget {
+class ChatMessagePage extends HookConsumerWidget {
   const ChatMessagePage({
     super.key,
-    required this.partnerName,
+    required this.chatId,
   });
 
-  final String partnerName;
   static const routeName = 'message';
+  final String chatId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
     const horizontal = 16.0;
 
-    final chatMessageList = [
-      ChatMessage(
-        message: 'はじめまして',
-        senderId: 'yqBR3qTtBKRGi15k3pHyhBWwVlW2',
-        isDeleted: false,
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-      ),
-      ChatMessage(
-        message: 'はじめまして',
-        senderId: 'hx73NgTwHWRYZ1gt2FBbkKLg6zR2',
-        isDeleted: false,
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-      ),
-      ChatMessage(
-        message: 'れつきです',
-        senderId: 'yqBR3qTtBKRGi15k3pHyhBWwVlW2',
-        isDeleted: false,
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-      ),
-      ChatMessage(
-        message: 'ハリウッドです。趣味はなんですか？私はところてんを空中に投げてかめはめ波を撃つことです!!',
-        senderId: 'hx73NgTwHWRYZ1gt2FBbkKLg6zR2',
-        isDeleted: false,
-        createdAt: DateTime.now(),
-        updatedAt: DateTime.now(),
-      ),
-    ];
-
     final userId = ref.watch(authUserProvider).value?.uid;
-    if (userId == null) {
+    final chatList = ref.watch(chatListProvider);
+    if (userId == null || chatList == null) {
       return const SizedBox.shrink();
     }
 
-    return Scaffold(
-      appBar: AppBackButton(title: partnerName),
-      body: SafeArea(
-        child: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: horizontal),
-          itemCount: chatMessageList.length,
-          itemBuilder: (context, index) {
-            final chatMessage = chatMessageList[index];
-            final isUserMessage = userId == chatMessage.senderId;
+    final chatDoc = chatList.firstWhere((chat) => chat.id == chatId);
+    final partnerInfo = ref.read(chatProvider).getPartnerInfo(chatDoc.entity);
 
-            return _Message(
-              isUserMessage: isUserMessage,
-              chatMessage: chatMessage,
-            );
-          },
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 24,
-          ),
-        ),
-      ),
+    useEffect(
+      () {
+        // ユーザーが開いたchatのIDをセットする
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref
+              .read(chatMessageStateNotifierProvider.notifier)
+              .updateChatId(chatId);
+          return;
+        });
+        return null;
+      },
+      [],
+    );
+
+    final chatMessageList = ref.watch(chatMessageStreamProvider).value;
+
+    return Scaffold(
+      appBar: AppBackButton(title: partnerInfo.name),
+      body: chatMessageList == null
+          ? const SizedBox.shrink()
+          : SafeArea(
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: horizontal),
+                itemCount: chatMessageList.length,
+                itemBuilder: (context, index) {
+                  final chatMessage = chatMessageList[index];
+                  final isUserMessage = userId == chatMessage.entity.senderId;
+
+                  return _Message(
+                    isUserMessage: isUserMessage,
+                    chatMessage: chatMessage.entity,
+                  );
+                },
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 24,
+                ),
+              ),
+            ),
       bottomSheet: Container(
         padding: const EdgeInsets.only(
           top: 5,
