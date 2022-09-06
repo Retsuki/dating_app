@@ -8,6 +8,7 @@ import 'package:dating_app/features/chat/models/chat/chat_message/chat_message.d
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -22,9 +23,6 @@ class ChatMessagePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = L10n.of(context);
-    const horizontal = 16.0;
-
     final userId = ref.watch(authUserProvider).value?.uid;
     final chatList = ref.watch(chatListProvider);
     if (userId == null || chatList == null) {
@@ -33,6 +31,11 @@ class ChatMessagePage extends HookConsumerWidget {
 
     final chatDoc = chatList.firstWhere((chat) => chat.id == chatId);
     final partnerInfo = ref.read(chatProvider).getPartnerInfo(chatDoc.entity);
+    final chatMessageList = ref.watch(chatMessageStreamProvider(chatId)).value;
+    final chatMessageNotifier =
+        ref.watch(chatMessageStateNotifierProvider.notifier);
+    final chatMessageScrollController =
+        chatMessageNotifier.chatMessageScrollController;
 
     useEffect(
       () {
@@ -48,41 +51,41 @@ class ChatMessagePage extends HookConsumerWidget {
       [],
     );
 
-    final chatMessageList = ref.watch(chatMessageStreamProvider).value;
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (chatMessageScrollController.hasClients) {
+        chatMessageScrollController
+            .jumpTo(chatMessageScrollController.position.maxScrollExtent);
+      }
+    });
 
     return Scaffold(
       appBar: AppBackButton(title: partnerInfo.name),
       body: chatMessageList == null
           ? const SizedBox.shrink()
           : SafeArea(
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: horizontal),
-                itemCount: chatMessageList.length,
-                itemBuilder: (context, index) {
-                  final chatMessage = chatMessageList[index];
-                  final isUserMessage = userId == chatMessage.entity.senderId;
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      controller: chatMessageScrollController,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      itemCount: chatMessageList.length,
+                      itemBuilder: (context, index) {
+                        final chatMessage = chatMessageList[index];
+                        final isUserMessage =
+                            userId == chatMessage.entity.senderId;
 
-                  return _Message(
-                    isUserMessage: isUserMessage,
-                    chatMessage: chatMessage.entity,
-                  );
-                },
-                separatorBuilder: (context, index) => const SizedBox(
-                  height: 24,
-                ),
+                        return _Message(
+                          isUserMessage: isUserMessage,
+                          chatMessage: chatMessage.entity,
+                        );
+                      },
+                    ),
+                  ),
+                  const _Sending(),
+                ],
               ),
             ),
-      bottomSheet: Container(
-        padding: const EdgeInsets.only(
-          top: 5,
-          left: horizontal,
-          right: horizontal,
-          bottom: 24,
-        ),
-        child: AppTextFormField(
-          labelText: l10n.message,
-        ),
-      ),
     );
   }
 }
@@ -106,6 +109,7 @@ class _Message extends StatelessWidget {
       margin: EdgeInsets.only(
         left: isUserMessage ? 40 : 0,
         right: isUserMessage ? 0 : 40,
+        bottom: 24,
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
@@ -136,11 +140,56 @@ class _Message extends StatelessWidget {
             ),
           ),
           Text(
-            dateToTimeString(chatMessage.createdAt!),
+            dateToTimeString(chatMessage.createdAt ?? DateTime.now()),
             style: textTheme.bodySmall!.copyWith(
               color: isUserMessage ? colorScheme.onPrimary : Colors.black54,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Sending extends ConsumerWidget {
+  const _Sending();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final chatMessageNotifier =
+        ref.watch(chatMessageStateNotifierProvider.notifier);
+
+    return Container(
+      padding: const EdgeInsets.only(
+        top: 8,
+        left: 16,
+        right: 6,
+        bottom: 8,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: AppTextFormField(
+              autoFocus: false,
+              labelText: l10n.message,
+              controller: chatMessageNotifier.messageTextController,
+            ),
+          ),
+          // IconButton(onPressed: () {}, icon: const Icon(Icons.send))
+          InkWell(
+            onTap: chatMessageNotifier.sendMessage,
+            customBorder: const CircleBorder(),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Icon(
+                Icons.send,
+                color: colorScheme.primary,
+              ),
+            ),
+          )
         ],
       ),
     );
