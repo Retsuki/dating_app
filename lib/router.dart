@@ -106,10 +106,10 @@ final routerProvider = Provider((ref) {
         builder: (_, __) => const ChatPage(),
         routes: [
           GoRoute(
-            path: '${ChatMessagePage.routeName}/:partnerName',
+            path: '${ChatMessagePage.routeName}/:chatId',
             name: ChatMessagePage.routeName,
             builder: (context, state) {
-              return ChatMessagePage(partnerName: state.params['partnerName']!);
+              return ChatMessagePage(chatId: state.params['chatId']!);
             },
           )
         ],

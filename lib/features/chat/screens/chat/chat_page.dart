@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/chat/applications/chat/chat_provider.dart';
+import 'package:dating_app/features/chat/models/chat/chat.dart';
 import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/date_formatter/date_to_string.dart';
@@ -33,13 +34,11 @@ class ChatPage extends ConsumerWidget {
         child: ListView.separated(
           itemCount: chatList.length,
           itemBuilder: (context, index) {
-            final chat = chatList[index].entity;
-            final partnerUserInfo = chat.membersInfo[userId]!;
+            final chatDoc = chatList[index];
             return _Chat(
-              imageUrl: partnerUserInfo.mainImage,
-              name: partnerUserInfo.name,
-              latestMessage: chat.latestMessage,
-              createdAt: dateToTimeString(chat.createdAt!),
+              userId: userId,
+              chatId: chatDoc.id,
+              chat: chatDoc.entity,
             );
           },
           separatorBuilder: (context, index) {
@@ -51,29 +50,29 @@ class ChatPage extends ConsumerWidget {
   }
 }
 
-class _Chat extends StatelessWidget {
+class _Chat extends ConsumerWidget {
   const _Chat({
-    required this.imageUrl,
-    required this.name,
-    required this.latestMessage,
-    required this.createdAt,
+    required this.userId,
+    required this.chatId,
+    required this.chat,
   });
 
-  final String imageUrl;
-  final String name;
-  final String latestMessage;
-  final String createdAt;
+  final String userId;
+  final String chatId;
+  final Chat chat;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final partnerUserInfo = ref.read(chatProvider).getPartnerInfo(chat);
+    final name = partnerUserInfo.name;
 
     return InkWell(
       onTap: () {
         context.goNamed(
           ChatMessagePage.routeName,
           params: {
-            'partnerName': name,
+            'chatId': chatId,
           },
         );
       },
@@ -92,7 +91,7 @@ class _Chat extends StatelessWidget {
             fit: BoxFit.cover,
             width: 60,
             height: 60,
-            imageUrl: imageUrl,
+            imageUrl: partnerUserInfo.mainImage,
           ),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -107,7 +106,7 @@ class _Chat extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: 12),
                 child: Text(
-                  latestMessage,
+                  chat.latestMessage,
                   style: textTheme.bodySmall!.copyWith(
                     color: Colors.black54,
                   ),
@@ -116,7 +115,7 @@ class _Chat extends StatelessWidget {
               ),
             ),
             Text(
-              createdAt,
+              dateToTimeString(chat.createdAt!),
               style: textTheme.bodySmall!.copyWith(
                 color: Colors.black54,
               ),
