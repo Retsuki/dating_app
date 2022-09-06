@@ -1,15 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/constants/collection_path.dart';
-import 'package:dating_app/features/chat/applications/chat_message/chat_message_provider.dart';
 import 'package:dating_app/features/chat/data/chat/chat_provider.dart';
+import 'package:dating_app/features/chat/models/chat/chat_message/chat_message.dart';
 import 'package:dating_app/utils/extensions/extension_firestore_collection.dart';
 import 'package:dating_app/utils/firestore_document/document.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final chatMessageStreamProvider = StreamProvider.autoDispose((ref) {
+final chatMessageStreamProvider = StreamProvider.autoDispose
+    .family<List<Document<ChatMessage>>, String>((ref, chatId) {
   return ref
-      .watch(chatMessageRefProvider)
+      .watch(chatMessageRefProvider(chatId))
       .where('is_deleted', isEqualTo: false)
-      .orderBy('created_at', descending: true)
+      .orderBy('created_at', descending: false)
       .snapshots()
       .map(
         (snap) => snap.docs
@@ -23,8 +25,8 @@ final chatMessageStreamProvider = StreamProvider.autoDispose((ref) {
       );
 });
 
-final chatMessageRefProvider = Provider((ref) {
-  final chatId = ref.watch(chatMessageStateNotifierProvider).chatId;
+final chatMessageRefProvider =
+    Provider.family<CollectionReference<ChatMessage>, String>((ref, chatId) {
   return ref
       .watch(chatRefProvider)
       .doc(chatId)
