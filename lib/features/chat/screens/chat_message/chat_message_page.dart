@@ -1,5 +1,6 @@
 import 'package:dating_app/components/app_back_button.dart';
 import 'package:dating_app/components/app_text_form_field.dart';
+import 'package:dating_app/components/un_focus_on_tap.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/chat/applications/chat/chat_provider.dart';
 import 'package:dating_app/features/chat/applications/chat_message/chat_message_provider.dart';
@@ -62,28 +63,30 @@ class ChatMessagePage extends HookConsumerWidget {
       appBar: AppBackButton(title: partnerInfo.name),
       body: chatMessageList == null
           ? const SizedBox.shrink()
-          : SafeArea(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      controller: chatMessageScrollController,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: chatMessageList.length,
-                      itemBuilder: (context, index) {
-                        final chatMessage = chatMessageList[index];
-                        final isUserMessage =
-                            userId == chatMessage.entity.senderId;
+          : UnfocusOnTap(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        controller: chatMessageScrollController,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        itemCount: chatMessageList.length,
+                        itemBuilder: (context, index) {
+                          final chatMessage = chatMessageList[index];
+                          final isUserMessage =
+                              userId == chatMessage.entity.senderId;
 
-                        return _Message(
-                          isUserMessage: isUserMessage,
-                          chatMessage: chatMessage.entity,
-                        );
-                      },
+                          return _Message(
+                            isUserMessage: isUserMessage,
+                            chatMessage: chatMessage.entity,
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  const _Sending(),
-                ],
+                    const _Sending(),
+                  ],
+                ),
               ),
             ),
     );
