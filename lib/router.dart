@@ -6,6 +6,7 @@ import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_c
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
 import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
+import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
@@ -86,7 +87,7 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    initialLocation: '/${ChatPage.routeName}',
+    initialLocation: '/${PerformingWithManagement.routeName}',
     // initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
@@ -100,6 +101,14 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
+      GoRoute(
+        path: '/${PerformingWithManagement.routeName}',
+        name: PerformingWithManagement.routeName,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const PerformingWithManagement(),
+        ),
+      ),
       GoRoute(
         path: '/${ChatPage.routeName}',
         name: ChatPage.routeName,
