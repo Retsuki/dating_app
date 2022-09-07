@@ -3,6 +3,8 @@ import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_c
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_email_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_code_page.dart';
+import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
+import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
@@ -84,7 +86,7 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    initialLocation: '/${ProfilePage.routeName}',
+    initialLocation: '/${ChatPage.routeName}',
     // initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
@@ -98,6 +100,20 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
+      GoRoute(
+        path: '/${ChatPage.routeName}',
+        name: ChatPage.routeName,
+        builder: (_, __) => const ChatPage(),
+        routes: [
+          GoRoute(
+            path: '${ChatMessagePage.routeName}/:chatId',
+            name: ChatMessagePage.routeName,
+            builder: (context, state) {
+              return ChatMessagePage(chatId: state.params['chatId']!);
+            },
+          )
+        ],
+      ),
       GoRoute(
         path: '/${ProfilePage.routeName}',
         name: ProfilePage.routeName,
