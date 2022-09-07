@@ -103,7 +103,10 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${ChatPage.routeName}',
         name: ChatPage.routeName,
-        builder: (_, __) => const ChatPage(),
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const ChatPage(),
+        ),
         routes: [
           GoRoute(
             path: '${ChatMessagePage.routeName}/:chatId',
@@ -117,7 +120,10 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${ProfilePage.routeName}',
         name: ProfilePage.routeName,
-        builder: (_, __) => const ProfilePage(),
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const ProfilePage(),
+        ),
         routes: [
           GoRoute(
             path: ProfileImagePage.routeName,
