@@ -81,9 +81,11 @@
   "withYoutube": "Youtubeで共演",
   "theManagementIsOneOfTheUsers": "運営もユーザーの一人なので!!",
   "datingWithManagement": "運営とデート",
-  "diningWithAllUsers": "ユーザーみんなでお食事",
+  "diningWithAllUsers": "ユーザーみんなでお食事会",
   "dinnerParty": "ディナーパーティー",
   "withYoutubeMessage": "Youtubeでお悩み相談ラジオをやっております。\n皆様のお悩みが少しでも\nラジオにて浄化されますように",
   "performanceRequest": "出演してみたい!!",
-  "datingWithManagementMessage": "本アプリは、運営が他のマッチングアプリで出会えなかったのが理由で作成されました。つまり、運営は当初から自身もユーザーとして利用することを考えていたことはここだけの秘密です。"
+  "datingWithManagementMessage": "本アプリは、運営が他のマッチングアプリで出会えなかったのが理由で作成されました。つまり、運営は当初から自身もユーザーとして利用することを考えていたことはここだけの秘密です。",
+  "diningWithAllUsersMessage": "月に１回抽選が当たった方々で\nお食事会をします!!\n複数人での出会いもありなのかなと思いまして",
+  "drawThisMonthLottery": "今月の抽選を行う"
 }
