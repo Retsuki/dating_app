@@ -1,7 +1,9 @@
 import 'package:dating_app/components/app_bottom_natigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
+import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class PerformingWithManagement extends StatelessWidget {
   const PerformingWithManagement({super.key});
@@ -11,9 +13,109 @@ class PerformingWithManagement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    const itemSpacer = 24.0;
     return Scaffold(
       appBar: AppDefaultAppBar(title: l10n.leisurelyManagement),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          children: [
+            Assets.images.performingWithManagement.main.image(scale: 4),
+            const Gap(itemSpacer),
+            Text(
+              l10n.leisurelyManagementMessage,
+              textAlign: TextAlign.center,
+            ),
+            const Gap(itemSpacer),
+            _Card(
+              icon: Icons.radio,
+              title: l10n.withYoutube,
+              subTitle: l10n.iDoRadioOnYoutube,
+            ),
+            const Gap(itemSpacer),
+            _Card(
+              icon: Icons.volunteer_activism,
+              title: l10n.datingWithManagement,
+              subTitle: l10n.theManagementIsOneOfTheUsers,
+            ),
+            const Gap(itemSpacer),
+            _Card(
+              icon: Icons.radio,
+              title: l10n.diningWithAllUsers,
+              subTitle: l10n.dinnerParty,
+            ),
+            const Gap(40)
+          ],
+        ),
+      ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+    );
+  }
+}
+
+class _Card extends StatelessWidget {
+  const _Card({
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
+
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {},
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          width: 380,
+          height: 128,
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black12),
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: colorScheme.primary.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Icon(
+                  icon,
+                  color: colorScheme.primary,
+                ),
+              ),
+              const Gap(20),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    subTitle,
+                    style: textTheme.bodySmall!.copyWith(
+                      color: Colors.black54,
+                    ),
+                  ),
+                  Text(title, style: textTheme.titleLarge),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
