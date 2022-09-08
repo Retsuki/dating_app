@@ -1,9 +1,11 @@
 import 'package:dating_app/components/app_bottom_natigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
+import 'package:dating_app/features/performing_with_management/screens/youtube/youtube_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class PerformingWithManagement extends StatelessWidget {
   const PerformingWithManagement({super.key});
@@ -31,18 +33,21 @@ class PerformingWithManagement extends StatelessWidget {
               icon: Icons.radio,
               title: l10n.withYoutube,
               subTitle: l10n.iDoRadioOnYoutube,
+              location: YoutubePage.routeName,
             ),
             const Gap(itemSpacer),
             _Card(
               icon: Icons.volunteer_activism,
               title: l10n.datingWithManagement,
               subTitle: l10n.theManagementIsOneOfTheUsers,
+              location: '',
             ),
             const Gap(itemSpacer),
             _Card(
               icon: Icons.radio,
               title: l10n.diningWithAllUsers,
               subTitle: l10n.dinnerParty,
+              location: '',
             ),
             const Gap(40)
           ],
@@ -58,11 +63,13 @@ class _Card extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subTitle,
+    required this.location,
   });
 
   final IconData icon;
   final String title;
   final String subTitle;
+  final String location;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +80,7 @@ class _Card extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: InkWell(
-        onTap: () {},
+        onTap: () => context.goNamed(location),
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

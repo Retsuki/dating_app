@@ -7,6 +7,7 @@ import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
 import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
+import 'package:dating_app/features/performing_with_management/screens/youtube/youtube_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
@@ -108,6 +109,13 @@ final routerProvider = Provider((ref) {
           key: state.pageKey,
           child: const PerformingWithManagement(),
         ),
+        routes: [
+          GoRoute(
+            path: YoutubePage.routeName,
+            name: YoutubePage.routeName,
+            builder: (_, __) => const YoutubePage(),
+          ),
+        ],
       ),
       GoRoute(
         path: '/${ChatPage.routeName}',
