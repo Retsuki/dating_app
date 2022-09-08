@@ -8,6 +8,7 @@ import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
+import 'package:dating_app/features/performing_with_management/screens/dining_with_all_users/dining_with_all_users_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/youtube/youtube_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
@@ -120,6 +121,11 @@ final routerProvider = Provider((ref) {
             path: DatingWithManagementPage.routeName,
             name: DatingWithManagementPage.routeName,
             builder: (_, __) => const DatingWithManagementPage(),
+          ),
+          GoRoute(
+            path: DiningWithAllUsersPage.routeName,
+            name: DiningWithAllUsersPage.routeName,
+            builder: (_, __) => const DiningWithAllUsersPage(),
           ),
         ],
       ),

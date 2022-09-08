@@ -1,6 +1,7 @@
 import 'package:dating_app/components/app_bottom_natigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
+import 'package:dating_app/features/performing_with_management/screens/dining_with_all_users/dining_with_all_users_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/youtube/youtube_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
@@ -48,7 +49,7 @@ class PerformingWithManagement extends StatelessWidget {
               icon: Icons.radio,
               title: l10n.diningWithAllUsers,
               subTitle: l10n.dinnerParty,
-              location: '',
+              location: DiningWithAllUsersPage.routeName,
             ),
             const Gap(40)
           ],
