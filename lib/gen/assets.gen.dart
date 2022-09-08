@@ -15,6 +15,8 @@ class $AssetsImagesGen {
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
+  $AssetsImagesPerformingWithManagementGen get performingWithManagement =>
+      const $AssetsImagesPerformingWithManagementGen();
   $AssetsImagesProfileGen get profile => const $AssetsImagesProfileGen();
   $AssetsImagesSetupGen get setup => const $AssetsImagesSetupGen();
   $AssetsImagesSignUpGen get signUp => const $AssetsImagesSignUpGen();
@@ -53,6 +55,14 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/image3.png
   AssetGenImage get image3 =>
       const AssetGenImage('assets/images/onboarding/image3.png');
+}
+
+class $AssetsImagesPerformingWithManagementGen {
+  const $AssetsImagesPerformingWithManagementGen();
+
+  /// File path: assets/images/performing_with_management/main.png
+  AssetGenImage get main =>
+      const AssetGenImage('assets/images/performing_with_management/main.png');
 }
 
 class $AssetsImagesProfileGen {

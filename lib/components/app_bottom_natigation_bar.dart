@@ -1,4 +1,5 @@
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
+import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -44,9 +45,11 @@ class AppBottomNavigationBar extends StatelessWidget {
             icon: Icons.local_shipping,
             location: '',
           ),
-          const _AppBottomNavigationBarItem(
+          _AppBottomNavigationBarItem(
             icon: Icons.accessibility_new,
-            location: '',
+            isActive:
+                router.location == '/${PerformingWithManagement.routeName}',
+            location: PerformingWithManagement.routeName,
           ),
           _AppBottomNavigationBarItem(
             icon: Icons.message,

@@ -74,5 +74,13 @@
   "emailConfirmationMessage": "アカウントへのアクセスを失わないように、メールを確認してください",
   "nickname": "ニックネーム",
   "invalidEmail": "無効なメールアドレスです",
-  "message": "メッセージ"
+  "message": "メッセージ",
+  "leisurelyManagement": "暇人な運営",
+  "leisurelyManagementMessage": "何かあったら言ってくれ！\n何かなくてもいいけど、、、\n一応運営だからさ✨",
+  "iDoRadioOnYoutube": "Youtubeでラジオやっている",
+  "withYoutube": "Youtubeで共演",
+  "theManagementIsOneOfTheUsers": "運営もユーザーの一人なので!!",
+  "datingWithManagement": "運営とデート",
+  "diningWithAllUsers": "ユーザーみんなでお食事",
+  "dinnerParty": "ディナーパーティー"
 }
