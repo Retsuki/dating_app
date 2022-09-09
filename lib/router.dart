@@ -17,6 +17,8 @@ import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart'
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/features/warry/screens/warry_office/warry_office_page.dart';
+import 'package:dating_app/features/warry/screens/warry_post/warry_post_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -104,6 +106,21 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
+      GoRoute(
+        path: '/${WarryOfficePage.routeName}',
+        name: WarryOfficePage.routeName,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const WarryOfficePage(),
+        ),
+        routes: [
+          GoRoute(
+            path: WarryPostPage.routeName,
+            name: WarryPostPage.routeName,
+            builder: (_, __) => const WarryPostPage(),
+          ),
+        ],
+      ),
       GoRoute(
         path: '/${PerformingWithManagement.routeName}',
         name: PerformingWithManagement.routeName,
