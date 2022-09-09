@@ -19,6 +19,8 @@ class AppTextFormField extends StatefulWidget {
     this.controller,
     this.autoFocus = true,
     this.contentPadding,
+    this.borderRadius = 100,
+    this.isDence = false,
   });
 
   final String labelText;
@@ -36,6 +38,8 @@ class AppTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final bool autoFocus;
   final EdgeInsetsGeometry? contentPadding;
+  final double borderRadius;
+  final bool? isDence;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -64,16 +68,17 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         color: widget.textColor,
       ),
       decoration: InputDecoration(
+        isDense: widget.isDence,
         labelText: widget.labelText,
         hintText: widget.hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
             color: widget.color ?? colorScheme.primary,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(color: colorScheme.error),
         ),
         contentPadding:
