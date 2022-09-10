@@ -1,7 +1,7 @@
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
 import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
-import 'package:dating_app/features/warry/screens/warry_office/warry_office_page.dart';
+import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

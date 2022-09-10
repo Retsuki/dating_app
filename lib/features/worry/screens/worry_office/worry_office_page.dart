@@ -1,7 +1,7 @@
 import 'package:dating_app/components/app_bottom_natigation_bar.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
-import 'package:dating_app/features/warry/screens/warry_post/warry_post_page.dart';
+import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';

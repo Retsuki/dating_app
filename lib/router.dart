@@ -17,8 +17,8 @@ import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart'
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
-import 'package:dating_app/features/warry/screens/warry_office/warry_office_page.dart';
-import 'package:dating_app/features/warry/screens/warry_post/warry_post_page.dart';
+import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
+import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
