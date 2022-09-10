@@ -17,6 +17,8 @@ import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart'
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
+import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -104,6 +106,21 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
+      GoRoute(
+        path: '/${WorryOfficePage.routeName}',
+        name: WorryOfficePage.routeName,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const WorryOfficePage(),
+        ),
+        routes: [
+          GoRoute(
+            path: WorryPostPage.routeName,
+            name: WorryPostPage.routeName,
+            builder: (_, __) => const WorryPostPage(),
+          ),
+        ],
+      ),
       GoRoute(
         path: '/${PerformingWithManagement.routeName}',
         name: PerformingWithManagement.routeName,
