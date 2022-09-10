@@ -44,8 +44,8 @@ class AppBottomNavigationBar extends StatelessWidget {
           ),
           _AppBottomNavigationBarItem(
             icon: Icons.local_shipping,
-            isActive: router.location == '/${WarryOfficePage.routeName}',
-            location: WarryOfficePage.routeName,
+            isActive: router.location == '/${WorryOfficePage.routeName}',
+            location: WorryOfficePage.routeName,
           ),
           _AppBottomNavigationBarItem(
             icon: Icons.accessibility_new,

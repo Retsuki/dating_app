@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class WarryOfficePage extends StatelessWidget {
-  const WarryOfficePage({super.key});
+class WorryOfficePage extends StatelessWidget {
+  const WorryOfficePage({super.key});
 
-  static const routeName = 'warry-office';
+  static const routeName = 'worry-office';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class WarryOfficePage extends StatelessWidget {
                       FilledButton(
                         text: l10n.letsWarryTalk,
                         onPressed: () =>
-                            context.goNamed(WarryPostPage.routeName),
+                            context.goNamed(WorryPostPage.routeName),
                       )
                     ],
                   ),

@@ -7,10 +7,10 @@ import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class WarryPostPage extends StatelessWidget {
-  const WarryPostPage({super.key});
+class WorryPostPage extends StatelessWidget {
+  const WorryPostPage({super.key});
 
-  static const routeName = 'warry-post';
+  static const routeName = 'worry-post';
 
   @override
   Widget build(BuildContext context) {

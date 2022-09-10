@@ -107,17 +107,17 @@ final routerProvider = Provider((ref) {
       ),
       setupRoute,
       GoRoute(
-        path: '/${WarryOfficePage.routeName}',
-        name: WarryOfficePage.routeName,
+        path: '/${WorryOfficePage.routeName}',
+        name: WorryOfficePage.routeName,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
-          child: const WarryOfficePage(),
+          child: const WorryOfficePage(),
         ),
         routes: [
           GoRoute(
-            path: WarryPostPage.routeName,
-            name: WarryPostPage.routeName,
-            builder: (_, __) => const WarryPostPage(),
+            path: WorryPostPage.routeName,
+            name: WorryPostPage.routeName,
+            builder: (_, __) => const WorryPostPage(),
           ),
         ],
       ),
