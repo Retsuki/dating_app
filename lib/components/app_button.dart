@@ -6,7 +6,7 @@ class FilledButton extends StatelessWidget {
   const FilledButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.minimumSize,
     this.primary,
     this.onPrimary,
@@ -14,7 +14,7 @@ class FilledButton extends StatelessWidget {
   });
 
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Size? minimumSize;
   final Color? primary;
   final Color? onPrimary;
