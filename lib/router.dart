@@ -17,6 +17,7 @@ import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart'
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page.dart';
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
 import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:flutter/foundation.dart';
@@ -92,8 +93,8 @@ final routerProvider = Provider((ref) {
   return GoRouter(
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    initialLocation: '/${PerformingWithManagement.routeName}',
-    // initialLocation: '/${OnboardingPage.routeName}',
+    // initialLocation: '/${WorryOfficePage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -114,6 +115,11 @@ final routerProvider = Provider((ref) {
           child: const WorryOfficePage(),
         ),
         routes: [
+          GoRoute(
+            path: WorryAnswerPage.routeName,
+            name: WorryAnswerPage.routeName,
+            builder: (_, __) => const WorryAnswerPage(),
+          ),
           GoRoute(
             path: WorryPostPage.routeName,
             name: WorryPostPage.routeName,

@@ -1,11 +1,17 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/firebase_options.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/router.dart';
 import 'package:dating_app/theme.dart';
 import 'package:dating_app/utils/app/package_info/package_info_provider.dart';
+import 'package:dating_app/utils/logger.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -16,6 +22,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // NOTE: envによってemulatorに接続するかを制御
+  if (const bool.fromEnvironment('USE_FIREBASE_EMULATOR')) {
+    await _configFirebaseAuth();
+    await _configFirebaseStorage();
+    _configFirebaseFirestore();
+  }
   final packageInfo = await PackageInfo.fromPlatform();
 
   runApp(
@@ -71,4 +83,41 @@ class App extends ConsumerWidget {
       routerDelegate: router.routerDelegate,
     );
   }
+}
+
+Future<void> _configFirebaseAuth() async {
+  const configHost = String.fromEnvironment('FIREBASE_EMULATOR_URL');
+  const configPort = int.fromEnvironment('AUTH_EMULATOR_PORT');
+
+  final defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  final host = configHost.isNotEmpty ? configHost : defaultHost;
+  const port = configPort != 0 ? configPort : 9099;
+  await FirebaseAuth.instance.useAuthEmulator(host, port);
+  logger.fine('Using Firebase Auth emulator on $host:$port');
+}
+
+Future<void> _configFirebaseStorage() async {
+  const configHost = String.fromEnvironment('FIREBASE_EMULATOR_URL');
+  const configPort = int.fromEnvironment('STORAGE_EMULATOR_PORT');
+
+  final defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  final host = configHost.isNotEmpty ? configHost : defaultHost;
+  const port = configPort != 0 ? configPort : 9199;
+  await FirebaseStorage.instance.useStorageEmulator(host, port);
+  logger.fine('Using Firebase Storage emulator on $host:$port');
+}
+
+void _configFirebaseFirestore() {
+  const configHost = String.fromEnvironment('FIREBASE_EMULATOR_URL');
+  const configPort = int.fromEnvironment('FIRESTORE_EMULATOR_PORT');
+
+  final defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  final host = configHost.isNotEmpty ? configHost : defaultHost;
+  const port = configPort != 0 ? configPort : 8080;
+  FirebaseFirestore.instance.settings = Settings(
+    host: '$host:$port',
+    sslEnabled: false,
+    persistenceEnabled: false,
+  );
+  logger.fine('Using Firebase Firestore emulator on $host:$port');
 }

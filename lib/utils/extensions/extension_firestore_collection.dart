@@ -5,6 +5,7 @@ import 'package:dating_app/features/chat/models/chat/chat_message/chat_message.d
 import 'package:dating_app/features/user/models/private_user/private_user.dart';
 import 'package:dating_app/features/user/models/readonly_user/readonly_user.dart';
 import 'package:dating_app/features/user/models/user/user.dart';
+import 'package:dating_app/features/worry/models/private_user_worry.dart';
 
 extension CollectionReferenceX<E> on CollectionReference<E> {
   CollectionReference<JsonMap> get raw =>
@@ -42,6 +43,14 @@ extension CollectionReferenceX<E> on CollectionReference<E> {
     return withConverter(
       fromFirestore: (snapshot, _) => ChatMessage.fromJson(snapshot.data()!),
       toFirestore: (chatMessage, _) => chatMessage.toJson(),
+    );
+  }
+
+  CollectionReference<PrivateUserWorry> withPrivateUserWorryConverter() {
+    return withConverter(
+      fromFirestore: (snapshot, _) =>
+          PrivateUserWorry.fromJson(snapshot.data()!),
+      toFirestore: (privateUserWorry, _) => privateUserWorry.toJson(),
     );
   }
 }

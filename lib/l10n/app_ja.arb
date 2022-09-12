@@ -96,5 +96,6 @@
   "sendToPost": "投函する",
   "thankYou": "ありがとう",
   "like": "いいね",
-  "maxText": "200文字以内"
+  "worryPostPlaceholder": "誰にも言えない悩みはここで吐いちゃおう",
+  "yourWorry": "あなたの悩み事"
 }
