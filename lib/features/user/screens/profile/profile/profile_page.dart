@@ -23,9 +23,6 @@ class ProfilePage extends ConsumerWidget {
     // TODO_R: profile_state_notifier的なものにまとめた方が良さそう、、、
     final userState = ref.watch(userStreamProvider).value;
     final user = userState?.data();
-    if (user == null) {
-      return const SizedBox.shrink();
-    }
 
     return Scaffold(
       appBar: AppDefaultAppBar(
@@ -38,21 +35,23 @@ class ProfilePage extends ConsumerWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              const ProfileImage(),
-              const Gap(12),
-              Text(user.nickName, style: textTheme.displaySmall),
-              const Gap(24),
-              const Divider(height: 0),
-              const ProfileItemList()
-            ],
-          ),
-        ),
-      ),
+      body: user == null
+          ? const SizedBox.shrink()
+          : SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
+                    const ProfileImage(),
+                    const Gap(12),
+                    Text(user.nickName, style: textTheme.displaySmall),
+                    const Gap(24),
+                    const Divider(height: 0),
+                    const ProfileItemList()
+                  ],
+                ),
+              ),
+            ),
       bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
