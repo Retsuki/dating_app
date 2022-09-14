@@ -53,6 +53,7 @@ class ProfilePage extends ConsumerWidget {
               ),
             ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+      extendBody: true,
     );
   }
 }

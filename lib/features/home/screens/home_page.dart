@@ -98,44 +98,43 @@ class HomePage extends StatelessWidget {
     final l10n = L10n.of(context);
     return Scaffold(
       appBar: AppDefaultAppBar(title: l10n.home),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              crossAxisCount: 2,
-              childAspectRatio: 180 / 244,
-            ),
-            itemCount: userList.length,
-            itemBuilder: (context, index) {
-              final user = userList[index];
-              return Material(
-                clipBehavior: Clip.antiAlias,
-                borderRadius: BorderRadius.circular(40),
-                child: Ink.image(
-                  fit: BoxFit.cover,
-                  height: 244,
-                  image: CachedNetworkImageProvider(
-                    user.mainImage!,
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      context.goNamed(
-                        UserDetailPage.routeName,
-                        params: {'userId': 'test'},
-                      );
-                    },
-                    child: _NameAndAge(user: user),
-                  ),
-                ),
-              );
-            },
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            crossAxisCount: 2,
+            childAspectRatio: 180 / 244,
           ),
+          itemCount: userList.length,
+          itemBuilder: (context, index) {
+            final user = userList[index];
+            return Material(
+              clipBehavior: Clip.antiAlias,
+              borderRadius: BorderRadius.circular(40),
+              child: Ink.image(
+                fit: BoxFit.cover,
+                height: 244,
+                image: CachedNetworkImageProvider(
+                  user.mainImage!,
+                ),
+                child: InkWell(
+                  onTap: () {
+                    context.goNamed(
+                      UserDetailPage.routeName,
+                      params: {'userId': 'test'},
+                    );
+                  },
+                  child: _NameAndAge(user: user),
+                ),
+              ),
+            );
+          },
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+      extendBody: true,
     );
   }
 }
