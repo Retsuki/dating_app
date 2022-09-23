@@ -98,5 +98,16 @@
   "like": "いいね",
   "worryPostPlaceholder": "誰にも言えない悩みはここで吐いちゃおう",
   "yourWorry": "あなたの悩み事",
-  "home": "ホーム"
+  "home": "ホーム",
+  "nickNameAndAge": "{name}, {age}",
+  "@nickNameAndAge": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "age": {
+        "type": "int"
+      }
+    }
+  }
 }
