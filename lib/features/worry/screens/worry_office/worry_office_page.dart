@@ -67,6 +67,7 @@ class WorryOfficePage extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+      extendBody: true,
     );
   }
 }

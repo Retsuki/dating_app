@@ -5,6 +5,8 @@ import 'package:dating_app/features/authentication/screens/sign_up/sign_up_phone
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_sms_code_page.dart';
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
 import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.dart';
+import 'package:dating_app/features/home/screens/home_page.dart';
+import 'package:dating_app/features/home/screens/user_detail/user_detail_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
@@ -94,7 +96,8 @@ final routerProvider = Provider((ref) {
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
     // initialLocation: '/${WorryOfficePage.routeName}',
-    initialLocation: '/${OnboardingPage.routeName}',
+    initialLocation: '/${HomePage.routeName}',
+    // initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
@@ -107,6 +110,23 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
+      GoRoute(
+        path: '/${HomePage.routeName}',
+        name: HomePage.routeName,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const HomePage(),
+        ),
+        routes: [
+          GoRoute(
+            path: '${UserDetailPage.routeName}/:userId',
+            name: UserDetailPage.routeName,
+            builder: (_, state) => UserDetailPage(
+              userId: state.params['userId']!,
+            ),
+          ),
+        ],
+      ),
       GoRoute(
         path: '/${WorryOfficePage.routeName}',
         name: WorryOfficePage.routeName,

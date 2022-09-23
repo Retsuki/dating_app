@@ -13,14 +13,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
+  await Future.wait([
+    // Firebase初期化
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
+    // 縦向き固定
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+    // ステータスバー、ナビゲーションバーを表示
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
+  ]);
 
   // NOTE: envによってemulatorに接続するかを制御
   if (const bool.fromEnvironment('USE_FIREBASE_EMULATOR')) {

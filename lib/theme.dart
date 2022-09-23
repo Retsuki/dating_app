@@ -4,6 +4,7 @@ ThemeData lightTheme() {
   const primary = Color(0xFFFF4D67);
   const secondary = Color(0xFFffb800);
   const surface = Colors.white;
+  const background = Colors.white;
   const appBlack = Colors.black;
   return ThemeData.from(
     colorScheme: const ColorScheme.light(
@@ -56,8 +57,14 @@ ThemeData lightTheme() {
       ),
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: background,
+      surfaceTintColor: background,
       elevation: 0,
+      // デフォルトではheadline6が使われるが、それを小さくしたので元の大きさ維持するように明示的に指定
+      titleTextStyle: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     textTheme: const TextTheme(
       // heading1

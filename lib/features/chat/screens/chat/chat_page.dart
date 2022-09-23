@@ -48,6 +48,7 @@ class ChatPage extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+      extendBody: true,
     );
   }
 }

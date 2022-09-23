@@ -20,42 +20,41 @@ class PerformingWithManagement extends StatelessWidget {
     const itemSpacer = 24.0;
     return Scaffold(
       appBar: AppDefaultAppBar(title: l10n.leisurelyManagement),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          children: [
-            Assets.images.performingWithManagement.main.image(scale: 4),
-            const Gap(itemSpacer),
-            Text(
-              l10n.leisurelyManagementMessage,
-              textAlign: TextAlign.center,
-            ),
-            const Gap(itemSpacer),
-            _Card(
-              icon: Icons.radio,
-              title: l10n.withYoutube,
-              subTitle: l10n.iDoRadioOnYoutube,
-              location: YoutubePage.routeName,
-            ),
-            const Gap(itemSpacer),
-            _Card(
-              icon: Icons.volunteer_activism,
-              title: l10n.datingWithManagement,
-              subTitle: l10n.theManagementIsOneOfTheUsers,
-              location: DatingWithManagementPage.routeName,
-            ),
-            const Gap(itemSpacer),
-            _Card(
-              icon: Icons.radio,
-              title: l10n.diningWithAllUsers,
-              subTitle: l10n.dinnerParty,
-              location: DiningWithAllUsersPage.routeName,
-            ),
-            const Gap(40)
-          ],
-        ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        children: [
+          Assets.images.performingWithManagement.main.image(scale: 4),
+          const Gap(itemSpacer),
+          Text(
+            l10n.leisurelyManagementMessage,
+            textAlign: TextAlign.center,
+          ),
+          const Gap(itemSpacer),
+          _Card(
+            icon: Icons.radio,
+            title: l10n.withYoutube,
+            subTitle: l10n.iDoRadioOnYoutube,
+            location: YoutubePage.routeName,
+          ),
+          const Gap(itemSpacer),
+          _Card(
+            icon: Icons.volunteer_activism,
+            title: l10n.datingWithManagement,
+            subTitle: l10n.theManagementIsOneOfTheUsers,
+            location: DatingWithManagementPage.routeName,
+          ),
+          const Gap(itemSpacer),
+          _Card(
+            icon: Icons.radio,
+            title: l10n.diningWithAllUsers,
+            subTitle: l10n.dinnerParty,
+            location: DiningWithAllUsersPage.routeName,
+          ),
+          const Gap(40)
+        ],
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
+      extendBody: true,
     );
   }
 }

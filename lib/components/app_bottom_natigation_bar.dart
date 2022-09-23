@@ -1,4 +1,5 @@
 import 'package:dating_app/features/chat/screens/chat/chat_page.dart';
+import 'package:dating_app/features/home/screens/home_page.dart';
 import 'package:dating_app/features/performing_with_management/performing_with_management_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
@@ -38,9 +39,10 @@ class AppBottomNavigationBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const _AppBottomNavigationBarItem(
+          _AppBottomNavigationBarItem(
             icon: Icons.home,
-            location: '',
+            isActive: router.location == '/${HomePage.routeName}',
+            location: HomePage.routeName,
           ),
           _AppBottomNavigationBarItem(
             icon: Icons.local_shipping,
