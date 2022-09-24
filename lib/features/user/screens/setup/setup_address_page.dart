@@ -8,7 +8,6 @@ import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/validators/setup/required_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -22,9 +21,11 @@ class SetupAddressPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
     final setupNotifier = ref.watch(setupStateNotifierProvider.notifier);
+    final prefecture = setupNotifier.prefectureTextController.text;
+    final city = setupNotifier.cityTextController.text;
 
     return Scaffold(
-      appBar: AppBackButton(title: l10n.address),
+      appBar: AppBackButton(title: '$prefecture $city'),
       body: UnfocusOnTap(
         child: Form(
           key: setupNotifier.setupFormKeys[SetupFormType.address],
@@ -33,38 +34,6 @@ class SetupAddressPage extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
               child: Column(
                 children: [
-                  AppTextFormField(
-                    labelText: l10n.zipcode,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(7),
-                    ],
-                    controller: setupNotifier.zipcodeTextController,
-                    validator: (value) => requiredFormValidator(
-                      value: value,
-                      message: l10n.somethingIsRequired(l10n.sei),
-                    ),
-                  ),
-                  const Gap(24),
-                  AppTextFormField(
-                    labelText: l10n.prefecture,
-                    controller: setupNotifier.prefectureTextController,
-                    validator: (value) => requiredFormValidator(
-                      value: value,
-                      message: l10n.somethingIsRequired(l10n.sei),
-                    ),
-                  ),
-                  const Gap(24),
-                  AppTextFormField(
-                    labelText: l10n.city,
-                    controller: setupNotifier.cityTextController,
-                    validator: (value) => requiredFormValidator(
-                      value: value,
-                      message: l10n.somethingIsRequired(l10n.sei),
-                    ),
-                  ),
-                  const Gap(24),
                   AppTextFormField(
                     labelText: l10n.address1,
                     controller: setupNotifier.streetTextController,
