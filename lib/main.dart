@@ -89,9 +89,7 @@ class App extends ConsumerWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       // GoRouter
-      routeInformationProvider: router.routeInformationProvider,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
+      routerConfig: router,
     );
   }
 }

@@ -131,7 +131,7 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${HomePage.routeName}',
         name: HomePage.routeName,
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
           key: state.pageKey,
           child: const HomePage(),
         ),
@@ -148,7 +148,7 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${WorryOfficePage.routeName}',
         name: WorryOfficePage.routeName,
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
           key: state.pageKey,
           child: const WorryOfficePage(),
         ),
@@ -168,7 +168,7 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${PerformingWithManagement.routeName}',
         name: PerformingWithManagement.routeName,
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
           key: state.pageKey,
           child: const PerformingWithManagement(),
         ),
@@ -193,7 +193,7 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${ChatPage.routeName}',
         name: ChatPage.routeName,
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
           key: state.pageKey,
           child: const ChatPage(),
         ),
@@ -210,7 +210,7 @@ final routerProvider = Provider((ref) {
       GoRoute(
         path: '/${ProfilePage.routeName}',
         name: ProfilePage.routeName,
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
           key: state.pageKey,
           child: const ProfilePage(),
         ),
