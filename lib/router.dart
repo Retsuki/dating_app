@@ -16,9 +16,11 @@ import 'package:dating_app/features/user/screens/profile/profile/profile_page.da
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_city_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_prefecture_page.dart';
 import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page.dart';
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
 import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
@@ -69,19 +71,33 @@ final routerProvider = Provider((ref) {
         builder: (_, __) => const SetupBirthdayPage(),
         routes: [
           GoRoute(
-            path: SetupAddressPage.routeName,
-            name: SetupAddressPage.routeName,
-            builder: (_, __) => const SetupAddressPage(),
+            path: SetupPrefecturePage.routeName,
+            name: SetupPrefecturePage.routeName,
+            builder: (context, _) => const SetupPrefecturePage(),
             routes: [
               GoRoute(
-                path: SetupGenderPage.routeName,
-                name: SetupGenderPage.routeName,
-                builder: (context, _) => const SetupGenderPage(),
+                path: SetupCityPage.routeName,
+                name: SetupCityPage.routeName,
+                builder: (context, _) => const SetupCityPage(),
                 routes: [
                   GoRoute(
-                    path: SetupCompletePage.routeName,
-                    name: SetupCompletePage.routeName,
-                    builder: (context, _) => const SetupCompletePage(),
+                    path: SetupAddressPage.routeName,
+                    name: SetupAddressPage.routeName,
+                    builder: (_, __) => const SetupAddressPage(),
+                    routes: [
+                      GoRoute(
+                        path: SetupGenderPage.routeName,
+                        name: SetupGenderPage.routeName,
+                        builder: (context, _) => const SetupGenderPage(),
+                        routes: [
+                          GoRoute(
+                            path: SetupCompletePage.routeName,
+                            name: SetupCompletePage.routeName,
+                            builder: (context, _) => const SetupCompletePage(),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -94,10 +110,12 @@ final routerProvider = Provider((ref) {
 
   return GoRouter(
     // initialLocation:
-    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
+    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupPrefecturePage.routeName}',
+    // initialLocation:
+    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupPrefecturePage.routeName}/${SetupCityPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
     // initialLocation: '/${WorryOfficePage.routeName}',
-    initialLocation: '/${HomePage.routeName}',
-    // initialLocation: '/${OnboardingPage.routeName}',
+    // initialLocation: '/${HomePage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(

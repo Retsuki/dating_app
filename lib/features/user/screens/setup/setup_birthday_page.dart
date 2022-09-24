@@ -4,7 +4,7 @@ import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/components/app_text_form_field.dart';
 import 'package:dating_app/components/un_focus_on_tap.dart';
 import 'package:dating_app/features/user/applications/setup/setup_state_notifier.dart';
-import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_prefecture_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/validators/setup/birthday_validator.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,7 @@ class SetupBirthdayPage extends ConsumerWidget {
           onPressed: () async {
             if (await setupNotifier
                 .saveToFirestoreIfValid(SetupFormType.birthday)) {
-              context.goNamed(SetupAddressPage.routeName);
+              context.goNamed(SetupPrefecturePage.routeName);
             }
           },
         ),
