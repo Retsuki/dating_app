@@ -29,7 +29,7 @@ class SetupNamePage extends ConsumerWidget {
           key: setupNotifier.setupFormKeys[SetupFormType.name],
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
               child: Column(
                 children: [
                   AppTextFormField(
