@@ -2,6 +2,7 @@ import 'package:dating_app/components/app_back_button.dart';
 import 'package:dating_app/features/area/data/area_repository.dart';
 import 'package:dating_app/features/area/models/city.dart';
 import 'package:dating_app/features/user/applications/setup/setup_state_notifier.dart';
+import 'package:dating_app/features/user/screens/setup/components/setup_select.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -17,8 +18,6 @@ class SetupCityPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     final setupNotifier = ref.watch(setupStateNotifierProvider.notifier);
     final cities = useState<List<City>?>([]);
     useEffect(
@@ -40,35 +39,18 @@ class SetupCityPage extends HookConsumerWidget {
       appBar: AppBackButton(title: setupNotifier.prefectureTextController.text),
       body: cities.value == null
           ? null
-          : ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+          : SetupSelect(
               itemCount: cities.value!.length,
               itemBuilder: (context, index) {
                 final city = cities.value![index];
                 final cityName = city.name;
-                return InkWell(
+                return SetupSelectInkWell(
                   onTap: () async {
                     setupNotifier.cityTextController.text = cityName;
                     await setupNotifier.saveToFirestore();
                     context.goNamed(SetupAddressPage.routeName);
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 32,
-                    ),
-                    child: Text(
-                      cityName,
-                      style: textTheme.headlineMedium!.copyWith(
-                        color: Colors.black26,
-                      ),
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 4,
+                  text: cityName,
                 );
               },
             ),
