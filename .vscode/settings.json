@@ -1,3 +1,4 @@
 {
-  "eslint.workingDirectories": ["./backend"]
+  "eslint.workingDirectories": ["./backend"],
+  "cSpell.words": ["Firestore", "riverpod", "zipcode"]
 }

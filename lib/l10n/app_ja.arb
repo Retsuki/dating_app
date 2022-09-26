@@ -35,6 +35,16 @@
   "male": "男性",
   "female": "女性",
   "other": "その他",
+  "height": "身長",
+  "cm": "{height}cm",
+  "@cm": {
+    "placeholders": {
+      "height": {
+        "type": "int"
+      }
+    }
+  },
+  "occupation": "職業",
   "addPhotos": "写真を追加",
   "addPhotosMessage": "最高の写真を追加して、毎日のマッチを増やしましょう",
   "captureFromCamera": "カメラで撮影",
