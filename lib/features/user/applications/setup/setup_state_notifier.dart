@@ -35,6 +35,8 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
     buildingTextController.text = privateUserDoc?.data()?.building ?? '';
     genderTextController.text =
         userDoc?.data()?.gender == null ? '' : userDoc!.data()!.gender.toStr();
+    heightTextController.text = userDoc?.data()?.height.toString() ?? '';
+    occupationTextController.text = userDoc?.data()?.occupation ?? '';
   }
 
   // Setup各ページのform key
@@ -57,6 +59,8 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
   final streetTextController = TextEditingController();
   final buildingTextController = TextEditingController();
   final genderTextController = TextEditingController();
+  final heightTextController = TextEditingController();
+  final occupationTextController = TextEditingController();
 
   Future<bool> saveToFirestoreIfValid(SetupFormType formType) async {
     if (setupFormKeys[formType]!.currentState!.validate()) {
@@ -78,6 +82,8 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
       gender: genderTextController.text.isNullOrEmpty
           ? UserGender.other
           : toUserGender(genderTextController.text),
+      height: int.parse(heightTextController.text),
+      occupation: occupationTextController.text,
     );
     await _read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
@@ -119,6 +125,8 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
       streetTextController,
       buildingTextController,
       genderTextController,
+      heightTextController,
+      occupationTextController,
     ]) {
       tc.dispose();
     }

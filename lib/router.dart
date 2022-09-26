@@ -19,7 +19,9 @@ import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart'
 import 'package:dating_app/features/user/screens/setup/setup_city_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_gender_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_height_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_name_page.dart';
+import 'package:dating_app/features/user/screens/setup/setup_occupation_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_prefecture_page.dart';
 import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page.dart';
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
@@ -91,9 +93,25 @@ final routerProvider = Provider((ref) {
                         builder: (context, _) => const SetupGenderPage(),
                         routes: [
                           GoRoute(
-                            path: SetupCompletePage.routeName,
-                            name: SetupCompletePage.routeName,
-                            builder: (context, _) => const SetupCompletePage(),
+                            path: SetupHeightPage.routeName,
+                            name: SetupHeightPage.routeName,
+                            builder: (context, _) => const SetupHeightPage(),
+                            routes: [
+                              GoRoute(
+                                path: SetupOccupationPage.routeName,
+                                name: SetupOccupationPage.routeName,
+                                builder: (context, _) =>
+                                    const SetupOccupationPage(),
+                                routes: [
+                                  GoRoute(
+                                    path: SetupCompletePage.routeName,
+                                    name: SetupCompletePage.routeName,
+                                    builder: (context, _) =>
+                                        const SetupCompletePage(),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
