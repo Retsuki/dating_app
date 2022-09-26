@@ -21,6 +21,8 @@ class User with _$User {
     String? subImage1,
     String? subImage2,
     String? subImage3,
+    @Default(0) int height,
+    @Default('') String occupation,
   }) = _User;
 
   factory User.fromJson(JsonMap json) => _$UserFromJson(json);

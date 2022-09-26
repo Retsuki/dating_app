@@ -26,6 +26,8 @@ _$_User _$$_UserFromJson(Map json) => _$_User(
       subImage1: json['sub_image1'] as String?,
       subImage2: json['sub_image2'] as String?,
       subImage3: json['sub_image3'] as String?,
+      height: json['height'] as int? ?? 0,
+      occupation: json['occupation'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -43,6 +45,8 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'sub_image1': instance.subImage1,
       'sub_image2': instance.subImage2,
       'sub_image3': instance.subImage3,
+      'height': instance.height,
+      'occupation': instance.occupation,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

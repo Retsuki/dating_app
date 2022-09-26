@@ -35,6 +35,8 @@ mixin _$User {
   String? get subImage1 => throw _privateConstructorUsedError;
   String? get subImage2 => throw _privateConstructorUsedError;
   String? get subImage3 => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  String get occupation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +59,9 @@ abstract class $UserCopyWith<$Res> {
       String? mainImage,
       String? subImage1,
       String? subImage2,
-      String? subImage3});
+      String? subImage3,
+      int height,
+      String occupation});
 }
 
 /// @nodoc
@@ -82,6 +86,8 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
     Object? subImage3 = freezed,
+    Object? height = freezed,
+    Object? occupation = freezed,
   }) {
     return _then(_value.copyWith(
       createdAt: createdAt == freezed
@@ -132,6 +138,14 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.subImage3
           : subImage3 // ignore: cast_nullable_to_non_nullable
               as String?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      occupation: occupation == freezed
+          ? _value.occupation
+          : occupation // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -153,7 +167,9 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? mainImage,
       String? subImage1,
       String? subImage2,
-      String? subImage3});
+      String? subImage3,
+      int height,
+      String occupation});
 }
 
 /// @nodoc
@@ -179,6 +195,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
     Object? subImage3 = freezed,
+    Object? height = freezed,
+    Object? occupation = freezed,
   }) {
     return _then(_$_User(
       createdAt: createdAt == freezed
@@ -229,6 +247,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.subImage3
           : subImage3 // ignore: cast_nullable_to_non_nullable
               as String?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      occupation: occupation == freezed
+          ? _value.occupation
+          : occupation // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -248,7 +274,9 @@ class _$_User implements _User {
       this.mainImage,
       this.subImage1,
       this.subImage2,
-      this.subImage3})
+      this.subImage3,
+      this.height = 0,
+      this.occupation = ''})
       : _interests = interests;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -291,10 +319,16 @@ class _$_User implements _User {
   final String? subImage2;
   @override
   final String? subImage3;
+  @override
+  @JsonKey()
+  final int height;
+  @override
+  @JsonKey()
+  final String occupation;
 
   @override
   String toString() {
-    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, prefecture: $prefecture, isOnline: $isOnline, gender: $gender, interests: $interests, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3)';
+    return 'User(createdAt: $createdAt, updatedAt: $updatedAt, birthday: $birthday, nickName: $nickName, prefecture: $prefecture, isOnline: $isOnline, gender: $gender, interests: $interests, mainImage: $mainImage, subImage1: $subImage1, subImage2: $subImage2, subImage3: $subImage3, height: $height, occupation: $occupation)';
   }
 
   @override
@@ -315,7 +349,10 @@ class _$_User implements _User {
             const DeepCollectionEquality().equals(other.mainImage, mainImage) &&
             const DeepCollectionEquality().equals(other.subImage1, subImage1) &&
             const DeepCollectionEquality().equals(other.subImage2, subImage2) &&
-            const DeepCollectionEquality().equals(other.subImage3, subImage3));
+            const DeepCollectionEquality().equals(other.subImage3, subImage3) &&
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality()
+                .equals(other.occupation, occupation));
   }
 
   @JsonKey(ignore: true)
@@ -333,7 +370,9 @@ class _$_User implements _User {
       const DeepCollectionEquality().hash(mainImage),
       const DeepCollectionEquality().hash(subImage1),
       const DeepCollectionEquality().hash(subImage2),
-      const DeepCollectionEquality().hash(subImage3));
+      const DeepCollectionEquality().hash(subImage3),
+      const DeepCollectionEquality().hash(height),
+      const DeepCollectionEquality().hash(occupation));
 
   @JsonKey(ignore: true)
   @override
@@ -361,7 +400,9 @@ abstract class _User implements User {
       final String? mainImage,
       final String? subImage1,
       final String? subImage2,
-      final String? subImage3}) = _$_User;
+      final String? subImage3,
+      final int height,
+      final String occupation}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -392,6 +433,10 @@ abstract class _User implements User {
   String? get subImage2;
   @override
   String? get subImage3;
+  @override
+  int get height;
+  @override
+  String get occupation;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
