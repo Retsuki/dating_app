@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dating_app/components/app_bottom_natigation_bar.dart';
+import 'package:dating_app/components/app_bottom_navigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/home/screens/user_detail/user_detail_page.dart';
 import 'package:dating_app/features/user/models/user/user.dart';

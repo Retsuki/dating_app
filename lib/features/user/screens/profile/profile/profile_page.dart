@@ -1,4 +1,4 @@
-import 'package:dating_app/components/app_bottom_natigation_bar.dart';
+import 'package:dating_app/components/app_bottom_navigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/user/data/user_provider.dart';
 import 'package:dating_app/features/user/screens/profile/profile/components/profile_image.dart';

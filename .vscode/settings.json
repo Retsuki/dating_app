@@ -1,4 +1,4 @@
 {
   "eslint.workingDirectories": ["./backend"],
-  "cSpell.words": ["Firestore", "riverpod", "zipcode"]
+  "cSpell.words": ["autofocus", "Firestore", "riverpod", "Unfocus", "zipcode"]
 }

@@ -1,4 +1,4 @@
-import 'package:dating_app/components/app_bottom_natigation_bar.dart';
+import 'package:dating_app/components/app_bottom_navigation_bar.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
 import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page.dart';
@@ -21,7 +21,7 @@ class WorryOfficePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppDefaultAppBar(
-        title: l10n.warryPostOffice,
+        title: l10n.worryPostOffice,
         actions: <Widget>[
           AppBarAction(
             icon: Icons.email,
@@ -49,12 +49,12 @@ class WorryOfficePage extends ConsumerWidget {
                           .image(scale: 4),
                       const Gap(24),
                       Text(
-                        l10n.warryPostDescription,
+                        l10n.worryPostDescription,
                         textAlign: TextAlign.center,
                       ),
                       const Gap(64),
                       FilledButton(
-                        text: l10n.letsWarryTalk,
+                        text: l10n.letsWorryTalk,
                         onPressed: () =>
                             context.goNamed(WorryPostPage.routeName),
                       )

@@ -23,7 +23,7 @@ class WorryPostPage extends ConsumerWidget {
     final worryPostNotifier =
         ref.watch(worryPostStateNotifierProvider.notifier);
     return Scaffold(
-      appBar: AppBackButton(title: l10n.warryPost),
+      appBar: AppBackButton(title: l10n.worryPost),
       body: UnfocusOnTap(
         child: SafeArea(
           child: Padding(
@@ -40,7 +40,7 @@ class WorryPostPage extends ConsumerWidget {
                     maxLines: 10,
                     borderRadius: 20,
                     autoFocus: false,
-                    isDence: true,
+                    isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
                       vertical: 24,
                       horizontal: 24,
