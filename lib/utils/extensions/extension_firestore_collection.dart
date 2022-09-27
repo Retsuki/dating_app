@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/constants/constant_json.dart';
 import 'package:dating_app/features/chat/models/chat/chat.dart';
 import 'package:dating_app/features/chat/models/chat/chat_message/chat_message.dart';
+import 'package:dating_app/features/interest/models/master_interest.dart';
 import 'package:dating_app/features/occupation/models/master_occupation.dart';
 import 'package:dating_app/features/user/models/private_user/private_user.dart';
 import 'package:dating_app/features/user/models/readonly_user/readonly_user.dart';
@@ -60,6 +61,13 @@ extension CollectionReferenceX<E> on CollectionReference<E> {
       fromFirestore: (snapshot, _) =>
           MasterOccupation.fromJson(snapshot.data()!),
       toFirestore: (masterOccupation, _) => masterOccupation.toJson(),
+    );
+  }
+
+  CollectionReference<MasterInterest> withMasterInterestConverter() {
+    return withConverter(
+      fromFirestore: (snapshot, _) => MasterInterest.fromJson(snapshot.data()!),
+      toFirestore: (masterInterest, _) => masterInterest.toJson(),
     );
   }
 }
