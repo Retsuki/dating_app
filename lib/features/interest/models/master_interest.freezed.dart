@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'interest.dart';
+part of 'master_interest.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Interest _$InterestFromJson(Map<String, dynamic> json) {
-  return _Interest.fromJson(json);
+MasterInterest _$MasterInterestFromJson(Map<String, dynamic> json) {
+  return _MasterInterest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Interest {
+mixin _$MasterInterest {
   @DateTimeTimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   @DateTimeTimestampConverter()
@@ -29,14 +29,15 @@ mixin _$Interest {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InterestCopyWith<Interest> get copyWith =>
+  $MasterInterestCopyWith<MasterInterest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InterestCopyWith<$Res> {
-  factory $InterestCopyWith(Interest value, $Res Function(Interest) then) =
-      _$InterestCopyWithImpl<$Res>;
+abstract class $MasterInterestCopyWith<$Res> {
+  factory $MasterInterestCopyWith(
+          MasterInterest value, $Res Function(MasterInterest) then) =
+      _$MasterInterestCopyWithImpl<$Res>;
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -45,12 +46,13 @@ abstract class $InterestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InterestCopyWithImpl<$Res> implements $InterestCopyWith<$Res> {
-  _$InterestCopyWithImpl(this._value, this._then);
+class _$MasterInterestCopyWithImpl<$Res>
+    implements $MasterInterestCopyWith<$Res> {
+  _$MasterInterestCopyWithImpl(this._value, this._then);
 
-  final Interest _value;
+  final MasterInterest _value;
   // ignore: unused_field
-  final $Res Function(Interest) _then;
+  final $Res Function(MasterInterest) _then;
 
   @override
   $Res call({
@@ -81,10 +83,11 @@ class _$InterestCopyWithImpl<$Res> implements $InterestCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_InterestCopyWith<$Res> implements $InterestCopyWith<$Res> {
-  factory _$$_InterestCopyWith(
-          _$_Interest value, $Res Function(_$_Interest) then) =
-      __$$_InterestCopyWithImpl<$Res>;
+abstract class _$$_MasterInterestCopyWith<$Res>
+    implements $MasterInterestCopyWith<$Res> {
+  factory _$$_MasterInterestCopyWith(
+          _$_MasterInterest value, $Res Function(_$_MasterInterest) then) =
+      __$$_MasterInterestCopyWithImpl<$Res>;
   @override
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
@@ -94,14 +97,15 @@ abstract class _$$_InterestCopyWith<$Res> implements $InterestCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InterestCopyWithImpl<$Res> extends _$InterestCopyWithImpl<$Res>
-    implements _$$_InterestCopyWith<$Res> {
-  __$$_InterestCopyWithImpl(
-      _$_Interest _value, $Res Function(_$_Interest) _then)
-      : super(_value, (v) => _then(v as _$_Interest));
+class __$$_MasterInterestCopyWithImpl<$Res>
+    extends _$MasterInterestCopyWithImpl<$Res>
+    implements _$$_MasterInterestCopyWith<$Res> {
+  __$$_MasterInterestCopyWithImpl(
+      _$_MasterInterest _value, $Res Function(_$_MasterInterest) _then)
+      : super(_value, (v) => _then(v as _$_MasterInterest));
 
   @override
-  _$_Interest get _value => super._value as _$_Interest;
+  _$_MasterInterest get _value => super._value as _$_MasterInterest;
 
   @override
   $Res call({
@@ -110,7 +114,7 @@ class __$$_InterestCopyWithImpl<$Res> extends _$InterestCopyWithImpl<$Res>
     Object? name = freezed,
     Object? isShow = freezed,
   }) {
-    return _then(_$_Interest(
+    return _then(_$_MasterInterest(
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -133,15 +137,15 @@ class __$$_InterestCopyWithImpl<$Res> extends _$InterestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Interest implements _Interest {
-  const _$_Interest(
+class _$_MasterInterest implements _MasterInterest {
+  const _$_MasterInterest(
       {@DateTimeTimestampConverter() required this.createdAt,
       @DateTimeTimestampConverter() required this.updatedAt,
       required this.name,
       required this.isShow});
 
-  factory _$_Interest.fromJson(Map<String, dynamic> json) =>
-      _$$_InterestFromJson(json);
+  factory _$_MasterInterest.fromJson(Map<String, dynamic> json) =>
+      _$$_MasterInterestFromJson(json);
 
   @override
   @DateTimeTimestampConverter()
@@ -156,14 +160,14 @@ class _$_Interest implements _Interest {
 
   @override
   String toString() {
-    return 'Interest(createdAt: $createdAt, updatedAt: $updatedAt, name: $name, isShow: $isShow)';
+    return 'MasterInterest(createdAt: $createdAt, updatedAt: $updatedAt, name: $name, isShow: $isShow)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Interest &&
+            other is _$_MasterInterest &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.name, name) &&
@@ -181,25 +185,26 @@ class _$_Interest implements _Interest {
 
   @JsonKey(ignore: true)
   @override
-  _$$_InterestCopyWith<_$_Interest> get copyWith =>
-      __$$_InterestCopyWithImpl<_$_Interest>(this, _$identity);
+  _$$_MasterInterestCopyWith<_$_MasterInterest> get copyWith =>
+      __$$_MasterInterestCopyWithImpl<_$_MasterInterest>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InterestToJson(
+    return _$$_MasterInterestToJson(
       this,
     );
   }
 }
 
-abstract class _Interest implements Interest {
-  const factory _Interest(
+abstract class _MasterInterest implements MasterInterest {
+  const factory _MasterInterest(
       {@DateTimeTimestampConverter() required final DateTime createdAt,
       @DateTimeTimestampConverter() required final DateTime updatedAt,
       required final String name,
-      required final bool isShow}) = _$_Interest;
+      required final bool isShow}) = _$_MasterInterest;
 
-  factory _Interest.fromJson(Map<String, dynamic> json) = _$_Interest.fromJson;
+  factory _MasterInterest.fromJson(Map<String, dynamic> json) =
+      _$_MasterInterest.fromJson;
 
   @override
   @DateTimeTimestampConverter()
@@ -213,6 +218,6 @@ abstract class _Interest implements Interest {
   bool get isShow;
   @override
   @JsonKey(ignore: true)
-  _$$_InterestCopyWith<_$_Interest> get copyWith =>
+  _$$_MasterInterestCopyWith<_$_MasterInterest> get copyWith =>
       throw _privateConstructorUsedError;
 }
