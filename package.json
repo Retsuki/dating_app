@@ -1,0 +1,13 @@
+{
+  "name": "dating_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Retsuki/dating_app.git",
+  "author": "Retsuki <retu1118@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "flutter:feature": "hygen feature_flutter new prompt",
+    "api:feature": "hygen feature_api new prompt",
+    "api:collection": "hygen collection new prompt"
+  }
+}
