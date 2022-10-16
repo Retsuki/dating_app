@@ -4,12 +4,13 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start",
+    "serve": "npm run build && firebase emulators:start --inspect-functions --import=./app_firebase_emulator_data --export-on-exit",
     "serve:functions": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "export": "export GOOGLE_APPLICATION_CREDENTIALS=$HOME/private/dating_app/backend/serviceAccountKey.json"
   },
   "engines": {
     "node": "16"
