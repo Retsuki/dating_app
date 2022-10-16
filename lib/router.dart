@@ -143,8 +143,8 @@ final routerProvider = Provider((ref) {
     // initialLocation:
     //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupPrefecturePage.routeName}/${SetupCityPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
     // initialLocation: '/${WorryOfficePage.routeName}',
-    initialLocation: '/${OsakeItemsPage.routeName}',
-    // initialLocation: '/${OnboardingPage.routeName}',
+    // initialLocation: '/${OsakeItemsPage.routeName}',
+    initialLocation: '/${OnboardingPage.routeName}',
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
