@@ -1,16 +1,36 @@
-# dating_app
+# 仕様
 
-A new Flutter project.
+金曜・土曜日だけ開催
 
-## Getting Started
+電話ができる
 
-This project is a starting point for a Flutter application.
+話のテーマがある。（仕事の愚痴・異性との話・最近あったやばい話）
 
-A few resources to get you started if this is your first Flutter project:
+電話相手（男性・女性構わず）
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1 本 150 円 \* 5 = 750
+手数料 = 250
+1 アイテム = 1000
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+メッセージ機能 = 1000
+
+お酒の手数料 + メッセージ機能 = 1250
+
+24 歳 女性 仕事順調 社内・大学時代の友達とリモートで飲んだりする そろそろ恋がしてみたい 恋について友達と話したりする マッチングアプリは微妙もしくは経験したがいい人がいない マッチングアプリは高い
+月額 3000 円は高い １ヶ月程度であればやってみたい メッセージが面倒くさい　ナンパされたい 一人だと怖い 友達となら OK お酒の力を借りたい 外出は面倒くさい
+
+リモート合コン
+
+シチュエーションとしては、金曜日・土曜日に夜が空いている女性をターゲットにする。男性でもいいけど。そもそも女性がいないと成り立たないので。アプリを起動するとお酒一覧画面が出てくる。お酒セットを選択して購入へ進む。購入方法は apple pay とクレジットカード支払いの２つがある。購入後 1 週間以内に届く（土曜日がベスト）。
+お酒が届いたら、飲む人数を決める。今回は４人。女性二人、男性二人。次に同じ二人一組の男性を選ぶ。日程候補を選ぶ。向こうから OK が来たら予約完了。
+当日は 19 時から 25 時までであればいつでも通話可能。通話は１度きりで、通話時間は１時間。
+飲み友候補に入れるか選択
+次回の飲み会を決める
+
+## MVP
+
+メルカリで QR コード付きのお酒を販売
+
+1. QR コードを読み取ってアプリダウンロードしてもらう
+2. アプリダウンロード後、もう１つの QR コードを読み取ってもらう
+3. 予約する

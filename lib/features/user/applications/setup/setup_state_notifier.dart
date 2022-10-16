@@ -10,12 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final setupStateNotifierProvider =
-    StateNotifierProvider<SetupStateNotifier, SetupState>((ref) {
+    StateNotifierProvider<SetupStateNotifier, List<String>>((ref) {
   return SetupStateNotifier(ref.read);
 });
 
-class SetupStateNotifier extends StateNotifier<SetupState> {
-  SetupStateNotifier(this._read) : super(SetupState()) {
+class SetupStateNotifier extends StateNotifier<List<String>> {
+  SetupStateNotifier(this._read) : super([]) {
     initUser();
   }
   final Reader _read;
@@ -35,7 +35,7 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
     buildingTextController.text = privateUserDoc?.data()?.building ?? '';
     genderTextController.text =
         userDoc?.data()?.gender == null ? '' : userDoc!.data()!.gender.toStr();
-    heightTextController.text = userDoc?.data()?.height.toString() ?? '';
+    heightTextController.text = userDoc?.data()?.height.toString() ?? '0';
     occupationTextController.text = userDoc?.data()?.occupation ?? '';
   }
 
@@ -113,6 +113,17 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
     logger.fine('user saved setup data');
   }
 
+  void add(String interest) {
+    state = [...state, interest];
+  }
+
+  void remove(String interest) {
+    state = [
+      for (final stateInterest in state)
+        if (stateInterest != interest) stateInterest,
+    ];
+  }
+
   @override
   void dispose() {
     for (final tc in [
@@ -134,8 +145,6 @@ class SetupStateNotifier extends StateNotifier<SetupState> {
     super.dispose();
   }
 }
-
-class SetupState {}
 
 enum SetupFormType {
   name,
