@@ -9,7 +9,8 @@ import {
 } from '../../../utils/app/middleware/middleware'
 import { appSendError } from '../../../utils/error/error'
 
-import { CompleteSetupParams, userService } from './user.service'
+import { CompleteSetupParams } from './user.schema'
+import { userService } from './user.service'
 
 const app = express()
 app.use([appMiddleware.checkMethod('PUT')])

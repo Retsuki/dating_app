@@ -4,10 +4,7 @@ import { ColRef } from '../../../utils/app/firestore'
 import { Logger } from '../../../utils/app/logger'
 import { HTTP500Error } from '../../../utils/error/error'
 
-export const CompleteSetupParams = z.object({
-  userId: z.string(),
-})
-
+import { CompleteSetupParams } from './user.schema'
 /**
  * 「ユーザー」機能固有のサービス（constant + module + repositoryを合わせた処理）
  */
