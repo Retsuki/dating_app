@@ -8,6 +8,12 @@
   "scripts": {
     "flutter:feature": "hygen feature_flutter new prompt",
     "api:feature": "hygen feature_api new prompt",
-    "api:collection": "hygen collection new prompt"
-  }
+    "api:collection": "hygen collection new prompt",
+    "build": "yarn workspaces run build",
+    "serve": "yarn build && firebase emulators:start --inspect-functions --import=./app_firebase_emulator_data --export-on-exit"
+  },
+  "private": true,
+  "workspaces": [
+    "dating_app_api"
+  ]
 }

@@ -51,4 +51,4 @@ app.*.map.json
 **/l10n/*.dart
 
 # node_modules
-/backend/node_modules
+node_modules/
