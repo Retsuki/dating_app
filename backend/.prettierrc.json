@@ -11,7 +11,7 @@
 
   "overrides": [
     {
-      "files": "firestore.ts",
+      "files": ["error", "firestore.ts"],
       "options": {
         "printWidth": 300
       }
