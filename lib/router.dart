@@ -1,3 +1,4 @@
+import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_code_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_up/sign_up_email_page.dart';
@@ -15,6 +16,7 @@ import 'package:dating_app/features/performing_with_management/performing_with_m
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dining_with_all_users/dining_with_all_users_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/youtube/youtube_page.dart';
+import 'package:dating_app/features/user/applications/setup/setup_state_notifier.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
@@ -30,6 +32,7 @@ import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
 import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -138,15 +141,35 @@ final routerProvider = Provider((ref) {
   );
 
   return GoRouter(
-    // initialLocation:
-    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupPrefecturePage.routeName}',
-    // initialLocation:
-    //     '/${SetupNamePage.routeName}/${SetupBirthdayPage.routeName}/${SetupPrefecturePage.routeName}/${SetupCityPage.routeName}/${SetupAddressPage.routeName}/${SetupGenderPage.routeName}/${SetupCompletePage.routeName}',
-    // initialLocation: '/${WorryOfficePage.routeName}',
-    // initialLocation: '/${OsakeItemsPage.routeName}',
-    initialLocation: '/${OnboardingPage.routeName}',
+    refreshListenable: _RouterNotifier(ref),
     debugLogDiagnostics: kDebugMode,
+    redirect: (context, state) {
+      final isRoot = state.subloc == '/';
+      final isSignedIn = ref.read(isSignedInProvider).value;
+      final isCompletedSetup = ref.read(isCompletedSetupProvider).value;
+
+      if (!isRoot || isSignedIn == null || isCompletedSetup == null) {
+        return null;
+      }
+
+      // サインインしているか
+      if (!isSignedIn) {
+        return state.namedLocation(OnboardingPage.routeName);
+      }
+
+      // セットアップが完了しているか
+      if (!isCompletedSetup) {
+        return state.namedLocation(SetupNamePage.routeName);
+      }
+
+      // セットアップが終わっているか
+      return state.namedLocation(HomePage.routeName);
+    },
     routes: [
+      GoRoute(
+        path: '/',
+        builder: (_, __) => const Scaffold(),
+      ),
       GoRoute(
         path: '/${OnboardingPage.routeName}',
         name: OnboardingPage.routeName,
@@ -270,3 +293,16 @@ final routerProvider = Provider((ref) {
     ],
   );
 });
+
+class _RouterNotifier extends ChangeNotifier {
+  _RouterNotifier(Ref ref) {
+    for (final provider in [
+      isSignedInProvider,
+      isCompletedSetupProvider,
+    ]) {
+      ref.listen(provider, (_, __) {
+        notifyListeners();
+      });
+    }
+  }
+}
