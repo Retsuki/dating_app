@@ -37,6 +37,11 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
         userDoc?.data()?.gender == null ? '' : userDoc!.data()!.gender.toStr();
     heightTextController.text = userDoc?.data()?.height.toString() ?? '0';
     occupationTextController.text = userDoc?.data()?.occupation ?? '';
+
+    final interests = userDoc?.data()?.interests;
+    if (interests != null) {
+      state = [...interests];
+    }
   }
 
   // Setup各ページのform key
@@ -84,6 +89,7 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
           : toUserGender(genderTextController.text),
       height: int.parse(heightTextController.text),
       occupation: occupationTextController.text,
+      interests: state,
     );
     await _read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
@@ -152,4 +158,5 @@ enum SetupFormType {
   address,
   gender,
   photos,
+  interests,
 }

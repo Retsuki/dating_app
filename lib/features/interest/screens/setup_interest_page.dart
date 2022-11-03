@@ -3,10 +3,12 @@ import 'package:dating_app/components/app_bottom_sheet.dart';
 import 'package:dating_app/components/app_button.dart';
 import 'package:dating_app/features/interest/applications/master_interest_provider.dart';
 import 'package:dating_app/features/user/applications/setup/setup_state_notifier.dart';
+import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class SetupInterest extends ConsumerWidget {
   const SetupInterest({super.key});
@@ -27,32 +29,40 @@ class SetupInterest extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBackButton(title: l10n.interestWithMinimumRequirement),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          children: [
-            Text(l10n.interestMessage),
-            const Gap(24),
-            Wrap(
-              spacing: 12,
-              runSpacing: 12,
-              children: masterInterests.map((masterInterest) {
-                final interestId = masterInterest.id;
-                final interest = masterInterest.entity;
-                return AppChip(
-                  label: interest.name,
-                  isSelected: setupState.contains(interestId),
-                  onSelected: onSelected(interestId),
-                );
-              }).toList(),
-            ),
-          ],
+      body: Form(
+        key: setupNotifier.setupFormKeys[SetupFormType.interests],
+        child: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            children: [
+              Text(l10n.interestMessage),
+              const Gap(24),
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: masterInterests.map((masterInterest) {
+                  final interestId = masterInterest.id;
+                  final interest = masterInterest.entity;
+                  return AppChip(
+                    label: interest.name,
+                    isSelected: setupState.contains(interestId),
+                    onSelected: onSelected(interestId),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
         ),
       ),
       bottomSheet: AppBottomSheet(
         child: FilledButton(
           text: l10n.setupComplete,
-          onPressed: () {},
+          onPressed: () async {
+            if (await setupNotifier
+                .saveToFirestoreIfValid(SetupFormType.interests)) {
+              context.goNamed(SetupCompletePage.routeName);
+            }
+          },
         ),
       ),
     );
