@@ -99,21 +99,21 @@ Future<void> _useFirebaseEmulator() async {
 
   const authPort = int.fromEnvironment(
     'AUTH_EMULATOR_PORT',
-    defaultValue: 9099,
+    defaultValue: 7001,
   );
   await FirebaseAuth.instance.useAuthEmulator(host, authPort);
   logger.fine('Using Firebase Auth emulator on $host:$authPort');
 
   const storagePort = int.fromEnvironment(
     'STORAGE_EMULATOR_PORT',
-    defaultValue: 9199,
+    defaultValue: 7005,
   );
   await FirebaseStorage.instance.useStorageEmulator(host, storagePort);
   logger.fine('Using Firebase Storage emulator on $host:$storagePort');
 
   const firestorePort = int.fromEnvironment(
     'FIRESTORE_EMULATOR_PORT',
-    defaultValue: 8080,
+    defaultValue: 7003,
   );
   FirebaseFirestore.instance.useFirestoreEmulator(host, firestorePort);
   logger.fine('Using Firebase Firestore emulator on $host:$firestorePort');
