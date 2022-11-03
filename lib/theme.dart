@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme() {
-  // const primary = Color(0xFFFF4D67);
-  const primary = Color(0xFFffb800);
+  const primary = Color(0xFFFF4D67);
   const secondary = Color(0xFFffb800);
   const surface = Colors.white;
   const background = Colors.white;
