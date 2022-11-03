@@ -4,6 +4,9 @@ import 'package:dating_app/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final isSignedInProvider = Provider((ref) {
+  return ref.watch(authUserProvider).whenData((user) => user != null);
+});
 final authUserProvider = StreamProvider(
   (ref) => FirebaseAuth.instance.userChanges(),
 );

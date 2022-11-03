@@ -7,11 +7,6 @@ import 'package:dating_app/features/user/models/user/user.dart';
 import 'package:dating_app/utils/extensions/extension_firestore_collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// 初期登録ユーザーなのかをチェック
-final isExistUserProvider = Provider((ref) {
-  return ref.watch(userStreamProvider).whenData((user) => user != null);
-});
-
 /// userコレクション
 final userStreamProvider = StreamProvider<DocumentSnapshot<User>?>((ref) {
   final userValue = ref.watch(authUserProvider);
@@ -50,9 +45,9 @@ final privateUserRefProvider = Provider((ref) {
 /// readonly_userコレクション
 final readonlyUserStreamProvider =
     StreamProvider<DocumentSnapshot<ReadonlyUser>?>((ref) {
-  final readonlyUserValue = ref.watch(authUserProvider);
-  final uid = readonlyUserValue.value?.uid;
-  return readonlyUserValue.isLoading
+  final authUser = ref.watch(authUserProvider);
+  final uid = authUser.value?.uid;
+  return authUser.isLoading
       ? const Stream.empty()
       : uid == null
           ? Stream.value(null)
@@ -61,6 +56,6 @@ final readonlyUserStreamProvider =
 
 final readonlyUserRefProvider = Provider((ref) {
   return FirebaseFirestore.instance
-      .collection(ColName.readOnlyUser)
+      .collection(ColName.readonlyUser)
       .withReadonlyUserConverter();
 });

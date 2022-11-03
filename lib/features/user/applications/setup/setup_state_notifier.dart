@@ -9,6 +9,12 @@ import 'package:dating_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final isCompletedSetupProvider = StreamProvider<bool>((ref) {
+  return ref.watch(readonlyUserStreamProvider.stream).map((readonlyUserDoc) {
+    return readonlyUserDoc?.data()?.isCompletedSetup ?? false;
+  });
+});
+
 final setupStateNotifierProvider =
     StateNotifierProvider<SetupStateNotifier, List<String>>((ref) {
   return SetupStateNotifier(ref.read);
