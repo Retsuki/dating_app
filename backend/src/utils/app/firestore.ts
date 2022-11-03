@@ -1,9 +1,11 @@
 import admin from 'firebase-admin'
-import { PrivateUser } from '../../models/private_user/private_user.model'
-import { PrivateUserWorry } from '../../models/private_user/private_user_worry/private_user_worry.model'
-import { ReadonlyUser } from '../../models/readonly_user/readonly_user.model'
-import { User } from '../../models/user/user.model'
-import { Worry } from '../../models/worry/worry.model'
+
+import { PrivateUser } from '../../types/models/private_user/private_user.model'
+import { PrivateUserWorry } from '../../types/models/private_user/private_user_worry/private_user_worry.model'
+import { ReadonlyUser } from '../../types/models/readonly_user/readonly_user.model'
+import { User } from '../../types/models/user/user.model'
+import { Worry } from '../../types/models/worry/worry.model'
+import { converter } from '../../types/utils/common'
 
 export const db = admin.firestore()
 
@@ -14,11 +16,6 @@ export class ColName {
   static readonlyUser = 'readonly_user'
 
   static worry = 'worry'
-}
-
-const converter = {
-  toFirestore: <T>(data: T) => data,
-  fromFirestore: <T>(snapshot: FirebaseFirestore.QueryDocumentSnapshot) => snapshot.data() as T,
 }
 
 export class ColRef {

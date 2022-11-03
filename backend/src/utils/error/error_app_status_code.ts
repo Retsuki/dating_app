@@ -1,25 +1,19 @@
-export enum User {
-  notFoundUser = 'not_found_user',
-}
-
-export enum Server {
-  serverError = 'server_error',
-  serverUnexpectedError = 'server_unexpected_error',
-}
-
-export enum Common {
+export enum Client {
+  notFoundAuthorization = 'not_found_Authorization',
+  methodNotAllowed = 'method_not_allowed',
   notFound = 'not_found',
+  invalidToken = 'invalid_token',
   invalidRequest = 'invalid_request',
 }
 
+export enum Server {
+  unexpected = 'unexpected',
+}
+
 export const AppErrorCode = {
-  Common,
-  User,
+  Client,
   Server,
 }
 
 export type ValuesOf<T> = T[keyof T]
-export type AppErrorCodeType =
-  | ValuesOf<typeof Common>
-  | ValuesOf<typeof User>
-  | ValuesOf<typeof Server>
+export type AppErrorCodeType = ValuesOf<typeof Client> | ValuesOf<typeof Server>

@@ -1,21 +1,69 @@
-import { Logger } from '../logger'
+import express from 'express'
+import { Logger } from '../app/logger'
 import { ErrorHttpStatusCode } from './error_http_status_code'
 import { AppErrorCode, AppErrorCodeType } from './error_app_status_code'
+
+export const appSendError = ({
+  res,
+  error,
+}: {
+  res: express.Response
+  error: BaseError | Error | unknown
+}) => {
+  if (error instanceof BaseError) {
+    res.status(error.httpCode).send(error.responseToClient)
+    return
+  }
+
+  appSendError({
+    res,
+    error: new HTTP500Error({
+      message: 'An unexpected error has occurred.',
+      error,
+    }),
+  })
+}
+
+/**
+ * null or undefinedが入っている場合は確実にエラーの場合に使用する
+ */
+export function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
+  if (val === undefined || val === null) {
+    throw new HTTP500Error({
+      message: 'unexpected',
+      error: `Expected 'val' to be defined, but received ${val}`,
+    })
+  }
+}
+
+interface BaseErrorArg {
+  code: AppErrorCodeType
+  httpCode: ErrorHttpStatusCode
+  message: string
+  error?: unknown
+}
+
+type ClientErrorArg = Omit<BaseErrorArg, 'httpCode'>
+type ServerErrorArg = {
+  code?: AppErrorCodeType
+  httpCode?: ErrorHttpStatusCode
+  message?: string
+  error: unknown
+}
 
 export class BaseError extends Error {
   public readonly code: AppErrorCodeType
   public readonly httpCode: ErrorHttpStatusCode
+  public readonly error: unknown
 
-  constructor(
-    code: AppErrorCodeType,
-    httpCode: ErrorHttpStatusCode,
-    message: string,
-  ) {
+  constructor({ code, httpCode, message, error }: BaseErrorArg) {
     super(message)
     this.code = code
     this.httpCode = httpCode
+    this.error = error
 
-    Logger.error(`${httpCode}: ${message}`)
+    Logger.error(`${httpCode}: ${code}/${message}`)
+    Logger.error(`${error}`)
   }
 
   get responseToClient() {
@@ -30,96 +78,48 @@ export class BaseError extends Error {
  * クライアントエラーと認識される何か(例えば、不正なリクエスト構文、無効なリクエストメッセージフレーム、または不正なリクエストルーティング)のために、サーバーがリクエストを処理できないか、または処理しようとしないことです。
  */
 export class HTTP400Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.BAD_REQUEST,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.BAD_REQUEST })
   }
 }
 /**
  * クライアントは要求されたレスポンスを得るために自分自身を認証する必要があります。
  */
 export class HTTP401Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.UNAUTHORIZED,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.UNAUTHORIZED })
   }
 }
 /**
  * クライアントにはコンテンツへのアクセス権がありません。つまり、許可されていないため、サーバーは要求されたリソースの提供を拒否しています。 401 Unauthorized とは異なり、クライアントの ID はサーバーに知られています。
  */
 export class HTTP403Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.FORBIDEN,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.FORBIDDEN })
   }
 }
 /**
  * サーバーは要求されたリソースを見つけることができません。
  */
 export class HTTP404Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.NOT_FOUND,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.NOT_FOUND })
   }
 }
 /**
  * サーバーはこのリクエストメソッドを知っているが、対象となるリソースがサポートしていない。
  */
 export class HTTP405Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.METHOD_NOT_ALLOWED,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.METHOD_NOT_ALLOWED })
   }
 }
 /**
  * ユーザーが一定時間内に送信したリクエストの数が多すぎる
  */
 export class HTTP429Error extends BaseError {
-  constructor({
-    code,
-    httpCode = ErrorHttpStatusCode.TOO_MANY_REQUESTS,
-    message,
-  }: {
-    code: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+  constructor(args: ClientErrorArg) {
+    super({ ...args, httpCode: ErrorHttpStatusCode.TOO_MANY_REQUESTS })
   }
 }
 /**
@@ -127,15 +127,16 @@ export class HTTP429Error extends BaseError {
  */
 export class HTTP500Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.INTERNAL_SERVER_ERROR,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({
+      ...args,
+      code,
+      message,
+      httpCode: ErrorHttpStatusCode.TOO_MANY_REQUESTS,
+    })
   }
 }
 /**
@@ -143,15 +144,16 @@ export class HTTP500Error extends BaseError {
  */
 export class HTTP501Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.NOT_INPLEMENTED,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({
+      ...args,
+      code,
+      message,
+      httpCode: ErrorHttpStatusCode.NOT_IMPLEMENTED,
+    })
   }
 }
 /**
@@ -159,15 +161,11 @@ export class HTTP501Error extends BaseError {
  */
 export class HTTP502Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.BAD_GATEWAY,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({ ...args, code, message, httpCode: ErrorHttpStatusCode.BAD_GATEWAY })
   }
 }
 /**
@@ -175,15 +173,16 @@ export class HTTP502Error extends BaseError {
  */
 export class HTTP503Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.SERVICE_UNAVAILABLE,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({
+      ...args,
+      code,
+      message,
+      httpCode: ErrorHttpStatusCode.SERVICE_UNAVAILABLE,
+    })
   }
 }
 /**
@@ -191,15 +190,16 @@ export class HTTP503Error extends BaseError {
  */
 export class HTTP504Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.GATEWAY_TIMEOUT,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({
+      ...args,
+      code,
+      message,
+      httpCode: ErrorHttpStatusCode.GATEWAY_TIMEOUT,
+    })
   }
 }
 /**
@@ -207,14 +207,15 @@ export class HTTP504Error extends BaseError {
  */
 export class HTTP505Error extends BaseError {
   constructor({
-    code = AppErrorCode.Server.serverError,
-    httpCode = ErrorHttpStatusCode.HTTP_VERSION_NOT_SUPPORTED,
-    message,
-  }: {
-    code?: AppErrorCodeType
-    httpCode?: ErrorHttpStatusCode
-    message: string
-  }) {
-    super(code, httpCode, message)
+    code = AppErrorCode.Server.unexpected,
+    message = AppErrorCode.Server.unexpected,
+    ...args
+  }: ServerErrorArg) {
+    super({
+      ...args,
+      code,
+      message,
+      httpCode: ErrorHttpStatusCode.HTTP_VERSION_NOT_SUPPORTED,
+    })
   }
 }
