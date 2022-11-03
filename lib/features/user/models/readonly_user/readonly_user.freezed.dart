@@ -29,6 +29,7 @@ mixin _$ReadonlyUser {
   StatusIdentification? get statusIdentification =>
       throw _privateConstructorUsedError;
   StatusAccount? get statusAccount => throw _privateConstructorUsedError;
+  bool get isCompletedSetup => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $ReadonlyUserCopyWith<$Res> {
       @DateTimeTimestampConverter() DateTime updatedAt,
       StatusSubscription? statusSubscription,
       StatusIdentification? statusIdentification,
-      StatusAccount? statusAccount});
+      StatusAccount? statusAccount,
+      bool isCompletedSetup});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$ReadonlyUserCopyWithImpl<$Res> implements $ReadonlyUserCopyWith<$Res> {
     Object? statusSubscription = freezed,
     Object? statusIdentification = freezed,
     Object? statusAccount = freezed,
+    Object? isCompletedSetup = freezed,
   }) {
     return _then(_value.copyWith(
       createdAt: createdAt == freezed
@@ -86,6 +89,10 @@ class _$ReadonlyUserCopyWithImpl<$Res> implements $ReadonlyUserCopyWith<$Res> {
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
               as StatusAccount?,
+      isCompletedSetup: isCompletedSetup == freezed
+          ? _value.isCompletedSetup
+          : isCompletedSetup // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$_ReadonlyUserCopyWith<$Res>
       @DateTimeTimestampConverter() DateTime updatedAt,
       StatusSubscription? statusSubscription,
       StatusIdentification? statusIdentification,
-      StatusAccount? statusAccount});
+      StatusAccount? statusAccount,
+      bool isCompletedSetup});
 }
 
 /// @nodoc
@@ -123,6 +131,7 @@ class __$$_ReadonlyUserCopyWithImpl<$Res>
     Object? statusSubscription = freezed,
     Object? statusIdentification = freezed,
     Object? statusAccount = freezed,
+    Object? isCompletedSetup = freezed,
   }) {
     return _then(_$_ReadonlyUser(
       createdAt: createdAt == freezed
@@ -145,6 +154,10 @@ class __$$_ReadonlyUserCopyWithImpl<$Res>
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
               as StatusAccount?,
+      isCompletedSetup: isCompletedSetup == freezed
+          ? _value.isCompletedSetup
+          : isCompletedSetup // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -157,7 +170,8 @@ class _$_ReadonlyUser implements _ReadonlyUser {
       @DateTimeTimestampConverter() required this.updatedAt,
       this.statusSubscription = StatusSubscription.noStatus,
       this.statusIdentification = StatusIdentification.noStatus,
-      this.statusAccount = StatusAccount.noStatus});
+      this.statusAccount = StatusAccount.noStatus,
+      this.isCompletedSetup = false});
 
   factory _$_ReadonlyUser.fromJson(Map<String, dynamic> json) =>
       _$$_ReadonlyUserFromJson(json);
@@ -177,10 +191,13 @@ class _$_ReadonlyUser implements _ReadonlyUser {
   @override
   @JsonKey()
   final StatusAccount? statusAccount;
+  @override
+  @JsonKey()
+  final bool isCompletedSetup;
 
   @override
   String toString() {
-    return 'ReadonlyUser(createdAt: $createdAt, updatedAt: $updatedAt, statusSubscription: $statusSubscription, statusIdentification: $statusIdentification, statusAccount: $statusAccount)';
+    return 'ReadonlyUser(createdAt: $createdAt, updatedAt: $updatedAt, statusSubscription: $statusSubscription, statusIdentification: $statusIdentification, statusAccount: $statusAccount, isCompletedSetup: $isCompletedSetup)';
   }
 
   @override
@@ -195,7 +212,9 @@ class _$_ReadonlyUser implements _ReadonlyUser {
             const DeepCollectionEquality()
                 .equals(other.statusIdentification, statusIdentification) &&
             const DeepCollectionEquality()
-                .equals(other.statusAccount, statusAccount));
+                .equals(other.statusAccount, statusAccount) &&
+            const DeepCollectionEquality()
+                .equals(other.isCompletedSetup, isCompletedSetup));
   }
 
   @JsonKey(ignore: true)
@@ -206,7 +225,8 @@ class _$_ReadonlyUser implements _ReadonlyUser {
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(statusSubscription),
       const DeepCollectionEquality().hash(statusIdentification),
-      const DeepCollectionEquality().hash(statusAccount));
+      const DeepCollectionEquality().hash(statusAccount),
+      const DeepCollectionEquality().hash(isCompletedSetup));
 
   @JsonKey(ignore: true)
   @override
@@ -227,7 +247,8 @@ abstract class _ReadonlyUser implements ReadonlyUser {
       @DateTimeTimestampConverter() required final DateTime updatedAt,
       final StatusSubscription? statusSubscription,
       final StatusIdentification? statusIdentification,
-      final StatusAccount? statusAccount}) = _$_ReadonlyUser;
+      final StatusAccount? statusAccount,
+      final bool isCompletedSetup}) = _$_ReadonlyUser;
 
   factory _ReadonlyUser.fromJson(Map<String, dynamic> json) =
       _$_ReadonlyUser.fromJson;
@@ -244,6 +265,8 @@ abstract class _ReadonlyUser implements ReadonlyUser {
   StatusIdentification? get statusIdentification;
   @override
   StatusAccount? get statusAccount;
+  @override
+  bool get isCompletedSetup;
   @override
   @JsonKey(ignore: true)
   _$$_ReadonlyUserCopyWith<_$_ReadonlyUser> get copyWith =>

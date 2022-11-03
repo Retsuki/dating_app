@@ -22,6 +22,7 @@ _$_ReadonlyUser _$$_ReadonlyUserFromJson(Map json) => _$_ReadonlyUser(
       statusAccount:
           $enumDecodeNullable(_$StatusAccountEnumMap, json['status_account']) ??
               StatusAccount.noStatus,
+      isCompletedSetup: json['is_completed_setup'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_ReadonlyUserToJson(_$_ReadonlyUser instance) =>
@@ -35,6 +36,7 @@ Map<String, dynamic> _$$_ReadonlyUserToJson(_$_ReadonlyUser instance) =>
       'status_identification':
           _$StatusIdentificationEnumMap[instance.statusIdentification],
       'status_account': _$StatusAccountEnumMap[instance.statusAccount],
+      'is_completed_setup': instance.isCompletedSetup,
     };
 
 const _$StatusSubscriptionEnumMap = {

@@ -15,6 +15,7 @@ class ReadonlyUser with _$ReadonlyUser {
     @Default(StatusIdentification.noStatus)
         StatusIdentification? statusIdentification,
     @Default(StatusAccount.noStatus) StatusAccount? statusAccount,
+    @Default(false) bool isCompletedSetup,
   }) = _ReadonlyUser;
 
   factory ReadonlyUser.fromJson(JsonMap json) => _$ReadonlyUserFromJson(json);
