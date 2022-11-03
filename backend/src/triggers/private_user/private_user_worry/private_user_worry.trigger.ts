@@ -1,6 +1,8 @@
 import * as functions from 'firebase-functions'
+
 import { ColName } from '../../../utils/app/firestore'
 import { ChangeType, getChangeType } from '../../../utils/app/functions'
+
 import { privateUserWorryService } from './private_user_worry.service'
 
 const documentPath = `${ColName.privateUser}/{privateUserId}/${ColName.privateUserWorry}/{privateUserWorryId}`

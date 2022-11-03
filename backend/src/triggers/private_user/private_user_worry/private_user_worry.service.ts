@@ -1,8 +1,8 @@
 import admin from 'firebase-admin'
-import { Logger } from '../../../utils/logger'
-import { ColName } from '../../../../constants/collection'
+import { Logger } from '../../../utils/app/logger'
 import { HTTP500Error } from '../../../utils/error/error'
-import { PrivateUserWorry } from './private_user_worry.model'
+import { PrivateUserWorry } from '../../../types/models/private_user/private_user_worry/private_user_worry.model'
+import { ColName } from '../../../utils/app/firestore'
 
 const db = admin.firestore()
 
@@ -18,7 +18,8 @@ export const privateUserWorryService = {
       Logger.success(`copy to worry collection!! privateUserWorryId: ${id}`)
     } catch (error) {
       throw new HTTP500Error({
-        message: `copyToWorry. id: ${doc.id}\n${error}`,
+        error,
+        message: `copyToWorry. id: ${doc.id}`,
       })
     }
   },
@@ -29,7 +30,8 @@ export const privateUserWorryService = {
       Logger.success(`delete document!! privateUserWorryId: ${id}`)
     } catch (error) {
       throw new HTTP500Error({
-        message: `deleteWorry. id: ${id}\n${error}`,
+        error,
+        message: `deleteWorry. id: ${id}`,
       })
     }
   },
