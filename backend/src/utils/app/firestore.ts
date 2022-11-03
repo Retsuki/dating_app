@@ -1,8 +1,9 @@
 import admin from 'firebase-admin'
-import { User } from '../../triggers/collections/user/user.model'
-import { PrivateUser } from '../../triggers/private_user/private_user.model'
-import { PrivateUserWorry } from '../../triggers/private_user/private_user_worry/private_user_worry.model'
-import { ReadonlyUser } from '../../triggers/collections/readonly_user/readonly_user'
+import { PrivateUser } from '../../models/private_user/private_user.model'
+import { PrivateUserWorry } from '../../models/private_user/private_user_worry/private_user_worry.model'
+import { ReadonlyUser } from '../../models/readonly_user/readonly_user.model'
+import { User } from '../../models/user/user.model'
+import { Worry } from '../../models/worry/worry.model'
 
 export const db = admin.firestore()
 
@@ -25,5 +26,5 @@ export class ColRef {
   static privateUser = db.collection(ColName.privateUser).withConverter<PrivateUser>(converter)
   static privateUserWorry = db.collection(ColName.privateUserWorry).withConverter<PrivateUserWorry>(converter)
   static readonlyUser = db.collection(ColName.readonlyUser).withConverter<ReadonlyUser>(converter)
-  static worry = db.collection(ColName.worry).withConverter<Worr>(converter)
+  static worry = db.collection(ColName.worry).withConverter<Worry>(converter)
 }
