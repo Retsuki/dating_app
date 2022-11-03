@@ -2,10 +2,16 @@
   "eslint.workingDirectories": ["./backend"],
   "cSpell.words": [
     "autofocus",
+    "Checkmark",
     "dont",
+    "fastify",
     "Firestore",
+    "inprogress",
+    "Parens",
     "riverpod",
+    "subloc",
     "Unfocus",
     "zipcode"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
