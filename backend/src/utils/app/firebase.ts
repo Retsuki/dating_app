@@ -1,7 +1,9 @@
 import admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
+
 import { unawaited } from '../app/common'
 import { assertIsDefined } from '../error/error'
+
 import { Logger } from './logger'
 
 export const db = admin.firestore()
@@ -51,7 +53,7 @@ export const appFirebase = {
     return admin.firestore.FieldValue.serverTimestamp()
   },
   /**
-   * date to Firebasefirestore.Timestamp
+   * date to FirebaseFirestore.Timestamp
    */
   toTimestamp: (date: Date) => {
     return admin.firestore.Timestamp.fromDate(date)
