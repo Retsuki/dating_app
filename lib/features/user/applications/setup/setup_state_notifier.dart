@@ -1,8 +1,12 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/user/data/user_provider.dart';
+import 'package:dating_app/features/user/data/user_repository.dart';
 import 'package:dating_app/features/user/models/private_user/private_user.dart';
 import 'package:dating_app/features/user/models/user/user.dart';
+import 'package:dating_app/l10n/l10n.dart';
+import 'package:dating_app/utils/common.dart';
 import 'package:dating_app/utils/extensions/extension_firestore_document.dart';
 import 'package:dating_app/utils/extensions/extension_string.dart';
 import 'package:dating_app/utils/logger.dart';
@@ -17,18 +21,18 @@ final isCompletedSetupProvider = StreamProvider<bool>((ref) {
 
 final setupStateNotifierProvider =
     StateNotifierProvider<SetupStateNotifier, List<String>>((ref) {
-  return SetupStateNotifier(ref.read);
+  return SetupStateNotifier(ref);
 });
 
 class SetupStateNotifier extends StateNotifier<List<String>> {
-  SetupStateNotifier(this._read) : super([]) {
+  SetupStateNotifier(this._ref) : super([]) {
     initUser();
   }
-  final Reader _read;
+  final Ref _ref;
 
   Future<void> initUser() async {
-    final userDoc = await _read(userStreamProvider.future);
-    final privateUserDoc = await _read(privateUserStreamProvider.future);
+    final userDoc = await _ref.read(userStreamProvider.future);
+    final privateUserDoc = await _ref.read(privateUserStreamProvider.future);
 
     seiTextController.text = privateUserDoc?.data()?.sei ?? '';
     meiTextController.text = privateUserDoc?.data()?.mei ?? '';
@@ -47,6 +51,34 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
     final interests = userDoc?.data()?.interests;
     if (interests != null) {
       state = [...interests];
+    }
+  }
+
+  Future<bool> deleteUser({required BuildContext context}) async {
+    final l10n = L10n.of(context);
+    try {
+      final result = await showOkCancelAlertDialog(
+        context: context,
+        title: l10n.cautionTitle,
+        message: l10n.cautionDeleteUser,
+        okLabel: l10n.delete,
+        isDestructiveAction: true,
+      );
+      if (result == OkCancelResult.cancel) {
+        return false;
+      }
+
+      await executeWithProgress(context, () async {
+        await _ref.read(userRepositoryProvider).deleteUser();
+      });
+      return true;
+    } on Exception {
+      await showOkAlertDialog(
+        context: context,
+        title: l10n.errorOccurred,
+        message: l10n.errorFailedDeleteUser,
+      );
+      return false;
     }
   }
 
@@ -82,10 +114,10 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
   }
 
   Future<void> saveToFirestore() async {
-    final uid = _read(authUserProvider).value!.uid;
+    final uid = _ref.read(authUserProvider).value!.uid;
 
     // ニックネームは <user> に
-    final userDoc = _read(userStreamProvider).value;
+    final userDoc = _ref.read(userStreamProvider).value;
     final user = (userDoc?.data() ?? const User()).copyWith(
       nickName: nicknameTextController.text,
       birthday: birthdayTextController.text,
@@ -97,7 +129,7 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
       occupation: occupationTextController.text,
       interests: state,
     );
-    await _read(userRefProvider).doc(uid).raw.set(
+    await _ref.read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
         ...user.toJson(),
         'updated_at': FieldValue.serverTimestamp(),
@@ -106,7 +138,7 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
     );
 
     // 姓名は <private user> に
-    final privateUserDoc = _read(privateUserStreamProvider).value;
+    final privateUserDoc = _ref.read(privateUserStreamProvider).value;
     final privateUser =
         (privateUserDoc?.data() ?? const PrivateUser()).copyWith(
       sei: seiTextController.text,
@@ -117,7 +149,7 @@ class SetupStateNotifier extends StateNotifier<List<String>> {
       street: streetTextController.text,
       building: buildingTextController.text,
     );
-    await _read(privateUserRefProvider).doc(uid).raw.set(<String, dynamic>{
+    await _ref.read(privateUserRefProvider).doc(uid).raw.set(<String, dynamic>{
       ...privateUser.toJson(),
       'updated_at': FieldValue.serverTimestamp(),
     });
