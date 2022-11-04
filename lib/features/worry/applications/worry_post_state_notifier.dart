@@ -10,18 +10,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final worryPostStateNotifierProvider =
     StateNotifierProvider<WorryPostStateNotifier, WorryPostState>(
-  (ref) => WorryPostStateNotifier(ref.read),
+  WorryPostStateNotifier.new,
 );
 
 class WorryPostStateNotifier extends StateNotifier<WorryPostState> {
-  WorryPostStateNotifier(this._read) : super(const WorryPostState());
+  WorryPostStateNotifier(this._ref) : super(const WorryPostState());
 
-  final Reader _read;
+  final Ref _ref;
 
   final worryPostTextController = TextEditingController();
 
   Future<void> sendNewWorry() async {
-    final userDoc = await _read(userStreamProvider.future);
+    final userDoc = await _ref.read(userStreamProvider.future);
     final user = userDoc!.data()!;
     final privateUserWorry = PrivateUserWorry(
       text: worryPostTextController.text,
@@ -29,7 +29,11 @@ class WorryPostStateNotifier extends StateNotifier<WorryPostState> {
       gender: user.gender,
       type: WorryCategoryType.koi,
     );
-    await _read(privateUserWorryRefProvider).doc().raw.set(<String, dynamic>{
+    await _ref
+        .read(privateUserWorryRefProvider)
+        .doc()
+        .raw
+        .set(<String, dynamic>{
       ...privateUserWorry.toJson(),
       'created_at': FieldValue.serverTimestamp(),
       'updated_at': FieldValue.serverTimestamp(),

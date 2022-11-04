@@ -6,19 +6,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final signOutProvider = Provider(
-  (ref) => SignOutProvider(ref.read),
+  SignOutProvider.new,
 );
 
 class SignOutProvider {
-  const SignOutProvider(this._read);
+  const SignOutProvider(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
 
   Future<void> signOut({
     required BuildContext context,
   }) async {
     try {
-      await _read(authenticatorProvider).signOut();
+      await _ref.read(authenticatorProvider).signOut();
       logger.fine('user logout');
     } on Exception catch (e) {
       logger.fine(e);

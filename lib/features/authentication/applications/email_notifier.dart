@@ -6,21 +6,21 @@ import 'package:go_router/go_router.dart';
 
 final emailStateNotifierProvider =
     StateNotifierProvider<EmailStateNotifier, EmailState>((ref) {
-  return EmailStateNotifier(ref.read);
+  return EmailStateNotifier(ref);
 });
 
 class EmailStateNotifier extends StateNotifier<EmailState> {
-  EmailStateNotifier(this._read) : super(EmailState());
-  final Reader _read;
+  EmailStateNotifier(this._ref) : super(EmailState());
+  final Ref _ref;
 
   final emailTextController = TextEditingController();
 
   Future<void> sendSignInLinkToEmail({
     required BuildContext context,
   }) async {
-    await _read(authenticatorProvider).sendSignInLinkToEmail(
-      email: emailTextController.text,
-    );
+    await _ref.read(authenticatorProvider).sendSignInLinkToEmail(
+          email: emailTextController.text,
+        );
 
     context.goNamed(SetupNamePage.routeName);
   }

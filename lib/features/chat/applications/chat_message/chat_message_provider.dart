@@ -10,22 +10,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final chatMessageStateNotifierProvider =
     StateNotifierProvider<ChatMessageStateNotifier, ChatMessageState>((ref) {
-  return ChatMessageStateNotifier(ref.read);
+  return ChatMessageStateNotifier(ref);
 });
 
 class ChatMessageStateNotifier extends StateNotifier<ChatMessageState> {
-  ChatMessageStateNotifier(this._read) : super(const ChatMessageState());
+  ChatMessageStateNotifier(this._ref) : super(const ChatMessageState());
 
-  final Reader _read;
+  final Ref _ref;
 
   final chatMessageScrollController = ScrollController();
   final messageTextController = TextEditingController();
   Future<void> sendMessage() async {
     final chatMessage = ChatMessage(
       message: messageTextController.text,
-      senderId: _read(authUserProvider).value!.uid,
+      senderId: _ref.read(authUserProvider).value!.uid,
     );
-    await _read(chatMessageRefProvider(state.chatId!))
+    await _ref
+        .read(chatMessageRefProvider(state.chatId!))
         .doc()
         .raw
         .set(<String, dynamic>{

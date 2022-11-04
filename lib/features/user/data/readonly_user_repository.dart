@@ -5,17 +5,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 final readonlyUserRepositoryProvider = Provider((ref) {
-  return ReadonlyUserRepository(ref.read);
+  return ReadonlyUserRepository(ref);
 });
 
 class ReadonlyUserRepository {
-  const ReadonlyUserRepository(this._read);
+  const ReadonlyUserRepository(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
 
   // setup完了API追加
   Future<bool> completeSetup() async {
-    final user = _read(authUserProvider).value!;
+    final user = _ref.read(authUserProvider).value!;
     final userId = user.uid;
     final token = await user.getIdToken();
     final url = Uri.parse('${flavor.getApiPrefix(ApiUrls.user)}/setup/$userId');

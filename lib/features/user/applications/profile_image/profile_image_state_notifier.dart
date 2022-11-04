@@ -23,13 +23,13 @@ enum ImageSourceX {
 }
 
 final profileImageProvider = Provider(
-  (ref) => ProfileImageProvider(ref.read),
+  ProfileImageProvider.new,
 );
 
 class ProfileImageProvider {
-  ProfileImageProvider(this._read);
+  ProfileImageProvider(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
   final ImagePicker _picker = ImagePicker();
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
@@ -81,14 +81,15 @@ class ProfileImageProvider {
     required ImageSource imageSource,
   }) async {
     // アクスセス権限チェック
-    final isAccessable =
-        await _read(permissionServiceProvider).cameraOrPhotosPermissionRequest(
-      context: context,
-      source: imageSource,
-      permission: imageSource == ImageSource.camera
-          ? Permission.camera
-          : Permission.photos,
-    );
+    final isAccessable = await _ref
+        .read(permissionServiceProvider)
+        .cameraOrPhotosPermissionRequest(
+          context: context,
+          source: imageSource,
+          permission: imageSource == ImageSource.camera
+              ? Permission.camera
+              : Permission.photos,
+        );
     if (!isAccessable) {
       return;
     }
@@ -153,7 +154,7 @@ class ProfileImageProvider {
     required int index,
     required XFile image,
   }) async {
-    final uid = _read(authUserProvider).value!.uid;
+    final uid = _ref.read(authUserProvider).value!.uid;
     final storageRef = _storage.ref();
     final userImagesRef = storageRef.child(
       '${StorageName.user}/$uid/${StorageName.profileImages}/${getProfileImageName(index)}.png',
@@ -175,16 +176,16 @@ class ProfileImageProvider {
     required Reference ref,
     required int index,
   }) async {
-    final uid = _read(authUserProvider).value!.uid;
+    final uid = _ref.read(authUserProvider).value!.uid;
     final imageUrl = await ref.getDownloadURL();
-    final user = _read(userStreamProvider).value!.data()!;
+    final user = _ref.read(userStreamProvider).value!.data()!;
     final updatedUser = user.copyWith(
       mainImage: index == 0 ? imageUrl : user.mainImage,
       subImage1: index == 1 ? imageUrl : user.subImage1,
       subImage2: index == 2 ? imageUrl : user.subImage2,
       subImage3: index == 3 ? imageUrl : user.subImage3,
     );
-    await _read(userRefProvider).doc(uid).raw.set(
+    await _ref.read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
         ...updatedUser.toJson(),
         'updated_at': FieldValue.serverTimestamp(),
@@ -198,7 +199,7 @@ class ProfileImageProvider {
     required BuildContext context,
     required int index,
   }) async {
-    final uid = _read(authUserProvider).value!.uid;
+    final uid = _ref.read(authUserProvider).value!.uid;
     final storageRef = _storage.ref();
     final userImagesRef = storageRef.child(
       '${StorageName.user}/$uid/${StorageName.profileImages}/${getProfileImageName(index)}.png',
@@ -206,14 +207,14 @@ class ProfileImageProvider {
 
     await userImagesRef.delete();
 
-    final user = _read(userStreamProvider).value!.data()!;
+    final user = _ref.read(userStreamProvider).value!.data()!;
     final updatedUser = user.copyWith(
       mainImage: index == 0 ? null : user.mainImage,
       subImage1: index == 1 ? null : user.subImage1,
       subImage2: index == 2 ? null : user.subImage2,
       subImage3: index == 3 ? null : user.subImage3,
     );
-    await _read(userRefProvider).doc(uid).raw.set(
+    await _ref.read(userRefProvider).doc(uid).raw.set(
       <String, dynamic>{
         ...updatedUser.toJson(),
         'updated_at': FieldValue.serverTimestamp(),

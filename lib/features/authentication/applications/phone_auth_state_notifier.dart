@@ -14,13 +14,13 @@ import 'package:go_router/go_router.dart';
 
 final phoneAuthStateNotifierProvider =
     StateNotifierProvider<PhoneAuthStateNotifier, PhoneAuth>((ref) {
-  return PhoneAuthStateNotifier(ref.read);
+  return PhoneAuthStateNotifier(ref);
 });
 
 class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
-  PhoneAuthStateNotifier(this._read) : super(PhoneAuth());
+  PhoneAuthStateNotifier(this._ref) : super(PhoneAuth());
 
-  final Reader _read;
+  final Ref _ref;
   final phonePageFormKey = GlobalKey<FormState>();
   final smsCodePageFormKey = GlobalKey<FormState>();
 
@@ -36,7 +36,8 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
     );
 
     try {
-      await _read(authenticatorProvider)
+      await _ref
+          .read(authenticatorProvider)
           .authWithPhoneNumber(internatinalPhoneNumber);
 
       logger.fine('user sent phone number');
@@ -57,10 +58,10 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
     }
 
     try {
-      await _read(authenticatorProvider).authWithCredential(
-        verificationId: state.verificationId!,
-        smsCode: state.smsCode!,
-      );
+      await _ref.read(authenticatorProvider).authWithCredential(
+            verificationId: state.verificationId!,
+            smsCode: state.smsCode!,
+          );
 
       logger.fine('user created account');
       context.goNamed(SignUpEmailPage.routeName);
@@ -82,7 +83,8 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
     );
 
     try {
-      await _read(authenticatorProvider)
+      await _ref
+          .read(authenticatorProvider)
           .authWithPhoneNumber(internatinalPhoneNumber);
 
       logger.fine('user sent phone number');
@@ -104,10 +106,10 @@ class PhoneAuthStateNotifier extends StateNotifier<PhoneAuth> {
     }
 
     try {
-      await _read(authenticatorProvider).authWithCredential(
-        verificationId: state.verificationId!,
-        smsCode: state.smsCode!,
-      );
+      await _ref.read(authenticatorProvider).authWithCredential(
+            verificationId: state.verificationId!,
+            smsCode: state.smsCode!,
+          );
 
       logger.fine('user signed in!!');
       context.goNamed(ProfilePage.routeName);

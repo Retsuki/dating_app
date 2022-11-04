@@ -12,15 +12,15 @@ final authUserProvider = StreamProvider(
 );
 
 final authenticatorProvider = Provider((ref) {
-  return Authenticator(ref.read);
+  return Authenticator(ref);
 });
 
 // 認証機構
 // 認証時に一時的に発生する値などの管理も役割の一つとする
 class Authenticator {
-  Authenticator(this._read);
+  Authenticator(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
   final _auth = FirebaseAuth.instance;
 
   // 電話番号認証 => IOSの場合はauthWithCredentialも使用する
@@ -34,7 +34,8 @@ class Authenticator {
       // MEMO: IOS
       codeSent: (String verificationId, int? resendToken) {
         logger.fine('firebase just sent smsCode');
-        _read(phoneAuthStateNotifierProvider.notifier)
+        _ref
+            .read(phoneAuthStateNotifierProvider.notifier)
             .updateVerificationId(verificationId);
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -74,7 +75,7 @@ class Authenticator {
   Future<void> sendSignInLinkToEmail({
     required String email,
   }) async {
-    final packageInfo = _read(packageInfoProvider);
+    final packageInfo = _ref.read(packageInfoProvider);
     final acs = ActionCodeSettings(
       url: 'https://toipptakosan11.page.link',
       handleCodeInApp: true,

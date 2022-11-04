@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final profileProvider = Provider(
-  (ref) => ProfileProvider(ref.read),
+  ProfileProvider.new,
 );
 
 class ProfileProvider {
-  const ProfileProvider(this._read);
+  const ProfileProvider(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
 
   Future<void> func({
     required BuildContext context,
@@ -23,7 +23,7 @@ class ProfileProvider {
       case ProfileItem.inviteFrields:
         break;
       case ProfileItem.logout:
-        return _read(signOutProvider).signOut(context: context);
+        return _ref.read(signOutProvider).signOut(context: context);
       case ProfileItem.withDraw:
         break;
     }

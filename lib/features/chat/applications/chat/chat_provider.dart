@@ -19,17 +19,17 @@ final chatListProvider = Provider((ref) {
 });
 
 final chatProvider = Provider(
-  (ref) => ChatProvider(ref.read),
+  ChatProvider.new,
 );
 
 class ChatProvider {
-  const ChatProvider(this._read);
+  const ChatProvider(this._ref);
 
-  final Reader _read;
+  final Ref _ref;
 
   /// チャット相手の情報取得
   MembersInfo getPartnerInfo(Chat chat) {
-    final uid = _read(authUserProvider).value!.uid;
+    final uid = _ref.read(authUserProvider).value!.uid;
     final partnerId = chat.members.firstWhere((memberId) => memberId != uid);
     return chat.membersInfo[partnerId]!;
   }
