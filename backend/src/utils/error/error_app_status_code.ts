@@ -1,14 +1,14 @@
-export enum Client {
-  notFoundAuthorization = 'not_found_Authorization',
-  methodNotAllowed = 'method_not_allowed',
-  notFound = 'not_found',
-  invalidToken = 'invalid_token',
-  invalidRequest = 'invalid_request',
-}
+export const Client = {
+  notFoundAuthorization: 'notFoundAuthorization',
+  methodNotAllowed: 'notFoundAuthorization',
+  notFound: 'notFound',
+  invalidToken: 'invalidToken',
+  invalidRequest: 'invalidRequest',
+} as const
 
-export enum Server {
-  unexpected = 'unexpected',
-}
+export const Server = {
+  unexpected: 'unexpected',
+} as const
 
 export const AppErrorCode = {
   Client,
