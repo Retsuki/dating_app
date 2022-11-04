@@ -132,5 +132,11 @@
         "type": "int"
       }
     }
-  }
+  },
+  "delete": "削除",
+  "cautionTitle": "注告",
+  "cautionDeleteUser": "ユーザーのデータを削除します。これまで保存した全てのデータが削除されます。",
+  "errorOccurred": "エラーが発生しました",
+  "errorUnexpected": "予期せぬエラーが発生しました。",
+  "errorFailedDeleteUser": "ユーザーの削除に失敗しました。再試行をお願いいたします。"
 }
