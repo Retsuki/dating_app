@@ -36,11 +36,8 @@ enum UserImageName {
 }
 
 enum UserGender {
-  @JsonValue('男性')
   male,
-  @JsonValue('女性')
   female,
-  @JsonValue('その他')
   other,
   ;
 

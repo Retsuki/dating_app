@@ -41,9 +41,9 @@ Value? _$JsonConverterFromJson<Json, Value>(
     json == null ? null : fromJson(json as Json);
 
 const _$UserGenderEnumMap = {
-  UserGender.male: '男性',
-  UserGender.female: '女性',
-  UserGender.other: 'その他',
+  UserGender.male: 'male',
+  UserGender.female: 'female',
+  UserGender.other: 'other',
 };
 
 const _$WorryCategoryTypeEnumMap = {
