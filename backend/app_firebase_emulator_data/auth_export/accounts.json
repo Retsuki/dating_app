@@ -1,1 +1,1 @@
-{"kind":"identitytoolkit#DownloadAccountResponse","users":[{"localId":"OOtQCnbf7fyHQfNNahex8Q0u3Q2a","phoneNumber":"+818011111111","lastLoginAt":"1667540246702","createdAt":"1667540246702","providerUserInfo":[{"providerId":"phone","phoneNumber":"+818011111111","rawId":"+818011111111"}],"lastRefreshAt":"2022-11-04T05:37:26.704Z"}]}
+{"kind":"identitytoolkit#DownloadAccountResponse","users":[]}
