@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dating_app/components/app_loading_layout.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/firebase_options.dart';
 import 'package:dating_app/l10n/l10n.dart';
@@ -15,6 +16,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 Future<void> main() async {
@@ -85,7 +87,10 @@ class App extends ConsumerWidget {
       // デバイスプレビュー
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      builder: (context, child) => LoaderOverlay(
+        overlayWidget: const LoadingOverlay(),
+        child: DevicePreview.appBuilder(context, child),
+      ),
       // GoRouter
       routerConfig: router,
     );

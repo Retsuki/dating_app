@@ -1,3 +1,4 @@
+import 'package:dating_app/components/app_loading_layout.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
 import 'package:dating_app/features/authentication/screens/sign_in/sign_in_sms_code_page.dart';
@@ -32,7 +33,6 @@ import 'package:dating_app/features/worry/screens/worry_answer/worry_answer_page
 import 'package:dating_app/features/worry/screens/worry_office/worry_office_page.dart';
 import 'package:dating_app/features/worry/screens/worry_post/worry_post_page.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -168,7 +168,7 @@ final routerProvider = Provider((ref) {
     routes: [
       GoRoute(
         path: '/',
-        builder: (_, __) => const Scaffold(),
+        builder: (_, __) => const LoadingOverlay(),
       ),
       GoRoute(
         path: '/${OnboardingPage.routeName}',
