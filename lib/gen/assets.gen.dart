@@ -84,9 +84,17 @@ class $AssetsImagesPerformingWithManagementGen {
 class $AssetsImagesProfileGen {
   const $AssetsImagesProfileGen();
 
+  /// File path: assets/images/profile/ojisan.png
+  AssetGenImage get ojisan =>
+      const AssetGenImage('assets/images/profile/ojisan.png');
+
   /// File path: assets/images/profile/profile.png
   AssetGenImage get profile =>
       const AssetGenImage('assets/images/profile/profile.png');
+
+  /// File path: assets/images/profile/uncle.png
+  AssetGenImage get uncle =>
+      const AssetGenImage('assets/images/profile/uncle.png');
 }
 
 class $AssetsImagesSetupGen {
