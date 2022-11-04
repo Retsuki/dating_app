@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating_app/features/home/applications/user_detail/user_detail_provider.dart';
 import 'package:dating_app/features/user/models/user/user.dart';
+import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/utils/extensions/extension_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,6 +22,7 @@ class UserProfileImages extends HookConsumerWidget {
       user.subImage2,
       user.subImage3
     ];
+
     return imageList.fold([], (previousValue, image) {
       if (image.isNullOrEmpty) {
         return previousValue;
@@ -33,7 +35,7 @@ class UserProfileImages extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userDetailFutureProvider).value;
+    final user = ref.watch(userDetailProvider);
     if (user == null) {
       return const SizedBox.shrink();
     }
@@ -77,18 +79,15 @@ class _CarouselSliderImages extends StatelessWidget {
         CarouselSlider.builder(
           itemCount: userImageListLength,
           itemBuilder: (context, index, _) {
-            // 画像が１枚もない場合の処理
-            if (userImageList.isEmpty) {
-              return const SizedBox.shrink();
-            }
-
             return Ink.image(
-              fit: BoxFit.cover,
+              fit: userImageList.isEmpty ? BoxFit.contain : BoxFit.cover,
               width: 428,
               height: 640,
-              image: CachedNetworkImageProvider(
-                userImageList[index],
-              ),
+              image: userImageList.isEmpty
+                  ? Assets.images.profile.uncle.image().image
+                  : CachedNetworkImageProvider(
+                      userImageList[index],
+                    ),
               child: Stack(
                 children: [
                   Positioned(
@@ -121,7 +120,7 @@ class _CarouselSliderImages extends StatelessWidget {
           options: CarouselOptions(
             height: 640,
             viewportFraction: 1,
-            autoPlay: true,
+            autoPlay: userImageList.isNotEmpty,
             autoPlayInterval: const Duration(seconds: 2),
             onPageChanged: (index, reason) {
               userImageIndexState.value = index;

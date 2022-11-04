@@ -37,7 +37,7 @@ class UserDetailPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userDetailFutureProvider).value;
+    final user = ref.watch(userDetailProvider);
     if (user == null) {
       return const SizedBox.shrink();
     }

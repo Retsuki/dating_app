@@ -1,101 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/components/app_bottom_navigation_bar.dart';
 import 'package:dating_app/components/app_default_app_bar.dart';
+import 'package:dating_app/features/home/applications/home/home_provider.dart';
+import 'package:dating_app/features/home/applications/user_detail/user_detail_provider.dart';
 import 'package:dating_app/features/home/screens/user_detail/user_detail_page.dart';
 import 'package:dating_app/features/user/models/user/user.dart';
+import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/l10n/l10n.dart';
 import 'package:dating_app/utils/date_formatter/date_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   static const routeName = 'home';
 
-  // userコレクションのデータを引っ張ってくる
-  // ログイン順で
-  // 表示させるものは、名前、年齢、メイン画像、休みの日
-  // 2カラムで左から右に展開
-  // 読み込む量は20人ずつで
-
   @override
-  Widget build(BuildContext context) {
-    const userList = [
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/08/17',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-      User(
-        nickName: 'マイ',
-        birthday: '1998/11/18',
-        mainImage:
-            'https://firebasestorage.googleapis.com/v0/b/dating-app-develop.appspot.com/o/user%2Fhx73NgTwHWRYZ1gt2FBbkKLg6zR2%2Fprofile_images%2FmainImage.png?alt=media&token=f9ee499d-3679-489c-920c-5af485561b21',
-      ),
-    ];
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = L10n.of(context);
+    final userList = ref.watch(userListProvider).value;
+    final userDetail = ref.watch(userDetailProvider.notifier);
+    if (userList == null) {
+      // TODO(Rchan): ローディングにする
+      return const SizedBox.shrink();
+    }
+
     return Scaffold(
       appBar: AppDefaultAppBar(title: l10n.home),
       body: Padding(
@@ -109,21 +40,25 @@ class HomePage extends StatelessWidget {
           ),
           itemCount: userList.length,
           itemBuilder: (context, index) {
-            final user = userList[index];
+            final userDoc = userList[index];
+            final user = userDoc.entity;
             return Material(
               clipBehavior: Clip.antiAlias,
               borderRadius: BorderRadius.circular(40),
               child: Ink.image(
-                fit: BoxFit.cover,
+                fit: user.mainImage == null ? BoxFit.contain : BoxFit.cover,
                 height: 244,
-                image: CachedNetworkImageProvider(
-                  user.mainImage!,
-                ),
+                image: user.mainImage == null
+                    ? Assets.images.profile.uncle.image().image
+                    : CachedNetworkImageProvider(
+                        user.mainImage!,
+                      ),
                 child: InkWell(
                   onTap: () {
+                    userDetail.update((state) => user);
                     context.goNamed(
                       UserDetailPage.routeName,
-                      params: {'userId': 'test'},
+                      params: {'userId': userDoc.id},
                     );
                   },
                   child: _NameAndAge(user: user),

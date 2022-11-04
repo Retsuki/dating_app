@@ -8,6 +8,17 @@ import 'package:dating_app/utils/extensions/extension_firestore_collection.dart'
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// userコレクション
+final usersStreamProvider = StreamProvider<QuerySnapshot<User>>((ref) {
+  final userValue = ref.watch(authUserProvider);
+  final uid = userValue.value?.uid;
+  return userValue.isLoading
+      ? const Stream.empty()
+      : uid == null
+          ? const Stream.empty()
+          : ref.watch(userRefProvider).snapshots();
+});
+
+/// userドキュメント
 final userStreamProvider = StreamProvider<DocumentSnapshot<User>?>((ref) {
   final userValue = ref.watch(authUserProvider);
   final uid = userValue.value?.uid;
@@ -24,7 +35,7 @@ final userRefProvider = Provider((ref) {
       .withUserConverter();
 });
 
-/// private_userコレクション
+/// private_userドキュメント
 final privateUserStreamProvider =
     StreamProvider<DocumentSnapshot<PrivateUser>?>((ref) {
   final privateUserValue = ref.watch(authUserProvider);
@@ -42,7 +53,7 @@ final privateUserRefProvider = Provider((ref) {
       .withPrivateUserConverter();
 });
 
-/// readonly_userコレクション
+/// readonly_userドキュメント
 final readonlyUserStreamProvider =
     StreamProvider<DocumentSnapshot<ReadonlyUser>?>((ref) {
   final authUser = ref.watch(authUserProvider);
