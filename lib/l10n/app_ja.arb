@@ -138,5 +138,6 @@
   "cautionDeleteUser": "ユーザーのデータを削除します。これまで保存した全てのデータが削除されます。",
   "errorOccurred": "エラーが発生しました",
   "errorUnexpected": "予期せぬエラーが発生しました。",
-  "errorFailedDeleteUser": "ユーザーの削除に失敗しました。再試行をお願いいたします。"
+  "errorFailedDeleteUser": "ユーザーの削除に失敗しました。再試行をお願いいたします。",
+  "setupNameDescription": "姓名は本名を入力ください。後ほど本人確認の際に使用されます。"
 }
