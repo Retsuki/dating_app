@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:dating_app/components/app_loading_layout.dart';
 import 'package:dating_app/features/authentication/data/authenticator.dart';
 import 'package:dating_app/features/authentication/screens/sign_in/sign_in_phone_page.dart';
@@ -20,7 +22,6 @@ import 'package:dating_app/features/performing_with_management/screens/youtube/y
 import 'package:dating_app/features/user/applications/setup/setup_state_notifier.dart';
 import 'package:dating_app/features/user/screens/profile/profile/profile_page.dart';
 import 'package:dating_app/features/user/screens/profile/profile_image/profile_image_page.dart';
-import 'package:dating_app/features/user/screens/setup/setup_address_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_birthday_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_city_page.dart';
 import 'package:dating_app/features/user/screens/setup/setup_complete_page.dart';
@@ -89,39 +90,31 @@ final routerProvider = Provider((ref) {
                 builder: (context, _) => const SetupCityPage(),
                 routes: [
                   GoRoute(
-                    path: SetupAddressPage.routeName,
-                    name: SetupAddressPage.routeName,
-                    builder: (_, __) => const SetupAddressPage(),
+                    path: SetupGenderPage.routeName,
+                    name: SetupGenderPage.routeName,
+                    builder: (context, _) => const SetupGenderPage(),
                     routes: [
                       GoRoute(
-                        path: SetupGenderPage.routeName,
-                        name: SetupGenderPage.routeName,
-                        builder: (context, _) => const SetupGenderPage(),
+                        path: SetupHeightPage.routeName,
+                        name: SetupHeightPage.routeName,
+                        builder: (context, _) => const SetupHeightPage(),
                         routes: [
                           GoRoute(
-                            path: SetupHeightPage.routeName,
-                            name: SetupHeightPage.routeName,
-                            builder: (context, _) => const SetupHeightPage(),
+                            path: SetupOccupationPage.routeName,
+                            name: SetupOccupationPage.routeName,
+                            builder: (context, _) =>
+                                const SetupOccupationPage(),
                             routes: [
                               GoRoute(
-                                path: SetupOccupationPage.routeName,
-                                name: SetupOccupationPage.routeName,
-                                builder: (context, _) =>
-                                    const SetupOccupationPage(),
+                                path: SetupInterest.routeName,
+                                name: SetupInterest.routeName,
+                                builder: (context, _) => const SetupInterest(),
                                 routes: [
                                   GoRoute(
-                                    path: SetupInterest.routeName,
-                                    name: SetupInterest.routeName,
+                                    path: SetupCompletePage.routeName,
+                                    name: SetupCompletePage.routeName,
                                     builder: (context, _) =>
-                                        const SetupInterest(),
-                                    routes: [
-                                      GoRoute(
-                                        path: SetupCompletePage.routeName,
-                                        name: SetupCompletePage.routeName,
-                                        builder: (context, _) =>
-                                            const SetupCompletePage(),
-                                      ),
-                                    ],
+                                        const SetupCompletePage(),
                                   ),
                                 ],
                               ),
