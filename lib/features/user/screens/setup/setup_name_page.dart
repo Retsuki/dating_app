@@ -45,6 +45,8 @@ class SetupNamePage extends ConsumerWidget {
                 padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                 child: Column(
                   children: [
+                    Text(l10n.setupNameDescription),
+                    const Gap(24),
                     AppTextFormField(
                       labelText: l10n.sei,
                       controller: setupNotifier.seiTextController,
