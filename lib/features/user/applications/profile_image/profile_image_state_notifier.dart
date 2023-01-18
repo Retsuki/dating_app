@@ -80,7 +80,7 @@ class ProfileImageProvider {
     required int index,
     required ImageSource imageSource,
   }) async {
-    // アクスセス権限チェック
+    // アクセス権限チェック
     final isAccessable = await _ref
         .read(permissionServiceProvider)
         .cameraOrPhotosPermissionRequest(
