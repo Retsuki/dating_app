@@ -95,7 +95,11 @@ class ProfileImageProvider {
     }
 
     // ローカルから画像を取得
-    final image = await _picker.pickImage(source: imageSource);
+    final image = await _picker.pickImage(
+      source: imageSource,
+      maxWidth: 180,
+      maxHeight: 244,
+    );
     if (image == null) {
       return;
     }
