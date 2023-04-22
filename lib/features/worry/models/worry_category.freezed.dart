@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'worry_category.dart';
 
@@ -37,7 +37,8 @@ mixin _$WorryCategory {
 abstract class $WorryCategoryCopyWith<$Res> {
   factory $WorryCategoryCopyWith(
           WorryCategory value, $Res Function(WorryCategory) then) =
-      _$WorryCategoryCopyWithImpl<$Res>;
+      _$WorryCategoryCopyWithImpl<$Res, WorryCategory>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -46,39 +47,41 @@ abstract class $WorryCategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WorryCategoryCopyWithImpl<$Res>
+class _$WorryCategoryCopyWithImpl<$Res, $Val extends WorryCategory>
     implements $WorryCategoryCopyWith<$Res> {
   _$WorryCategoryCopyWithImpl(this._value, this._then);
 
-  final WorryCategory _value;
   // ignore: unused_field
-  final $Res Function(WorryCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? type = freezed,
-    Object? name = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? type = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WorryCategoryType,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,6 +92,7 @@ abstract class _$$_WorryCategoryCopyWith<$Res>
           _$_WorryCategory value, $Res Function(_$_WorryCategory) then) =
       __$$_WorryCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -98,36 +102,34 @@ abstract class _$$_WorryCategoryCopyWith<$Res>
 
 /// @nodoc
 class __$$_WorryCategoryCopyWithImpl<$Res>
-    extends _$WorryCategoryCopyWithImpl<$Res>
+    extends _$WorryCategoryCopyWithImpl<$Res, _$_WorryCategory>
     implements _$$_WorryCategoryCopyWith<$Res> {
   __$$_WorryCategoryCopyWithImpl(
       _$_WorryCategory _value, $Res Function(_$_WorryCategory) _then)
-      : super(_value, (v) => _then(v as _$_WorryCategory));
+      : super(_value, _then);
 
-  @override
-  _$_WorryCategory get _value => super._value as _$_WorryCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? type = freezed,
-    Object? name = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? type = null,
+    Object? name = null,
   }) {
     return _then(_$_WorryCategory(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WorryCategoryType,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -169,23 +171,22 @@ class _$_WorryCategory implements _WorryCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorryCategory &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode =>
+      Object.hash(runtimeType, createdAt, updatedAt, type, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_WorryCategoryCopyWith<_$_WorryCategory> get copyWith =>
       __$$_WorryCategoryCopyWithImpl<_$_WorryCategory>(this, _$identity);
 

@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,6 +43,9 @@ class $AssetsImagesLogoGen {
   /// File path: assets/images/logo/google.png
   AssetGenImage get google =>
       const AssetGenImage('assets/images/logo/google.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [app, apple, facebook, google];
 }
 
 class $AssetsImagesOnboardingGen {
@@ -59,6 +62,9 @@ class $AssetsImagesOnboardingGen {
   /// File path: assets/images/onboarding/image3.png
   AssetGenImage get image3 =>
       const AssetGenImage('assets/images/onboarding/image3.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [image1, image2, image3];
 }
 
 class $AssetsImagesOsakeGen {
@@ -71,6 +77,9 @@ class $AssetsImagesOsakeGen {
   /// File path: assets/images/osake/remondo.png
   AssetGenImage get remondo =>
       const AssetGenImage('assets/images/osake/remondo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [horoyoi, remondo];
 }
 
 class $AssetsImagesPerformingWithManagementGen {
@@ -79,6 +88,9 @@ class $AssetsImagesPerformingWithManagementGen {
   /// File path: assets/images/performing_with_management/main.png
   AssetGenImage get main =>
       const AssetGenImage('assets/images/performing_with_management/main.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [main];
 }
 
 class $AssetsImagesProfileGen {
@@ -95,6 +107,9 @@ class $AssetsImagesProfileGen {
   /// File path: assets/images/profile/uncle.png
   AssetGenImage get uncle =>
       const AssetGenImage('assets/images/profile/uncle.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [ojisan, profile, uncle];
 }
 
 class $AssetsImagesSetupGen {
@@ -112,6 +127,9 @@ class $AssetsImagesSignUpGen {
   /// File path: assets/images/sign_up/sign_up.png
   AssetGenImage get signUp =>
       const AssetGenImage('assets/images/sign_up/sign_up.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [signUp];
 }
 
 class $AssetsImagesWarryGen {
@@ -119,6 +137,9 @@ class $AssetsImagesWarryGen {
 
   /// File path: assets/images/warry/post.svg
   SvgGenImage get post => const SvgGenImage('assets/images/warry/post.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [post];
 }
 
 class $AssetsImagesSetupSetupCompleteGen {
@@ -127,6 +148,9 @@ class $AssetsImagesSetupSetupCompleteGen {
   /// File path: assets/images/setup/setup_complete/complete.png
   AssetGenImage get complete =>
       const AssetGenImage('assets/images/setup/setup_complete/complete.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [complete];
 }
 
 class $AssetsImagesSetupSetupPhotoGen {
@@ -135,6 +159,9 @@ class $AssetsImagesSetupSetupPhotoGen {
   /// File path: assets/images/setup/setup_photo/add_photo.png
   AssetGenImage get addPhoto =>
       const AssetGenImage('assets/images/setup/setup_photo/add_photo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [addPhoto];
 }
 
 class Assets {
@@ -201,6 +228,17 @@ class AssetGenImage {
     );
   }
 
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
   String get path => _assetName;
 
   String get keyName => _assetName;
@@ -222,13 +260,14 @@ class SvgGenImage {
     AlignmentGeometry alignment = Alignment.center,
     bool allowDrawingOutsideViewBox = false,
     WidgetBuilder? placeholderBuilder,
-    Color? color,
-    BlendMode colorBlendMode = BlendMode.srcIn,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
-    bool cacheColorFilter = false,
-    SvgTheme? theme,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -242,15 +281,18 @@ class SvgGenImage {
       alignment: alignment,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      color: color,
-      colorBlendMode: colorBlendMode,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
-      theme: theme,
     );
   }
 
   String get path => _assetName;
+
+  String get keyName => _assetName;
 }

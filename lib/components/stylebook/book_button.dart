@@ -15,9 +15,9 @@ class BookButton extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            FilledButton(text: 'filledButton', onPressed: () {}),
+            AppFilledButton(text: 'AppFilledButton', onPressed: () {}),
             const Gap(10),
-            FilledButton(
+            AppFilledButton(
               text: 'filledRoundButton',
               onPressed: () {},
             ),

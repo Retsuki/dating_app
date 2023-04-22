@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'private_user.dart';
 
@@ -42,7 +42,8 @@ mixin _$PrivateUser {
 abstract class $PrivateUserCopyWith<$Res> {
   factory $PrivateUserCopyWith(
           PrivateUser value, $Res Function(PrivateUser) then) =
-      _$PrivateUserCopyWithImpl<$Res>;
+      _$PrivateUserCopyWithImpl<$Res, PrivateUser>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -56,63 +57,66 @@ abstract class $PrivateUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
+class _$PrivateUserCopyWithImpl<$Res, $Val extends PrivateUser>
+    implements $PrivateUserCopyWith<$Res> {
   _$PrivateUserCopyWithImpl(this._value, this._then);
 
-  final PrivateUser _value;
   // ignore: unused_field
-  final $Res Function(PrivateUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? sei = freezed,
-    Object? mei = freezed,
-    Object? zipcode = freezed,
-    Object? prefecture = freezed,
-    Object? city = freezed,
-    Object? street = freezed,
-    Object? building = freezed,
+    Object? sei = null,
+    Object? mei = null,
+    Object? zipcode = null,
+    Object? prefecture = null,
+    Object? city = null,
+    Object? street = null,
+    Object? building = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      sei: sei == freezed
+      sei: null == sei
           ? _value.sei
           : sei // ignore: cast_nullable_to_non_nullable
               as String,
-      mei: mei == freezed
+      mei: null == mei
           ? _value.mei
           : mei // ignore: cast_nullable_to_non_nullable
               as String,
-      zipcode: zipcode == freezed
+      zipcode: null == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String,
-      prefecture: prefecture == freezed
+      prefecture: null == prefecture
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      street: street == freezed
+      street: null == street
           ? _value.street
           : street // ignore: cast_nullable_to_non_nullable
               as String,
-      building: building == freezed
+      building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -123,6 +127,7 @@ abstract class _$$_PrivateUserCopyWith<$Res>
           _$_PrivateUser value, $Res Function(_$_PrivateUser) then) =
       __$$_PrivateUserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -136,61 +141,60 @@ abstract class _$$_PrivateUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PrivateUserCopyWithImpl<$Res> extends _$PrivateUserCopyWithImpl<$Res>
+class __$$_PrivateUserCopyWithImpl<$Res>
+    extends _$PrivateUserCopyWithImpl<$Res, _$_PrivateUser>
     implements _$$_PrivateUserCopyWith<$Res> {
   __$$_PrivateUserCopyWithImpl(
       _$_PrivateUser _value, $Res Function(_$_PrivateUser) _then)
-      : super(_value, (v) => _then(v as _$_PrivateUser));
+      : super(_value, _then);
 
-  @override
-  _$_PrivateUser get _value => super._value as _$_PrivateUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? sei = freezed,
-    Object? mei = freezed,
-    Object? zipcode = freezed,
-    Object? prefecture = freezed,
-    Object? city = freezed,
-    Object? street = freezed,
-    Object? building = freezed,
+    Object? sei = null,
+    Object? mei = null,
+    Object? zipcode = null,
+    Object? prefecture = null,
+    Object? city = null,
+    Object? street = null,
+    Object? building = null,
   }) {
     return _then(_$_PrivateUser(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      sei: sei == freezed
+      sei: null == sei
           ? _value.sei
           : sei // ignore: cast_nullable_to_non_nullable
               as String,
-      mei: mei == freezed
+      mei: null == mei
           ? _value.mei
           : mei // ignore: cast_nullable_to_non_nullable
               as String,
-      zipcode: zipcode == freezed
+      zipcode: null == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String,
-      prefecture: prefecture == freezed
+      prefecture: null == prefecture
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      street: street == freezed
+      street: null == street
           ? _value.street
           : street // ignore: cast_nullable_to_non_nullable
               as String,
-      building: building == freezed
+      building: null == building
           ? _value.building
           : building // ignore: cast_nullable_to_non_nullable
               as String,
@@ -253,34 +257,29 @@ class _$_PrivateUser implements _PrivateUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PrivateUser &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.sei, sei) &&
-            const DeepCollectionEquality().equals(other.mei, mei) &&
-            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
-            const DeepCollectionEquality()
-                .equals(other.prefecture, prefecture) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.street, street) &&
-            const DeepCollectionEquality().equals(other.building, building));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.sei, sei) || other.sei == sei) &&
+            (identical(other.mei, mei) || other.mei == mei) &&
+            (identical(other.zipcode, zipcode) || other.zipcode == zipcode) &&
+            (identical(other.prefecture, prefecture) ||
+                other.prefecture == prefecture) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.street, street) || other.street == street) &&
+            (identical(other.building, building) ||
+                other.building == building));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(sei),
-      const DeepCollectionEquality().hash(mei),
-      const DeepCollectionEquality().hash(zipcode),
-      const DeepCollectionEquality().hash(prefecture),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(street),
-      const DeepCollectionEquality().hash(building));
+  int get hashCode => Object.hash(runtimeType, createdAt, updatedAt, sei, mei,
+      zipcode, prefecture, city, street, building);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PrivateUserCopyWith<_$_PrivateUser> get copyWith =>
       __$$_PrivateUserCopyWithImpl<_$_PrivateUser>(this, _$identity);
 

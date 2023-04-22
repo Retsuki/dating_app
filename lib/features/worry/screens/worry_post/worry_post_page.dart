@@ -52,7 +52,7 @@ class WorryPostPage extends ConsumerWidget {
                     },
                   ),
                   const Gap(64),
-                  FilledButton(
+                  AppFilledButton(
                     text: l10n.sendToPost,
                     onPressed: worryPostState.isPossibleSend
                         ? () async {

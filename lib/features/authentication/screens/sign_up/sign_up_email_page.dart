@@ -46,7 +46,7 @@ class SignUpEmailPage extends ConsumerWidget {
         ),
       ),
       bottomSheet: AppBottomSheet(
-        child: FilledButton(
+        child: AppFilledButton(
           text: l10n.goNext,
           onPressed: () => emailNotifier.sendSignInLinkToEmail(
             context: context,

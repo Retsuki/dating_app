@@ -64,7 +64,7 @@ class OnboardingPage extends ConsumerWidget {
             ),
             const Gap(12),
             Expanded(
-              child: FilledButton(
+              child: AppFilledButton(
                 text: l10n.signUp,
                 onPressed: () {
                   context.goNamed(SignUpPhonePage.routeName);

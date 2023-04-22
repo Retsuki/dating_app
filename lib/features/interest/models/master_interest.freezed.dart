@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'master_interest.dart';
 
@@ -37,7 +37,8 @@ mixin _$MasterInterest {
 abstract class $MasterInterestCopyWith<$Res> {
   factory $MasterInterestCopyWith(
           MasterInterest value, $Res Function(MasterInterest) then) =
-      _$MasterInterestCopyWithImpl<$Res>;
+      _$MasterInterestCopyWithImpl<$Res, MasterInterest>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -46,39 +47,41 @@ abstract class $MasterInterestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MasterInterestCopyWithImpl<$Res>
+class _$MasterInterestCopyWithImpl<$Res, $Val extends MasterInterest>
     implements $MasterInterestCopyWith<$Res> {
   _$MasterInterestCopyWithImpl(this._value, this._then);
 
-  final MasterInterest _value;
   // ignore: unused_field
-  final $Res Function(MasterInterest) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? name = freezed,
-    Object? isShow = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? name = null,
+    Object? isShow = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      isShow: isShow == freezed
+      isShow: null == isShow
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,6 +92,7 @@ abstract class _$$_MasterInterestCopyWith<$Res>
           _$_MasterInterest value, $Res Function(_$_MasterInterest) then) =
       __$$_MasterInterestCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -98,36 +102,34 @@ abstract class _$$_MasterInterestCopyWith<$Res>
 
 /// @nodoc
 class __$$_MasterInterestCopyWithImpl<$Res>
-    extends _$MasterInterestCopyWithImpl<$Res>
+    extends _$MasterInterestCopyWithImpl<$Res, _$_MasterInterest>
     implements _$$_MasterInterestCopyWith<$Res> {
   __$$_MasterInterestCopyWithImpl(
       _$_MasterInterest _value, $Res Function(_$_MasterInterest) _then)
-      : super(_value, (v) => _then(v as _$_MasterInterest));
+      : super(_value, _then);
 
-  @override
-  _$_MasterInterest get _value => super._value as _$_MasterInterest;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? name = freezed,
-    Object? isShow = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? name = null,
+    Object? isShow = null,
   }) {
     return _then(_$_MasterInterest(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      isShow: isShow == freezed
+      isShow: null == isShow
           ? _value.isShow
           : isShow // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -168,23 +170,22 @@ class _$_MasterInterest implements _MasterInterest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MasterInterest &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.isShow, isShow));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.isShow, isShow) || other.isShow == isShow));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(isShow));
+  int get hashCode =>
+      Object.hash(runtimeType, createdAt, updatedAt, name, isShow);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MasterInterestCopyWith<_$_MasterInterest> get copyWith =>
       __$$_MasterInterestCopyWithImpl<_$_MasterInterest>(this, _$identity);
 

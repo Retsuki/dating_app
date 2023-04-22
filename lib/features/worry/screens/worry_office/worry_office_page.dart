@@ -53,7 +53,7 @@ class WorryOfficePage extends ConsumerWidget {
                         textAlign: TextAlign.center,
                       ),
                       const Gap(64),
-                      FilledButton(
+                      AppFilledButton(
                         text: l10n.letsWorryTalk,
                         onPressed: () =>
                             context.goNamed(WorryPostPage.routeName),

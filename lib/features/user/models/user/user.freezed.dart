@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user.dart';
 
@@ -46,7 +46,8 @@ mixin _$User {
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
+      _$UserCopyWithImpl<$Res, User>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -65,88 +66,91 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
-  final User _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? birthday = freezed,
-    Object? nickName = freezed,
-    Object? prefecture = freezed,
-    Object? isOnline = freezed,
-    Object? gender = freezed,
+    Object? nickName = null,
+    Object? prefecture = null,
+    Object? isOnline = null,
+    Object? gender = null,
     Object? interests = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
     Object? subImage3 = freezed,
-    Object? height = freezed,
-    Object? occupation = freezed,
+    Object? height = null,
+    Object? occupation = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      birthday: birthday == freezed
+      birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickName: nickName == freezed
+      nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
               as String,
-      prefecture: prefecture == freezed
+      prefecture: null == prefecture
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      isOnline: isOnline == freezed
+      isOnline: null == isOnline
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      interests: interests == freezed
+      interests: freezed == interests
           ? _value.interests
           : interests // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      mainImage: mainImage == freezed
+      mainImage: freezed == mainImage
           ? _value.mainImage
           : mainImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage1: subImage1 == freezed
+      subImage1: freezed == subImage1
           ? _value.subImage1
           : subImage1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage2: subImage2 == freezed
+      subImage2: freezed == subImage2
           ? _value.subImage2
           : subImage2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage3: subImage3 == freezed
+      subImage3: freezed == subImage3
           ? _value.subImage3
           : subImage3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      occupation: occupation == freezed
+      occupation: null == occupation
           ? _value.occupation
           : occupation // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -155,6 +159,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -173,85 +178,83 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     implements _$$_UserCopyWith<$Res> {
   __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, (v) => _then(v as _$_User));
+      : super(_value, _then);
 
-  @override
-  _$_User get _value => super._value as _$_User;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? birthday = freezed,
-    Object? nickName = freezed,
-    Object? prefecture = freezed,
-    Object? isOnline = freezed,
-    Object? gender = freezed,
+    Object? nickName = null,
+    Object? prefecture = null,
+    Object? isOnline = null,
+    Object? gender = null,
     Object? interests = freezed,
     Object? mainImage = freezed,
     Object? subImage1 = freezed,
     Object? subImage2 = freezed,
     Object? subImage3 = freezed,
-    Object? height = freezed,
-    Object? occupation = freezed,
+    Object? height = null,
+    Object? occupation = null,
   }) {
     return _then(_$_User(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      birthday: birthday == freezed
+      birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickName: nickName == freezed
+      nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
               as String,
-      prefecture: prefecture == freezed
+      prefecture: null == prefecture
           ? _value.prefecture
           : prefecture // ignore: cast_nullable_to_non_nullable
               as String,
-      isOnline: isOnline == freezed
+      isOnline: null == isOnline
           ? _value.isOnline
           : isOnline // ignore: cast_nullable_to_non_nullable
               as bool,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      interests: interests == freezed
+      interests: freezed == interests
           ? _value._interests
           : interests // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      mainImage: mainImage == freezed
+      mainImage: freezed == mainImage
           ? _value.mainImage
           : mainImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage1: subImage1 == freezed
+      subImage1: freezed == subImage1
           ? _value.subImage1
           : subImage1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage2: subImage2 == freezed
+      subImage2: freezed == subImage2
           ? _value.subImage2
           : subImage2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      subImage3: subImage3 == freezed
+      subImage3: freezed == subImage3
           ? _value.subImage3
           : subImage3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      occupation: occupation == freezed
+      occupation: null == occupation
           ? _value.occupation
           : occupation // ignore: cast_nullable_to_non_nullable
               as String,
@@ -307,6 +310,7 @@ class _$_User implements _User {
   List<String>? get interests {
     final value = _interests;
     if (value == null) return null;
+    if (_interests is EqualUnmodifiableListView) return _interests;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -336,46 +340,56 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.birthday, birthday) &&
-            const DeepCollectionEquality().equals(other.nickName, nickName) &&
-            const DeepCollectionEquality()
-                .equals(other.prefecture, prefecture) &&
-            const DeepCollectionEquality().equals(other.isOnline, isOnline) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday) &&
+            (identical(other.nickName, nickName) ||
+                other.nickName == nickName) &&
+            (identical(other.prefecture, prefecture) ||
+                other.prefecture == prefecture) &&
+            (identical(other.isOnline, isOnline) ||
+                other.isOnline == isOnline) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             const DeepCollectionEquality()
                 .equals(other._interests, _interests) &&
-            const DeepCollectionEquality().equals(other.mainImage, mainImage) &&
-            const DeepCollectionEquality().equals(other.subImage1, subImage1) &&
-            const DeepCollectionEquality().equals(other.subImage2, subImage2) &&
-            const DeepCollectionEquality().equals(other.subImage3, subImage3) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality()
-                .equals(other.occupation, occupation));
+            (identical(other.mainImage, mainImage) ||
+                other.mainImage == mainImage) &&
+            (identical(other.subImage1, subImage1) ||
+                other.subImage1 == subImage1) &&
+            (identical(other.subImage2, subImage2) ||
+                other.subImage2 == subImage2) &&
+            (identical(other.subImage3, subImage3) ||
+                other.subImage3 == subImage3) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.occupation, occupation) ||
+                other.occupation == occupation));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(birthday),
-      const DeepCollectionEquality().hash(nickName),
-      const DeepCollectionEquality().hash(prefecture),
-      const DeepCollectionEquality().hash(isOnline),
-      const DeepCollectionEquality().hash(gender),
+      createdAt,
+      updatedAt,
+      birthday,
+      nickName,
+      prefecture,
+      isOnline,
+      gender,
       const DeepCollectionEquality().hash(_interests),
-      const DeepCollectionEquality().hash(mainImage),
-      const DeepCollectionEquality().hash(subImage1),
-      const DeepCollectionEquality().hash(subImage2),
-      const DeepCollectionEquality().hash(subImage3),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(occupation));
+      mainImage,
+      subImage1,
+      subImage2,
+      subImage3,
+      height,
+      occupation);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserCopyWith<_$_User> get copyWith =>
       __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 

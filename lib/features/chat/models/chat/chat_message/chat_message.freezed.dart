@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chat_message.dart';
 
@@ -38,7 +38,8 @@ mixin _$ChatMessage {
 abstract class $ChatMessageCopyWith<$Res> {
   factory $ChatMessageCopyWith(
           ChatMessage value, $Res Function(ChatMessage) then) =
-      _$ChatMessageCopyWithImpl<$Res>;
+      _$ChatMessageCopyWithImpl<$Res, ChatMessage>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -48,43 +49,46 @@ abstract class $ChatMessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ChatMessageCopyWithImpl<$Res> implements $ChatMessageCopyWith<$Res> {
+class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
+    implements $ChatMessageCopyWith<$Res> {
   _$ChatMessageCopyWithImpl(this._value, this._then);
 
-  final ChatMessage _value;
   // ignore: unused_field
-  final $Res Function(ChatMessage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? isDeleted = freezed,
-    Object? message = freezed,
-    Object? senderId = freezed,
+    Object? isDeleted = null,
+    Object? message = null,
+    Object? senderId = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isDeleted: isDeleted == freezed
+      isDeleted: null == isDeleted
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      senderId: senderId == freezed
+      senderId: null == senderId
           ? _value.senderId
           : senderId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -95,6 +99,7 @@ abstract class _$$_ChatMessageCopyWith<$Res>
           _$_ChatMessage value, $Res Function(_$_ChatMessage) then) =
       __$$_ChatMessageCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -104,41 +109,40 @@ abstract class _$$_ChatMessageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChatMessageCopyWithImpl<$Res> extends _$ChatMessageCopyWithImpl<$Res>
+class __$$_ChatMessageCopyWithImpl<$Res>
+    extends _$ChatMessageCopyWithImpl<$Res, _$_ChatMessage>
     implements _$$_ChatMessageCopyWith<$Res> {
   __$$_ChatMessageCopyWithImpl(
       _$_ChatMessage _value, $Res Function(_$_ChatMessage) _then)
-      : super(_value, (v) => _then(v as _$_ChatMessage));
+      : super(_value, _then);
 
-  @override
-  _$_ChatMessage get _value => super._value as _$_ChatMessage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? isDeleted = freezed,
-    Object? message = freezed,
-    Object? senderId = freezed,
+    Object? isDeleted = null,
+    Object? message = null,
+    Object? senderId = null,
   }) {
     return _then(_$_ChatMessage(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isDeleted: isDeleted == freezed
+      isDeleted: null == isDeleted
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      senderId: senderId == freezed
+      senderId: null == senderId
           ? _value.senderId
           : senderId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -183,25 +187,25 @@ class _$_ChatMessage implements _ChatMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatMessage &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.isDeleted, isDeleted) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.senderId, senderId));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.isDeleted, isDeleted) ||
+                other.isDeleted == isDeleted) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.senderId, senderId) ||
+                other.senderId == senderId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(isDeleted),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(senderId));
+      runtimeType, createdAt, updatedAt, isDeleted, message, senderId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
       __$$_ChatMessageCopyWithImpl<_$_ChatMessage>(this, _$identity);
 

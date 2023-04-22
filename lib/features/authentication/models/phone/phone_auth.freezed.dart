@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'phone_auth.dart';
 
@@ -28,18 +28,22 @@ mixin _$PhoneAuth {
 /// @nodoc
 abstract class $PhoneAuthCopyWith<$Res> {
   factory $PhoneAuthCopyWith(PhoneAuth value, $Res Function(PhoneAuth) then) =
-      _$PhoneAuthCopyWithImpl<$Res>;
+      _$PhoneAuthCopyWithImpl<$Res, PhoneAuth>;
+  @useResult
   $Res call({String? phoneNumber, String? verificationId, String? smsCode});
 }
 
 /// @nodoc
-class _$PhoneAuthCopyWithImpl<$Res> implements $PhoneAuthCopyWith<$Res> {
+class _$PhoneAuthCopyWithImpl<$Res, $Val extends PhoneAuth>
+    implements $PhoneAuthCopyWith<$Res> {
   _$PhoneAuthCopyWithImpl(this._value, this._then);
 
-  final PhoneAuth _value;
   // ignore: unused_field
-  final $Res Function(PhoneAuth) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? phoneNumber = freezed,
@@ -47,19 +51,19 @@ class _$PhoneAuthCopyWithImpl<$Res> implements $PhoneAuthCopyWith<$Res> {
     Object? smsCode = freezed,
   }) {
     return _then(_value.copyWith(
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      verificationId: verificationId == freezed
+      verificationId: freezed == verificationId
           ? _value.verificationId
           : verificationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      smsCode: smsCode == freezed
+      smsCode: freezed == smsCode
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -69,19 +73,19 @@ abstract class _$$_PhoneAuthCopyWith<$Res> implements $PhoneAuthCopyWith<$Res> {
           _$_PhoneAuth value, $Res Function(_$_PhoneAuth) then) =
       __$$_PhoneAuthCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? phoneNumber, String? verificationId, String? smsCode});
 }
 
 /// @nodoc
-class __$$_PhoneAuthCopyWithImpl<$Res> extends _$PhoneAuthCopyWithImpl<$Res>
+class __$$_PhoneAuthCopyWithImpl<$Res>
+    extends _$PhoneAuthCopyWithImpl<$Res, _$_PhoneAuth>
     implements _$$_PhoneAuthCopyWith<$Res> {
   __$$_PhoneAuthCopyWithImpl(
       _$_PhoneAuth _value, $Res Function(_$_PhoneAuth) _then)
-      : super(_value, (v) => _then(v as _$_PhoneAuth));
+      : super(_value, _then);
 
-  @override
-  _$_PhoneAuth get _value => super._value as _$_PhoneAuth;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? phoneNumber = freezed,
@@ -89,15 +93,15 @@ class __$$_PhoneAuthCopyWithImpl<$Res> extends _$PhoneAuthCopyWithImpl<$Res>
     Object? smsCode = freezed,
   }) {
     return _then(_$_PhoneAuth(
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      verificationId: verificationId == freezed
+      verificationId: freezed == verificationId
           ? _value.verificationId
           : verificationId // ignore: cast_nullable_to_non_nullable
               as String?,
-      smsCode: smsCode == freezed
+      smsCode: freezed == smsCode
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -127,22 +131,20 @@ class _$_PhoneAuth implements _PhoneAuth {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhoneAuth &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.verificationId, verificationId) &&
-            const DeepCollectionEquality().equals(other.smsCode, smsCode));
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.verificationId, verificationId) ||
+                other.verificationId == verificationId) &&
+            (identical(other.smsCode, smsCode) || other.smsCode == smsCode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(verificationId),
-      const DeepCollectionEquality().hash(smsCode));
+  int get hashCode =>
+      Object.hash(runtimeType, phoneNumber, verificationId, smsCode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PhoneAuthCopyWith<_$_PhoneAuth> get copyWith =>
       __$$_PhoneAuthCopyWithImpl<_$_PhoneAuth>(this, _$identity);
 }

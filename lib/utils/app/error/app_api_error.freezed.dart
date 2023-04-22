@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_api_error.dart';
 
@@ -33,34 +33,37 @@ mixin _$AppApiException {
 abstract class $AppApiExceptionCopyWith<$Res> {
   factory $AppApiExceptionCopyWith(
           AppApiException value, $Res Function(AppApiException) then) =
-      _$AppApiExceptionCopyWithImpl<$Res>;
+      _$AppApiExceptionCopyWithImpl<$Res, AppApiException>;
+  @useResult
   $Res call({AppApiErrorCode code, String message});
 }
 
 /// @nodoc
-class _$AppApiExceptionCopyWithImpl<$Res>
+class _$AppApiExceptionCopyWithImpl<$Res, $Val extends AppApiException>
     implements $AppApiExceptionCopyWith<$Res> {
   _$AppApiExceptionCopyWithImpl(this._value, this._then);
 
-  final AppApiException _value;
   // ignore: unused_field
-  final $Res Function(AppApiException) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as AppApiErrorCode,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,31 +74,30 @@ abstract class _$$_AppApiExceptionCopyWith<$Res>
           _$_AppApiException value, $Res Function(_$_AppApiException) then) =
       __$$_AppApiExceptionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({AppApiErrorCode code, String message});
 }
 
 /// @nodoc
 class __$$_AppApiExceptionCopyWithImpl<$Res>
-    extends _$AppApiExceptionCopyWithImpl<$Res>
+    extends _$AppApiExceptionCopyWithImpl<$Res, _$_AppApiException>
     implements _$$_AppApiExceptionCopyWith<$Res> {
   __$$_AppApiExceptionCopyWithImpl(
       _$_AppApiException _value, $Res Function(_$_AppApiException) _then)
-      : super(_value, (v) => _then(v as _$_AppApiException));
+      : super(_value, _then);
 
-  @override
-  _$_AppApiException get _value => super._value as _$_AppApiException;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_$_AppApiException(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as AppApiErrorCode,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -127,19 +129,17 @@ class _$_AppApiException implements _AppApiException {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppApiException &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppApiExceptionCopyWith<_$_AppApiException> get copyWith =>
       __$$_AppApiExceptionCopyWithImpl<_$_AppApiException>(this, _$identity);
 

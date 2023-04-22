@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'prefecture.dart';
 
@@ -29,38 +29,42 @@ mixin _$Prefecture {
 abstract class $PrefectureCopyWith<$Res> {
   factory $PrefectureCopyWith(
           Prefecture value, $Res Function(Prefecture) then) =
-      _$PrefectureCopyWithImpl<$Res>;
+      _$PrefectureCopyWithImpl<$Res, Prefecture>;
+  @useResult
   $Res call({String id, String name, String english});
 }
 
 /// @nodoc
-class _$PrefectureCopyWithImpl<$Res> implements $PrefectureCopyWith<$Res> {
+class _$PrefectureCopyWithImpl<$Res, $Val extends Prefecture>
+    implements $PrefectureCopyWith<$Res> {
   _$PrefectureCopyWithImpl(this._value, this._then);
 
-  final Prefecture _value;
   // ignore: unused_field
-  final $Res Function(Prefecture) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? english = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? english = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      english: english == freezed
+      english: null == english
           ? _value.english
           : english // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,35 +75,35 @@ abstract class _$$_PrefectureCopyWith<$Res>
           _$_Prefecture value, $Res Function(_$_Prefecture) then) =
       __$$_PrefectureCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String name, String english});
 }
 
 /// @nodoc
-class __$$_PrefectureCopyWithImpl<$Res> extends _$PrefectureCopyWithImpl<$Res>
+class __$$_PrefectureCopyWithImpl<$Res>
+    extends _$PrefectureCopyWithImpl<$Res, _$_Prefecture>
     implements _$$_PrefectureCopyWith<$Res> {
   __$$_PrefectureCopyWithImpl(
       _$_Prefecture _value, $Res Function(_$_Prefecture) _then)
-      : super(_value, (v) => _then(v as _$_Prefecture));
+      : super(_value, _then);
 
-  @override
-  _$_Prefecture get _value => super._value as _$_Prefecture;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? english = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? english = null,
   }) {
     return _then(_$_Prefecture(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      english: english == freezed
+      english: null == english
           ? _value.english
           : english // ignore: cast_nullable_to_non_nullable
               as String,
@@ -130,20 +134,17 @@ class _$_Prefecture implements _Prefecture {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Prefecture &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.english, english));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.english, english) || other.english == english));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(english));
+  int get hashCode => Object.hash(runtimeType, id, name, english);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PrefectureCopyWith<_$_Prefecture> get copyWith =>
       __$$_PrefectureCopyWithImpl<_$_Prefecture>(this, _$identity);
 }

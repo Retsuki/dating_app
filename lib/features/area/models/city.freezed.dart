@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'city.dart';
 
@@ -31,33 +31,37 @@ mixin _$Cities {
 /// @nodoc
 abstract class $CitiesCopyWith<$Res> {
   factory $CitiesCopyWith(Cities value, $Res Function(Cities) then) =
-      _$CitiesCopyWithImpl<$Res>;
+      _$CitiesCopyWithImpl<$Res, Cities>;
+  @useResult
   $Res call({String status, List<City> data});
 }
 
 /// @nodoc
-class _$CitiesCopyWithImpl<$Res> implements $CitiesCopyWith<$Res> {
+class _$CitiesCopyWithImpl<$Res, $Val extends Cities>
+    implements $CitiesCopyWith<$Res> {
   _$CitiesCopyWithImpl(this._value, this._then);
 
-  final Cities _value;
   // ignore: unused_field
-  final $Res Function(Cities) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? data = freezed,
+    Object? status = null,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      data: data == freezed
+      data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<City>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,29 @@ abstract class _$$_CitiesCopyWith<$Res> implements $CitiesCopyWith<$Res> {
   factory _$$_CitiesCopyWith(_$_Cities value, $Res Function(_$_Cities) then) =
       __$$_CitiesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String status, List<City> data});
 }
 
 /// @nodoc
-class __$$_CitiesCopyWithImpl<$Res> extends _$CitiesCopyWithImpl<$Res>
+class __$$_CitiesCopyWithImpl<$Res>
+    extends _$CitiesCopyWithImpl<$Res, _$_Cities>
     implements _$$_CitiesCopyWith<$Res> {
   __$$_CitiesCopyWithImpl(_$_Cities _value, $Res Function(_$_Cities) _then)
-      : super(_value, (v) => _then(v as _$_Cities));
+      : super(_value, _then);
 
-  @override
-  _$_Cities get _value => super._value as _$_Cities;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? data = freezed,
+    Object? status = null,
+    Object? data = null,
   }) {
     return _then(_$_Cities(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      data: data == freezed
+      data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<City>,
@@ -110,6 +114,7 @@ class _$_Cities implements _Cities {
   final List<City> _data;
   @override
   List<City> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_data);
   }
@@ -124,19 +129,18 @@ class _$_Cities implements _Cities {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Cities &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(_data));
+      runtimeType, status, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CitiesCopyWith<_$_Cities> get copyWith =>
       __$$_CitiesCopyWithImpl<_$_Cities>(this, _$identity);
 
@@ -182,33 +186,37 @@ mixin _$City {
 /// @nodoc
 abstract class $CityCopyWith<$Res> {
   factory $CityCopyWith(City value, $Res Function(City) then) =
-      _$CityCopyWithImpl<$Res>;
+      _$CityCopyWithImpl<$Res, City>;
+  @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class _$CityCopyWithImpl<$Res> implements $CityCopyWith<$Res> {
+class _$CityCopyWithImpl<$Res, $Val extends City>
+    implements $CityCopyWith<$Res> {
   _$CityCopyWithImpl(this._value, this._then);
 
-  final City _value;
   // ignore: unused_field
-  final $Res Function(City) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -217,29 +225,28 @@ abstract class _$$_CityCopyWith<$Res> implements $CityCopyWith<$Res> {
   factory _$$_CityCopyWith(_$_City value, $Res Function(_$_City) then) =
       __$$_CityCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$$_CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res>
+class __$$_CityCopyWithImpl<$Res> extends _$CityCopyWithImpl<$Res, _$_City>
     implements _$$_CityCopyWith<$Res> {
   __$$_CityCopyWithImpl(_$_City _value, $Res Function(_$_City) _then)
-      : super(_value, (v) => _then(v as _$_City));
+      : super(_value, _then);
 
-  @override
-  _$_City get _value => super._value as _$_City;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_$_City(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -269,19 +276,17 @@ class _$_City implements _City {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_City &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CityCopyWith<_$_City> get copyWith =>
       __$$_CityCopyWithImpl<_$_City>(this, _$identity);
 

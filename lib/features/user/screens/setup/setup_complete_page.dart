@@ -39,7 +39,7 @@ class SetupCompletePage extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               const Gap(24),
-              FilledButton(
+              AppFilledButton(
                 text: l10n.goToProfilePage,
                 onPressed: () async {
                   try {

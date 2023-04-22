@@ -30,7 +30,7 @@ class DatingWithManagementPage extends StatelessWidget {
         ),
       ),
       bottomSheet: AppBottomSheet(
-        child: FilledButton(
+        child: AppFilledButton(
           text: l10n.message,
           onPressed: () async {},
         ),

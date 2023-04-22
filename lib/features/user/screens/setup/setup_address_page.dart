@@ -54,7 +54,7 @@ class SetupAddressPage extends ConsumerWidget {
         ),
       ),
       bottomSheet: AppBottomSheet(
-        child: FilledButton(
+        child: AppFilledButton(
           text: l10n.goNext,
           onPressed: () async {
             if (await setupNotifier

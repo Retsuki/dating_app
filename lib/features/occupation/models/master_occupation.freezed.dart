@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'master_occupation.dart';
 
@@ -36,7 +36,8 @@ mixin _$MasterOccupation {
 abstract class $MasterOccupationCopyWith<$Res> {
   factory $MasterOccupationCopyWith(
           MasterOccupation value, $Res Function(MasterOccupation) then) =
-      _$MasterOccupationCopyWithImpl<$Res>;
+      _$MasterOccupationCopyWithImpl<$Res, MasterOccupation>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -44,34 +45,36 @@ abstract class $MasterOccupationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MasterOccupationCopyWithImpl<$Res>
+class _$MasterOccupationCopyWithImpl<$Res, $Val extends MasterOccupation>
     implements $MasterOccupationCopyWith<$Res> {
   _$MasterOccupationCopyWithImpl(this._value, this._then);
 
-  final MasterOccupation _value;
   // ignore: unused_field
-  final $Res Function(MasterOccupation) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_MasterOccupationCopyWith<$Res>
           _$_MasterOccupation value, $Res Function(_$_MasterOccupation) then) =
       __$$_MasterOccupationCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -90,31 +94,29 @@ abstract class _$$_MasterOccupationCopyWith<$Res>
 
 /// @nodoc
 class __$$_MasterOccupationCopyWithImpl<$Res>
-    extends _$MasterOccupationCopyWithImpl<$Res>
+    extends _$MasterOccupationCopyWithImpl<$Res, _$_MasterOccupation>
     implements _$$_MasterOccupationCopyWith<$Res> {
   __$$_MasterOccupationCopyWithImpl(
       _$_MasterOccupation _value, $Res Function(_$_MasterOccupation) _then)
-      : super(_value, (v) => _then(v as _$_MasterOccupation));
+      : super(_value, _then);
 
-  @override
-  _$_MasterOccupation get _value => super._value as _$_MasterOccupation;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_$_MasterOccupation(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -153,21 +155,20 @@ class _$_MasterOccupation implements _MasterOccupation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MasterOccupation &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, createdAt, updatedAt, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MasterOccupationCopyWith<_$_MasterOccupation> get copyWith =>
       __$$_MasterOccupationCopyWithImpl<_$_MasterOccupation>(this, _$identity);
 

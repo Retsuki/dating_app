@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'readonly_user.dart';
 
@@ -41,7 +41,8 @@ mixin _$ReadonlyUser {
 abstract class $ReadonlyUserCopyWith<$Res> {
   factory $ReadonlyUserCopyWith(
           ReadonlyUser value, $Res Function(ReadonlyUser) then) =
-      _$ReadonlyUserCopyWithImpl<$Res>;
+      _$ReadonlyUserCopyWithImpl<$Res, ReadonlyUser>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -52,48 +53,51 @@ abstract class $ReadonlyUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReadonlyUserCopyWithImpl<$Res> implements $ReadonlyUserCopyWith<$Res> {
+class _$ReadonlyUserCopyWithImpl<$Res, $Val extends ReadonlyUser>
+    implements $ReadonlyUserCopyWith<$Res> {
   _$ReadonlyUserCopyWithImpl(this._value, this._then);
 
-  final ReadonlyUser _value;
   // ignore: unused_field
-  final $Res Function(ReadonlyUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? statusSubscription = freezed,
     Object? statusIdentification = freezed,
     Object? statusAccount = freezed,
-    Object? isCompletedSetup = freezed,
+    Object? isCompletedSetup = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      statusSubscription: statusSubscription == freezed
+      statusSubscription: freezed == statusSubscription
           ? _value.statusSubscription
           : statusSubscription // ignore: cast_nullable_to_non_nullable
               as StatusSubscription?,
-      statusIdentification: statusIdentification == freezed
+      statusIdentification: freezed == statusIdentification
           ? _value.statusIdentification
           : statusIdentification // ignore: cast_nullable_to_non_nullable
               as StatusIdentification?,
-      statusAccount: statusAccount == freezed
+      statusAccount: freezed == statusAccount
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
               as StatusAccount?,
-      isCompletedSetup: isCompletedSetup == freezed
+      isCompletedSetup: null == isCompletedSetup
           ? _value.isCompletedSetup
           : isCompletedSetup // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -104,6 +108,7 @@ abstract class _$$_ReadonlyUserCopyWith<$Res>
           _$_ReadonlyUser value, $Res Function(_$_ReadonlyUser) then) =
       __$$_ReadonlyUserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime createdAt,
       @DateTimeTimestampConverter() DateTime updatedAt,
@@ -115,46 +120,44 @@ abstract class _$$_ReadonlyUserCopyWith<$Res>
 
 /// @nodoc
 class __$$_ReadonlyUserCopyWithImpl<$Res>
-    extends _$ReadonlyUserCopyWithImpl<$Res>
+    extends _$ReadonlyUserCopyWithImpl<$Res, _$_ReadonlyUser>
     implements _$$_ReadonlyUserCopyWith<$Res> {
   __$$_ReadonlyUserCopyWithImpl(
       _$_ReadonlyUser _value, $Res Function(_$_ReadonlyUser) _then)
-      : super(_value, (v) => _then(v as _$_ReadonlyUser));
+      : super(_value, _then);
 
-  @override
-  _$_ReadonlyUser get _value => super._value as _$_ReadonlyUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? createdAt = null,
+    Object? updatedAt = null,
     Object? statusSubscription = freezed,
     Object? statusIdentification = freezed,
     Object? statusAccount = freezed,
-    Object? isCompletedSetup = freezed,
+    Object? isCompletedSetup = null,
   }) {
     return _then(_$_ReadonlyUser(
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      statusSubscription: statusSubscription == freezed
+      statusSubscription: freezed == statusSubscription
           ? _value.statusSubscription
           : statusSubscription // ignore: cast_nullable_to_non_nullable
               as StatusSubscription?,
-      statusIdentification: statusIdentification == freezed
+      statusIdentification: freezed == statusIdentification
           ? _value.statusIdentification
           : statusIdentification // ignore: cast_nullable_to_non_nullable
               as StatusIdentification?,
-      statusAccount: statusAccount == freezed
+      statusAccount: freezed == statusAccount
           ? _value.statusAccount
           : statusAccount // ignore: cast_nullable_to_non_nullable
               as StatusAccount?,
-      isCompletedSetup: isCompletedSetup == freezed
+      isCompletedSetup: null == isCompletedSetup
           ? _value.isCompletedSetup
           : isCompletedSetup // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -205,31 +208,34 @@ class _$_ReadonlyUser implements _ReadonlyUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReadonlyUser &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.statusSubscription, statusSubscription) &&
-            const DeepCollectionEquality()
-                .equals(other.statusIdentification, statusIdentification) &&
-            const DeepCollectionEquality()
-                .equals(other.statusAccount, statusAccount) &&
-            const DeepCollectionEquality()
-                .equals(other.isCompletedSetup, isCompletedSetup));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.statusSubscription, statusSubscription) ||
+                other.statusSubscription == statusSubscription) &&
+            (identical(other.statusIdentification, statusIdentification) ||
+                other.statusIdentification == statusIdentification) &&
+            (identical(other.statusAccount, statusAccount) ||
+                other.statusAccount == statusAccount) &&
+            (identical(other.isCompletedSetup, isCompletedSetup) ||
+                other.isCompletedSetup == isCompletedSetup));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(statusSubscription),
-      const DeepCollectionEquality().hash(statusIdentification),
-      const DeepCollectionEquality().hash(statusAccount),
-      const DeepCollectionEquality().hash(isCompletedSetup));
+      createdAt,
+      updatedAt,
+      statusSubscription,
+      statusIdentification,
+      statusAccount,
+      isCompletedSetup);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ReadonlyUserCopyWith<_$_ReadonlyUser> get copyWith =>
       __$$_ReadonlyUserCopyWithImpl<_$_ReadonlyUser>(this, _$identity);
 

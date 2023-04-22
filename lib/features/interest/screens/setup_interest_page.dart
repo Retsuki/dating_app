@@ -55,7 +55,7 @@ class SetupInterest extends ConsumerWidget {
         ),
       ),
       bottomSheet: AppBottomSheet(
-        child: FilledButton(
+        child: AppFilledButton(
           text: l10n.setupComplete,
           onPressed: () async {
             if (await setupNotifier

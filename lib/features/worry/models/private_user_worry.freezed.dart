@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'private_user_worry.dart';
 
@@ -39,7 +39,8 @@ mixin _$PrivateUserWorry {
 abstract class $PrivateUserWorryCopyWith<$Res> {
   factory $PrivateUserWorryCopyWith(
           PrivateUserWorry value, $Res Function(PrivateUserWorry) then) =
-      _$PrivateUserWorryCopyWithImpl<$Res>;
+      _$PrivateUserWorryCopyWithImpl<$Res, PrivateUserWorry>;
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -50,49 +51,51 @@ abstract class $PrivateUserWorryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PrivateUserWorryCopyWithImpl<$Res>
+class _$PrivateUserWorryCopyWithImpl<$Res, $Val extends PrivateUserWorry>
     implements $PrivateUserWorryCopyWith<$Res> {
   _$PrivateUserWorryCopyWithImpl(this._value, this._then);
 
-  final PrivateUserWorry _value;
   // ignore: unused_field
-  final $Res Function(PrivateUserWorry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? text = freezed,
-    Object? age = freezed,
-    Object? gender = freezed,
-    Object? type = freezed,
+    Object? text = null,
+    Object? age = null,
+    Object? gender = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      age: age == freezed
+      age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WorryCategoryType,
-    ));
+    ) as $Val);
   }
 }
 
@@ -103,6 +106,7 @@ abstract class _$$_PrivateUserWorryCopyWith<$Res>
           _$_PrivateUserWorry value, $Res Function(_$_PrivateUserWorry) then) =
       __$$_PrivateUserWorryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@DateTimeTimestampConverter() DateTime? createdAt,
       @DateTimeTimestampConverter() DateTime? updatedAt,
@@ -114,46 +118,44 @@ abstract class _$$_PrivateUserWorryCopyWith<$Res>
 
 /// @nodoc
 class __$$_PrivateUserWorryCopyWithImpl<$Res>
-    extends _$PrivateUserWorryCopyWithImpl<$Res>
+    extends _$PrivateUserWorryCopyWithImpl<$Res, _$_PrivateUserWorry>
     implements _$$_PrivateUserWorryCopyWith<$Res> {
   __$$_PrivateUserWorryCopyWithImpl(
       _$_PrivateUserWorry _value, $Res Function(_$_PrivateUserWorry) _then)
-      : super(_value, (v) => _then(v as _$_PrivateUserWorry));
+      : super(_value, _then);
 
-  @override
-  _$_PrivateUserWorry get _value => super._value as _$_PrivateUserWorry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? text = freezed,
-    Object? age = freezed,
-    Object? gender = freezed,
-    Object? type = freezed,
+    Object? text = null,
+    Object? age = null,
+    Object? gender = null,
+    Object? type = null,
   }) {
     return _then(_$_PrivateUserWorry(
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      text: text == freezed
+      text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      age: age == freezed
+      age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int,
-      gender: gender == freezed
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as UserGender,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as WorryCategoryType,
@@ -202,27 +204,24 @@ class _$_PrivateUserWorry implements _PrivateUserWorry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PrivateUserWorry &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.text, text) &&
-            const DeepCollectionEquality().equals(other.age, age) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(text),
-      const DeepCollectionEquality().hash(age),
-      const DeepCollectionEquality().hash(gender),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode =>
+      Object.hash(runtimeType, createdAt, updatedAt, text, age, gender, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PrivateUserWorryCopyWith<_$_PrivateUserWorry> get copyWith =>
       __$$_PrivateUserWorryCopyWithImpl<_$_PrivateUserWorry>(this, _$identity);
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 enum Type { round }
 
-class FilledButton extends StatelessWidget {
-  const FilledButton({
+class AppFilledButton extends StatelessWidget {
+  const AppFilledButton({
     super.key,
     required this.text,
     this.onPressed,

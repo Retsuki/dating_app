@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'worry_post_state.dart';
 
@@ -27,29 +27,32 @@ mixin _$WorryPostState {
 abstract class $WorryPostStateCopyWith<$Res> {
   factory $WorryPostStateCopyWith(
           WorryPostState value, $Res Function(WorryPostState) then) =
-      _$WorryPostStateCopyWithImpl<$Res>;
+      _$WorryPostStateCopyWithImpl<$Res, WorryPostState>;
+  @useResult
   $Res call({bool isPossibleSend});
 }
 
 /// @nodoc
-class _$WorryPostStateCopyWithImpl<$Res>
+class _$WorryPostStateCopyWithImpl<$Res, $Val extends WorryPostState>
     implements $WorryPostStateCopyWith<$Res> {
   _$WorryPostStateCopyWithImpl(this._value, this._then);
 
-  final WorryPostState _value;
   // ignore: unused_field
-  final $Res Function(WorryPostState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isPossibleSend = freezed,
+    Object? isPossibleSend = null,
   }) {
     return _then(_value.copyWith(
-      isPossibleSend: isPossibleSend == freezed
+      isPossibleSend: null == isPossibleSend
           ? _value.isPossibleSend
           : isPossibleSend // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,26 +63,25 @@ abstract class _$$_WorryPostStateCopyWith<$Res>
           _$_WorryPostState value, $Res Function(_$_WorryPostState) then) =
       __$$_WorryPostStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool isPossibleSend});
 }
 
 /// @nodoc
 class __$$_WorryPostStateCopyWithImpl<$Res>
-    extends _$WorryPostStateCopyWithImpl<$Res>
+    extends _$WorryPostStateCopyWithImpl<$Res, _$_WorryPostState>
     implements _$$_WorryPostStateCopyWith<$Res> {
   __$$_WorryPostStateCopyWithImpl(
       _$_WorryPostState _value, $Res Function(_$_WorryPostState) _then)
-      : super(_value, (v) => _then(v as _$_WorryPostState));
+      : super(_value, _then);
 
-  @override
-  _$_WorryPostState get _value => super._value as _$_WorryPostState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isPossibleSend = freezed,
+    Object? isPossibleSend = null,
   }) {
     return _then(_$_WorryPostState(
-      isPossibleSend: isPossibleSend == freezed
+      isPossibleSend: null == isPossibleSend
           ? _value.isPossibleSend
           : isPossibleSend // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -106,16 +108,16 @@ class _$_WorryPostState implements _WorryPostState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WorryPostState &&
-            const DeepCollectionEquality()
-                .equals(other.isPossibleSend, isPossibleSend));
+            (identical(other.isPossibleSend, isPossibleSend) ||
+                other.isPossibleSend == isPossibleSend));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(isPossibleSend));
+  int get hashCode => Object.hash(runtimeType, isPossibleSend);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_WorryPostStateCopyWith<_$_WorryPostState> get copyWith =>
       __$$_WorryPostStateCopyWithImpl<_$_WorryPostState>(this, _$identity);
 }

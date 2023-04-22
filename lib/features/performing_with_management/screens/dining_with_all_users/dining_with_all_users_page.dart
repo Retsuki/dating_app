@@ -30,7 +30,7 @@ class DiningWithAllUsersPage extends StatelessWidget {
         ),
       ),
       bottomSheet: AppBottomSheet(
-        child: FilledButton(
+        child: AppFilledButton(
           text: l10n.drawThisMonthLottery,
           onPressed: () async {},
         ),

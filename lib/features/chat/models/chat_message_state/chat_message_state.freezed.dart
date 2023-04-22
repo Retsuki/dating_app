@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chat_message_state.dart';
 
@@ -27,29 +27,32 @@ mixin _$ChatMessageState {
 abstract class $ChatMessageStateCopyWith<$Res> {
   factory $ChatMessageStateCopyWith(
           ChatMessageState value, $Res Function(ChatMessageState) then) =
-      _$ChatMessageStateCopyWithImpl<$Res>;
+      _$ChatMessageStateCopyWithImpl<$Res, ChatMessageState>;
+  @useResult
   $Res call({String? chatId});
 }
 
 /// @nodoc
-class _$ChatMessageStateCopyWithImpl<$Res>
+class _$ChatMessageStateCopyWithImpl<$Res, $Val extends ChatMessageState>
     implements $ChatMessageStateCopyWith<$Res> {
   _$ChatMessageStateCopyWithImpl(this._value, this._then);
 
-  final ChatMessageState _value;
   // ignore: unused_field
-  final $Res Function(ChatMessageState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? chatId = freezed,
   }) {
     return _then(_value.copyWith(
-      chatId: chatId == freezed
+      chatId: freezed == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,26 +63,25 @@ abstract class _$$_ChatMessageStateCopyWith<$Res>
           _$_ChatMessageState value, $Res Function(_$_ChatMessageState) then) =
       __$$_ChatMessageStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? chatId});
 }
 
 /// @nodoc
 class __$$_ChatMessageStateCopyWithImpl<$Res>
-    extends _$ChatMessageStateCopyWithImpl<$Res>
+    extends _$ChatMessageStateCopyWithImpl<$Res, _$_ChatMessageState>
     implements _$$_ChatMessageStateCopyWith<$Res> {
   __$$_ChatMessageStateCopyWithImpl(
       _$_ChatMessageState _value, $Res Function(_$_ChatMessageState) _then)
-      : super(_value, (v) => _then(v as _$_ChatMessageState));
+      : super(_value, _then);
 
-  @override
-  _$_ChatMessageState get _value => super._value as _$_ChatMessageState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? chatId = freezed,
   }) {
     return _then(_$_ChatMessageState(
-      chatId: chatId == freezed
+      chatId: freezed == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -105,15 +107,15 @@ class _$_ChatMessageState implements _ChatMessageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatMessageState &&
-            const DeepCollectionEquality().equals(other.chatId, chatId));
+            (identical(other.chatId, chatId) || other.chatId == chatId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(chatId));
+  int get hashCode => Object.hash(runtimeType, chatId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChatMessageStateCopyWith<_$_ChatMessageState> get copyWith =>
       __$$_ChatMessageStateCopyWithImpl<_$_ChatMessageState>(this, _$identity);
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'osake.dart';
 
@@ -32,38 +32,42 @@ mixin _$Osake {
 /// @nodoc
 abstract class $OsakeCopyWith<$Res> {
   factory $OsakeCopyWith(Osake value, $Res Function(Osake) then) =
-      _$OsakeCopyWithImpl<$Res>;
+      _$OsakeCopyWithImpl<$Res, Osake>;
+  @useResult
   $Res call({String name, int price, String image});
 }
 
 /// @nodoc
-class _$OsakeCopyWithImpl<$Res> implements $OsakeCopyWith<$Res> {
+class _$OsakeCopyWithImpl<$Res, $Val extends Osake>
+    implements $OsakeCopyWith<$Res> {
   _$OsakeCopyWithImpl(this._value, this._then);
 
-  final Osake _value;
   // ignore: unused_field
-  final $Res Function(Osake) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? price = freezed,
-    Object? image = freezed,
+    Object? name = null,
+    Object? price = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,34 +76,33 @@ abstract class _$$_OsakeCopyWith<$Res> implements $OsakeCopyWith<$Res> {
   factory _$$_OsakeCopyWith(_$_Osake value, $Res Function(_$_Osake) then) =
       __$$_OsakeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, int price, String image});
 }
 
 /// @nodoc
-class __$$_OsakeCopyWithImpl<$Res> extends _$OsakeCopyWithImpl<$Res>
+class __$$_OsakeCopyWithImpl<$Res> extends _$OsakeCopyWithImpl<$Res, _$_Osake>
     implements _$$_OsakeCopyWith<$Res> {
   __$$_OsakeCopyWithImpl(_$_Osake _value, $Res Function(_$_Osake) _then)
-      : super(_value, (v) => _then(v as _$_Osake));
+      : super(_value, _then);
 
-  @override
-  _$_Osake get _value => super._value as _$_Osake;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? price = freezed,
-    Object? image = freezed,
+    Object? name = null,
+    Object? price = null,
+    Object? image = null,
   }) {
     return _then(_$_Osake(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      image: image == freezed
+      image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
@@ -133,21 +136,18 @@ class _$_Osake implements _Osake {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Osake &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.image, image));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(image));
+  int get hashCode => Object.hash(runtimeType, name, price, image);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OsakeCopyWith<_$_Osake> get copyWith =>
       __$$_OsakeCopyWithImpl<_$_Osake>(this, _$identity);
 
