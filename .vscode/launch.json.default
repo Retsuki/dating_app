@@ -7,7 +7,9 @@
       "type": "dart",
       "args": [
         "--dart-define=FLAVOR=development",
-        "--dart-define=DEBUG_MODE=true"
+        "--dart-define=DEBUG_MODE=true",
+        "--dart-define=USE_FIREBASE_EMULATOR=true",
+        "--dart-define=FIREBASE_EMULATOR_URL=$(ipconfig getifaddr en0)"
       ]
     },
     {
