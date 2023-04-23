@@ -13,8 +13,6 @@ import 'package:dating_app/features/home/screens/home_page.dart';
 import 'package:dating_app/features/home/screens/user_detail/user_detail_page.dart';
 import 'package:dating_app/features/interest/screens/setup_interest_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
-import 'package:dating_app/features/osake_items/screens/osake_detail_page.dart';
-import 'package:dating_app/features/osake_items/screens/osake_items_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dining_with_all_users/dining_with_all_users_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/performing_with_management_page.dart';
@@ -173,22 +171,6 @@ final routerProvider = Provider((ref) {
         ],
       ),
       setupRoute,
-      GoRoute(
-        path: '/${OsakeItemsPage.routeName}',
-        name: OsakeItemsPage.routeName,
-        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
-          key: state.pageKey,
-          child: const OsakeItemsPage(),
-        ),
-        routes: [
-          GoRoute(
-            path: OsakeDetailPage.routeName,
-            name: OsakeDetailPage.routeName,
-            // TODO_R: パスパラメータに商品情報乗っける
-            builder: (_, state) => const OsakeDetailPage(),
-          ),
-        ],
-      ),
       GoRoute(
         path: '/${HomePage.routeName}',
         name: HomePage.routeName,
