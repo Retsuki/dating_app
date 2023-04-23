@@ -14,9 +14,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final isCompletedSetupProvider = StreamProvider<bool>((ref) {
-  return ref.watch(readonlyUserStreamProvider.stream).map((readonlyUserDoc) {
-    return readonlyUserDoc?.data()?.isCompletedSetup ?? false;
-  });
+  final readonlyUser = ref.watch(readonlyUserStreamProvider);
+  return readonlyUser.when(
+    data: (readonlyUser) {
+      return readonlyUser?.data()?.isCompletedSetup == true
+          ? Stream.value(true)
+          : Stream.value(false);
+    },
+    loading: () => const Stream.empty(),
+    error: (_, __) => const Stream.empty(),
+  );
 });
 
 final setupStateNotifierProvider =
