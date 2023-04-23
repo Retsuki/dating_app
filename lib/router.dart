@@ -12,6 +12,7 @@ import 'package:dating_app/features/chat/screens/chat_message/chat_message_page.
 import 'package:dating_app/features/home/screens/home_page.dart';
 import 'package:dating_app/features/home/screens/user_detail/user_detail_page.dart';
 import 'package:dating_app/features/interest/screens/setup_interest_page.dart';
+import 'package:dating_app/features/like/pages/like_page.dart';
 import 'package:dating_app/features/onboarding/screens/onboarding_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dating_with_management.dart/dating_with_management_page.dart';
 import 'package:dating_app/features/performing_with_management/screens/dining_with_all_users/dining_with_all_users_page.dart';
@@ -207,6 +208,14 @@ final routerProvider = Provider((ref) {
             builder: (_, __) => const WorryPostPage(),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/${LikePage.routeName}',
+        name: LikePage.routeName,
+        pageBuilder: (context, state) => NoTransitionPage<dynamic>(
+          key: state.pageKey,
+          child: const LikePage(),
+        ),
       ),
       GoRoute(
         path: '/${PerformingWithManagement.routeName}',
